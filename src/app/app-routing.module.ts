@@ -7,10 +7,11 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), component: LayoutMainComponent },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule), component: LayoutMainComponent },
-  { path: 'productos', loadChildren: () => import('./pages/productos/productos.module').then(m => m.ProductosModule) },
-  { path: 'contacto', loadChildren: () => import('./pages/contacto/contacto.module').then(m => m.ContactoModule) },
-  { path: 'actividades', loadChildren: () => import('./pages/actividades/actividades.module').then(m => m.ActividadesModule) },
-  { path: 'quienesSomos', loadChildren: () => import('./pages/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule) }];
+  { path: 'productos', loadChildren: () => import('./pages/productos/productos.module').then(m => m.ProductosModule), component: LayoutMainComponent },
+  { path: 'contacto', loadChildren: () => import('./pages/contacto/contacto.module').then(m => m.ContactoModule), component: LayoutMainComponent },
+  { path: 'actividades', loadChildren: () => import('./pages/actividades/actividades.module').then(m => m.ActividadesModule), component: LayoutMainComponent },
+  { path: 'quienesSomos', loadChildren: () => import('./pages/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule), component: LayoutMainComponent },
+  { path: 'carrito', loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule), component: LayoutMainComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

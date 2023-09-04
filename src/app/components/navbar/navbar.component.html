@@ -1,39 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="ruta-de-tu-imagen.png" alt="Logo CPMT" width="30" height="30">CPMT</a>
+      <a class="navbar-brand" (click)="home()">
+        <img src="ruta-de-tu-imagen.png" alt="..." width="30" height="30">CPMT</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><i class="fa fa-home"></i>
+          <li class="nav-item active cursor_pointer">
+            <a class="nav-link" (click)="home()"><i class="fa fa-home"></i>
                 Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-tags"></i>
+          <li class="nav-item cursor_pointer">
+            <a class="nav-link" (click)="productos()"><i class="fa fa-tags"></i>
                 Productos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-envelope"></i>
+          <li class="nav-item cursor_pointer">
+            <a class="nav-link" (click)="contacto()"><i class="fa fa-envelope"></i>
                 Contacto</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-list"></i>
+          <li class="nav-item cursor_pointer">
+            <a class="nav-link" (click)="actividades()"><i class="fa fa-list"></i>
                 Actividades</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-users"></i>
+          <li class="nav-item cursor_pointer">
+            <a class="nav-link" (click)="quienesSomos()"><i class="fa fa-users"></i>
                 ¿Quienes Somos?</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-sign-in"></i>
+          <li class="nav-item cursor_pointer">
+            <a class="nav-link" (click)="login()"><i class="fa fa-sign-in"></i>
                 Iniciar Sesión</a>
           </li>
-          <li class="nav-item">
-            <a href="" class="nav-link"><i class="fa fa-shopping-cart fa-lg"></i>
+          <li class="nav-item cursor_pointer">
+            <a (click)="carrito()" class="nav-link"><i class="fa fa-shopping-cart fa-lg"></i>
             </a>
           </li>
         </ul>
