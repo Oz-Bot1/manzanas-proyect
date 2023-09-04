@@ -2,7 +2,22 @@
 //importaciones del font awesome
 @import "~font-awesome/css/font-awesome.css";
 
-//cursor pointer
+.rojo {
+    background-color: #AB6969;
+}
+
+.blanco {
+    color: #fff;
+}
+
+.gris {
+    background-color: #353535;
+}
+
 .cursor_pointer {
     cursor: pointer;
+}
+
+.espacio {
+    height: 25px;
 }
