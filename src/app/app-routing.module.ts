@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'contacto', loadChildren: () => import('./pages/contacto/contacto.module').then(m => m.ContactoModule), component: LayoutMainComponent },
   { path: 'actividades', loadChildren: () => import('./pages/actividades/actividades.module').then(m => m.ActividadesModule), component: LayoutMainComponent },
   { path: 'quienesSomos', loadChildren: () => import('./pages/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule), component: LayoutMainComponent },
-  { path: 'carrito', loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule), component: LayoutMainComponent }];
+  { path: 'carrito', loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule), component: LayoutMainComponent },
+  { path: 'inventario', loadChildren: () => import('./pages/inventario/inventario.module').then(m => m.InventarioModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
