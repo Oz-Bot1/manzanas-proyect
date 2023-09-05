@@ -10,5 +10,8 @@ export class LoginComponent {
   inventario() {
     this.router.navigate(['/inventario']);
   }
+  crearUsuario() {
+    this.router.navigate(['/crearUsuario']);
+  }
   constructor(private router: Router) {}
 }
