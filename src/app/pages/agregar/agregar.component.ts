@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ventas',
-  templateUrl: './ventas.component.html',
-  styleUrls: ['./ventas.component.scss']
+  selector: 'app-agregar',
+  templateUrl: './agregar.component.html',
+  styleUrls: ['./agregar.component.scss']
 })
-export class VentasComponent {
-
+export class AgregarComponent {
   ventas() {
     this.router.navigate(['/ventas']);
   }
@@ -23,6 +22,6 @@ export class VentasComponent {
   agregar() {
     this.router.navigate(['/agregar'])
   }
-  constructor(private router: Router){}
 
+  constructor(private router: Router){}
 }

@@ -19,6 +19,14 @@ export class InventarioComponent implements OnInit {
     this.router.navigate(['/inventario']);
   }
 
+  logout() {
+    this.router.navigate(['/home']);
+  }
+
+  agregar() {
+    this.router.navigate(['/agregar'])
+  }
+
   constructor(private router: Router){}
 
   ngOnInit(): void {
