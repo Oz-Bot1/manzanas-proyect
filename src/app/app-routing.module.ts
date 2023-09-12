@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'quienesSomos', loadChildren: () => import('./pages/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule), component: LayoutMainComponent },
   { path: 'carrito', loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule), component: LayoutMainComponent },
   { path: 'inventario', loadChildren: () => import('./pages/inventario/inventario.module').then(m => m.InventarioModule) },
-  { path: 'crearUsuario', loadChildren: () => import('./pages/crear-usuario/crear-usuario.module').then(m => m.CrearUsuarioModule), component: LayoutMainComponent }];
+  { path: 'crearUsuario', loadChildren: () => import('./pages/crear-usuario/crear-usuario.module').then(m => m.CrearUsuarioModule), component: LayoutMainComponent },
+  { path: 'ventas', loadChildren: () => import('./pages/ventas/ventas.module').then(m => m.VentasModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
