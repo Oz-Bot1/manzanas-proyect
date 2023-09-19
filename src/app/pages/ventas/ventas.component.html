@@ -28,3 +28,32 @@
     <button class="btn" (click)="ventas()">Ventas</button>
     <button class="btn" (click)="agregar()">Agregar</button>
 </div>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Liberar Pedido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <button type="button" class="btn" (click)="liberar()">Liberar</button>
+
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <button type="button" class="btn" (click)="liberar()">Liberar</button>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <button type="button" class="btn" (click)="liberar()">Liberar</button>
+          </tr>
+        </tbody>
+      </table>
+</div>

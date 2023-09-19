@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'inventario', loadChildren: () => import('./pages/inventario/inventario.module').then(m => m.InventarioModule) },
   { path: 'crearUsuario', loadChildren: () => import('./pages/crear-usuario/crear-usuario.module').then(m => m.CrearUsuarioModule), component: LayoutMainComponent },
   { path: 'ventas', loadChildren: () => import('./pages/ventas/ventas.module').then(m => m.VentasModule) },
-  { path: 'agregar', loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarModule) }];
+  { path: 'agregar', loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarModule) },
+  { path: 'liberar', loadChildren: () => import('./pages/liberar/liberar.module').then(m => m.LiberarModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -21,7 +21,11 @@ export class VentasComponent {
   }
 
   agregar() {
-    this.router.navigate(['/agregar'])
+    this.router.navigate(['/agregar']);
+  }
+
+  liberar() {
+    this.router.navigate(['/liberar']);
   }
   constructor(private router: Router){}
 
