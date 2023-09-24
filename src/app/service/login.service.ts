@@ -11,6 +11,10 @@ const urlApi = environment.urlApi;
 export class LoginService {
 
   private isLoggedInFlag: boolean = false;
+
+  bandera() {
+    return this.isLoggedInFlag;
+  }
  
   isLoggedIn() {
     return this.cookie.get("token");
@@ -35,7 +39,7 @@ export class LoginService {
     formData.append('contrasenia', contrasenia);
 
     return this.http.post<any>(`${urlApi}/login`, formData).pipe(tap  (response => {
-      this.cookie.set('token', response.token);
+      this.cookie.set('token', response.data[0].token);
       // Establecer la bandera de inicio de sesión
       this.flagChange(true);
     })

@@ -8,7 +8,8 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block"> <img class="img-fluid" src="../../../assets/img/login.jpg" alt="..."></div>
+                        <div class="col-lg-6 d-none d-lg-block"> <img class="img-fluid"
+                                src="../../../assets/img/login.jpg" alt="..."></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
@@ -17,16 +18,20 @@
                                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                                     <!-- Contenido del formulario -->
                                     <div class="form-group">
-                                      <input type="text" class="form-control form-control-user" formControlName="usuario" id="usuario"
-                                        aria-describedby="emailHelp" placeholder="Correo">
+                                        <input type="text" class="form-control form-control-user"
+                                            formControlName="usuario" id="usuario"
+                                            placeholder="Usuario">
                                     </div>
                                     <div class="form-group">
-                                      <input type="password" class="form-control form-control-user" formControlName="contrasenia"
-                                        id="contrasenia" placeholder="Contraseña">
+                                        <input type="password" class="form-control form-control-user"
+                                            formControlName="contrasenia" id="contrasenia" placeholder="Contraseña">
                                     </div>
                                     <button type="submit" class="btn btnRojo btn-user btn-block">Entrar</button>
-                                  </form>                                  
+                                </form>
                                 <hr>
+                                <div class="text-center">
+                                    <span class="label"><i>{{ mensajeError}}</i></span>
+                                </div>
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.html">Olvido su contraseña?</a>
                                 </div>

@@ -29,7 +29,6 @@ export class LoginComponent {
 
   onLogin() {
     if (this.loginForm.valid) {
-      setTimeout(() => {
         const usuario = this.loginForm.get('usuario')?.value;
         const contrasenia = this.loginForm.get('contrasenia')?.value;
 
@@ -40,12 +39,10 @@ export class LoginComponent {
               this.loginService.flagChange(true);
               console.log(response);
               if (response.data[0].idRol == 1) {
-                this.router.navigate(['/inventario']);
-                sessionStorage.setItem('tokencito', token);
+                this.router.navigate(['/ventas']);
                 console.log(token);
               } else {
                 this.router.navigate(['/home']);
-                sessionStorage.setItem('tokencito', token);
                 console.log(token);
               }
             } else {
@@ -56,7 +53,6 @@ export class LoginComponent {
             console.error(error);
           }
         });
-      }, 100); // Espera de 100 mls
     } else {
       this.mensajeError = 'Por favor, complete todos los campos';
     }

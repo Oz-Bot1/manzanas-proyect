@@ -8,14 +8,14 @@ import {
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginService } from './service/login.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  private token = sessionStorage.getItem("tokencito");
   private inactivityTimeout = 3 * 60 * 60 * 1000; // 3 horas de inactividad
   private inactivityTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private cookie: CookieService, private loginService: LoginService) {
     this.setupInactivityTimer();
   }
 
@@ -24,10 +24,11 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.resetInactivityTimer();
+    const token = this.cookie.get("token");
 
     const authRequest = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 

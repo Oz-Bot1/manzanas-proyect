@@ -29,9 +29,17 @@
                 <span class="blanco"> ¿Quienes Somos?</span></a>
           </li>
           <li class="nav-item cursor_pointer">
-            <a class="nav-link" (click)="login()"><i class="blanco fa fa-sign-in"></i>
-                <span class="blanco"> Iniciar Sesión</span></a>
-          </li>
+            <ng-container *ngIf="!isLoggedIn; else loggedIn">
+              <a class="nav-link" (click)="login()"><i class="blanco fa fa-sign-in"></i>
+                <span class="blanco"> Iniciar Sesión</span>
+              </a>
+            </ng-container>
+            <ng-template #loggedIn>
+              <a class="nav-link" (click)="logout()"><i class="blanco fa fa-sign-out"></i>
+                <span class="blanco"> Cerrar Sesión</span>
+              </a>
+            </ng-template>
+          </li>          
           <li class="nav-item cursor_pointer">
             <a (click)="carrito()" class="nav-link"><i class="blanco fa fa-shopping-cart fa-lg"></i>
             </a>

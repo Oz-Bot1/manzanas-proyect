@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean = false;
   home() {
     this.router.navigate(['/home']);
   }
@@ -28,5 +30,12 @@ export class NavbarComponent {
   carrito() {
     this.router.navigate(['/carrito']);
   }
-  constructor(private router: Router) { }
+  logout() {
+    this.loginService.logout();
+  }
+  constructor(private router: Router, private loginService: LoginService) { }
+  ngOnInit(): void {
+    this.isLoggedIn = this.loginService.bandera();
+    console.log(this.isLoggedIn)
+  }
 }

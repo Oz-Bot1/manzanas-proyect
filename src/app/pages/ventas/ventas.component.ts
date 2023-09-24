@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-ventas',
@@ -17,7 +18,7 @@ export class VentasComponent {
   }
 
   logout() {
-    this.router.navigate(['/home']);
+    this.login.logout();
   }
 
   agregar() {
@@ -27,6 +28,6 @@ export class VentasComponent {
   liberar() {
     this.router.navigate(['/liberar']);
   }
-  constructor(private router: Router){}
+  constructor(private router: Router, private login: LoginService){}
 
 }

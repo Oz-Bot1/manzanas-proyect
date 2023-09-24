@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CrearUsuarioRoutingModule } from './crear-usuario-routing.module';
 import { CrearUsuarioComponent } from './crear-usuario.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { CrearUsuarioComponent } from './crear-usuario.component';
   ],
   imports: [
     CommonModule,
-    CrearUsuarioRoutingModule
+    CrearUsuarioRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class CrearUsuarioModule { }
