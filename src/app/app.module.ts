@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutMainComponent } from './layout/layout-main/layout-main.component';
 import { ComponentsModule } from './components/components.module';
+import {HttpClientModule} from '@angular/common/http';
+import { TokenInterceptor } from './token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -14,9 +18,15 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+  },
+  CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

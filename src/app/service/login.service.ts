@@ -29,9 +29,9 @@ export class LoginService {
   }
 
   constructor(private http: HttpClient, private router: Router, private cookie:CookieService) { }
-  Login(correo: string, contrasenia: string) {
+  Login(usuario: string, contrasenia: string) {
     let formData = new FormData();
-    formData.append('correo', correo);
+    formData.append('usuario', usuario);
     formData.append('contrasenia', contrasenia);
 
     return this.http.post<any>(`${urlApi}/login`, formData).pipe(tap  (response => {
