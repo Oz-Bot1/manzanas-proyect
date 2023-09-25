@@ -23,11 +23,10 @@ export class LoginService {
   flagChange(flag: boolean) {
     this.isLoggedInFlag = flag;
     return this.cookie.get("token");
-    ;
   }
 
   logout() {
-    this.cookie.delete("token");
+    this.cookie.deleteAll();
     this.isLoggedInFlag = false;
     this.router.navigate(['/login']);
   }
@@ -39,7 +38,8 @@ export class LoginService {
     formData.append('contrasenia', contrasenia);
 
     return this.http.post<any>(`${urlApi}/login`, formData).pipe(tap  (response => {
-      this.cookie.set('token', response.data[0].token);
+      this.cookie.set('token', response.data.token);
+      this.cookie.set('idRol', response.data.idRol);
       // Establecer la bandera de inicio de sesión
       this.flagChange(true);
     })

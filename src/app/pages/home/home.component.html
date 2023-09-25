@@ -137,3 +137,30 @@
     </div>
   </div>
 </div>
+<!-- Message system -->
+<ng-container *ngIf="banderaId">
+  <div class="message-container">
+    <div class="dropdown">
+      <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <i class="fa fa-envelope"></i>
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Mandar Nota a Administrador</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary mb-3">Enviar
+      </button>
+    </div>
+  </div>
+</div>

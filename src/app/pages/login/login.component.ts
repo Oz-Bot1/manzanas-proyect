@@ -34,11 +34,10 @@ export class LoginComponent {
 
         this.loginService.Login(usuario, contrasenia).subscribe({
           next: (response) => {
-            if (response.data[0].token) {
-              const token = response.data[0].token;
+            if (response.data.token) {
+              const token = response.data.token;
               this.loginService.flagChange(true);
-              console.log(response);
-              if (response.data[0].idRol == 1) {
+              if (response.data.idRol == 1) {
                 this.router.navigate(['/ventas']);
                 console.log(token);
               } else {
