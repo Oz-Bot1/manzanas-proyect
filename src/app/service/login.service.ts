@@ -27,6 +27,7 @@ export class LoginService {
 
   logout() {
     this.cookie.deleteAll();
+    localStorage.clear();
     this.isLoggedInFlag = false;
     this.router.navigate(['/login']);
   }
@@ -41,6 +42,7 @@ export class LoginService {
       this.cookie.set('token', response.data.token);
       this.cookie.set('idRol', response.data.idRol);
       // Establecer la bandera de inicio de sesión
+      localStorage.setItem('isLoggedIn', 'true');
       this.flagChange(true);
     })
     );

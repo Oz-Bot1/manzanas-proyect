@@ -35,7 +35,11 @@ export class NavbarComponent implements OnInit {
   }
   constructor(private router: Router, private loginService: LoginService) { }
   ngOnInit(): void {
-    this.isLoggedIn = this.loginService.bandera();
-    console.log(this.isLoggedIn)
+    const isLoggedInString = localStorage.getItem('isLoggedIn');
+    if (isLoggedInString === 'true') {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
   }
 }
