@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -20,14 +21,14 @@ export class InventarioComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigate(['/home']);
+    this.login.logout();
   }
 
   agregar() {
     this.router.navigate(['/agregar'])
   }
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private login: LoginService){}
 
   ngOnInit(): void {
     const swiper = new Swiper('.swiper-container', {

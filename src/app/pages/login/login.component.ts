@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/service/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   mensajeError: string = "";
 
@@ -17,6 +17,8 @@ export class LoginComponent {
       usuario: ['', Validators.required],
       contrasenia: ['', Validators.required]
     });
+  }
+  ngOnInit(): void {
   }
 
   inventario() {

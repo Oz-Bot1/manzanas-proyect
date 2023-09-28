@@ -10,42 +10,21 @@
 </div>
 <div class="container mb-4 mt-3">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card">
-        <img src="ruta-de-imagen-1.jpg" class="card-img-top" alt="Manzana 1">
-        <div class="card-body">
-          <h5 class="card-title">Manzana Roja</h5>
-          <p>Descripcion</p>
-          <p class="card-text">Precio: $1.99 por kg</p>
-          <p class="card-text">En Stock: 50 kg</p>
-          <button class="btn btn-primary">Comprar</button>
+    <ng-container *ngFor="let aux of lista">
+      <div class="col">
+        <div class="card">
+          <!-- cambiar el de abajo por aux.nombreCorto -->
+          <img [src]="'http://localhost:8080/image/' + nombreImagen" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ aux.nombre }}</h5>
+            <p>{{ aux.descripcion }}</p>
+            <p class="card-text">Precio: ${{aux.precio}} por kg</p>
+            <p class="card-text">En Stock: {{ aux.stock }} kg</p>
+            <button class="btn btn-primary">Comprar</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="ruta-de-imagen-2.jpg" class="card-img-top" alt="Manzana 2">
-        <div class="card-body">
-          <h5 class="card-title">Manzana Verde</h5>
-          <p>Descripcion</p>
-          <p class="card-text">Precio: $2.49 por kg</p>
-          <p class="card-text">En Stock: 30 kg</p>
-          <button class="btn btn-primary">Comprar</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="ruta-de-imagen-3.jpg" class="card-img-top" alt="Manzana 3">
-        <div class="card-body">
-          <h5 class="card-title">Manzana Amarilla</h5>
-          <p>Descripcion</p>
-          <p class="card-text">Precio: $2.99 por kg</p>
-          <p class="card-text">En Stock: 40 kg</p>
-          <button class="btn btn-primary">Comprar</button>
-        </div>
-      </div>
-    </div>
-    <!-- Puedes agregar más tarjetas aquí con información de otras variedades de manzanas -->
+    </ng-container>
+    
   </div>
 </div>

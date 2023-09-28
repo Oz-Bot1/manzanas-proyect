@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeService } from 'src/app/service/home.service';
-import { LoginService } from 'src/app/service/login.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -17,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   banderaRol(){
     //modificar al 2 para productores
-    if(this.idRol == "3"){
+    if(this.idRol == "2"){
       this.banderaId = true;
     }else{
       this.banderaId = false;
