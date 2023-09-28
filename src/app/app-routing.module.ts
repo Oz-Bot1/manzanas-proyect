@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'crearUsuario', loadChildren: () => import('./pages/crear-usuario/crear-usuario.module').then(m => m.CrearUsuarioModule), component: LayoutMainComponent },
   { path: 'ventas', loadChildren: () => import('./pages/ventas/ventas.module').then(m => m.VentasModule), canActivate: [AuthGuard] },
   { path: 'agregar', loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarModule), canActivate: [AuthGuard] },
-  { path: 'liberar', loadChildren: () => import('./pages/liberar/liberar.module').then(m => m.LiberarModule), canActivate: [AuthGuard] }];
+  { path: 'liberar', loadChildren: () => import('./pages/liberar/liberar.module').then(m => m.LiberarModule), canActivate: [AuthGuard] },
+  { path: 'agregarActividad', loadChildren: () => import('./pages/agregar-actividad/agregar-actividad.module').then(m => m.AgregarActividadModule), canActivate: [AuthGuard] }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

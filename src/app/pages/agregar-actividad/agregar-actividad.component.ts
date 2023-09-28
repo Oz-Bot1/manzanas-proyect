@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
-  selector: 'app-ventas',
-  templateUrl: './ventas.component.html',
-  styleUrls: ['./ventas.component.scss']
+  selector: 'app-agregar-actividad',
+  templateUrl: './agregar-actividad.component.html',
+  styleUrls: ['./agregar-actividad.component.scss']
 })
-export class VentasComponent {
-
+export class AgregarActividadComponent {
   ventas() {
     this.router.navigate(['/ventas']);
   }
@@ -41,5 +40,4 @@ export class VentasComponent {
     this.router.navigate(['/liberar']);
   }
   constructor(private router: Router, private login: LoginService){}
-
 }
