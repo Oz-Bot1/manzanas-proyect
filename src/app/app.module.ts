@@ -9,11 +9,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { LayoutAdminComponent } from './layoutad/layout-admin/layout-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutMainComponent
+    LayoutMainComponent,
+    LayoutAdminComponent
   ],
   imports: [
     BrowserModule,

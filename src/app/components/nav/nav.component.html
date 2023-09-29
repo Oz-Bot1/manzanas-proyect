@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light rojo fixed-top">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="../../../assets/img/logo.jpg" alt="..." width="30" height="30"><span
+                class="blanco">CPMT</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active cursor_pointer">
+                    <a class="nav-link" (click)="inventario()"><i class="blanco fa-solid fa-box"></i>
+                        <span class="blanco"> Inventario</span></a>
+                </li>
+                <li class="nav-item cursor_pointer">
+                    <a class="nav-link" (click)="actividades()"><i class="blanco fa fa-tags"></i>
+                        <span class="blanco"> Actividades</span></a>
+                </li>
+                <li class="nav-item cursor_pointer">
+                    <a class="nav-link" (click)="eventos()"><i class="blanco fa fa-envelope"></i>
+                        <span class="blanco"> Eventos</span></a>
+                </li>
+                <li class="nav-item cursor_pointer">
+                    <a class="nav-link" (click)="ventas()"><i class="blanco fa fa-list"></i>
+                        <span class="blanco"> Ventas</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Agregar
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" (click)="agregarProducto()">Producto</a></li>
+                        <li><a class="dropdown-item" (click)="agregarActividad()">Actividad</a></li>
+                        <li><a class="dropdown-item" (click)="agregarEvento()">Evento</a></li>
+                        <li><a class="dropdown-item" (click)="agregarProductor()">Productor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item cursor_pointer">
+                    <a class="nav-link" (click)="logout()"><i class="blanco fa fa-sign-out"></i>
+                        <span class="blanco"> Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

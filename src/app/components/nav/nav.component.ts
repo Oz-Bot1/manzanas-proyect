@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
-  selector: 'app-ventas',
-  templateUrl: './ventas.component.html',
-  styleUrls: ['./ventas.component.scss']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
-export class VentasComponent {
-
+export class NavComponent {
+  constructor(private router: Router, private login: LoginService) {}
   ventas() {
     this.router.navigate(['/ventas']);
   }
@@ -18,7 +18,11 @@ export class VentasComponent {
   }
 
   actividades() {
-    this.router.navigate(['/actividadesAdmin'])
+    this.router.navigate(['/actividadesAdmin']);
+  }
+
+  eventos() {
+    this.router.navigate(['/eventos']);
   }
 
   logout() {
@@ -34,16 +38,16 @@ export class VentasComponent {
   }
 
   agregarEvento(){
-
+    this.router.navigate(['/agregarEvento']);
   }
 
   agregarProductor(){
+    this.router.navigate(['/agregarProductor']);
 
   }
 
   liberar() {
     this.router.navigate(['/liberar']);
   }
-  constructor(private router: Router, private login: LoginService){}
 
 }
