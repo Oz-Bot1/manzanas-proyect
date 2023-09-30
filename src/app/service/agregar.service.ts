@@ -11,7 +11,7 @@ export class AgregarService {
 
   constructor(private http: HttpClient) { }
 
-  registrar(nombre: string, precio: string, descripcion: string, foto: any, stock: string, nivel:string, estatus: string): Observable<any> {
+  registrar(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
     console.log(foto);
     const params = {
       nombre: nombre,
@@ -29,7 +29,6 @@ export class AgregarService {
     const params = {
       foto: foto
     };
-    console.log(params);
     return this.http.post<any>(`${urlApi}/saveImage/data`, params);
   }
 }

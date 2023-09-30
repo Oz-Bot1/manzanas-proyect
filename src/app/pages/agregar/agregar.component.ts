@@ -41,24 +41,23 @@ export class AgregarComponent implements OnInit {
   }
 
   obj: any = {};
+  nombrefoto: string = '';
   onFileSelect(input: any) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = (e: any) => {
         this.obj.photoUrl = e.target.result;
+        this.agregarService.saveImage(this.obj.photoUrl).subscribe({
+          next: (data) => {
+            this.nombrefoto = data.fileName.nombre;
+            console.log(this.nombrefoto);
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
       }
       reader.readAsDataURL(input.files[0]);
-      //Una vez que esta en 
-      console.log(this.obj.photoUrl)
-      this.agregarService.saveImage(this.obj.photoUrl).subscribe({
-        next: (data) => {
-          console.log("Se guardo la imagen");
-        },
-        error: (error) => {
-          console.log(error);
-        }
-
-      });
     }
   }
 
@@ -67,7 +66,7 @@ export class AgregarComponent implements OnInit {
       const nombre = this.formulario.get('nombre')?.value;
       const precio = this.formulario.get('precio')?.value;
       const descripcion = this.formulario.get('descripcion')?.value;
-      const fotoControl = this.obj.photoUrl;
+      const fotoControl = this.nombrefoto;
       const stock = this.formulario.get('stock')?.value;
       const nivel = this.formulario.get('nivel')?.value;
       const estatus = this.formulario.get('estatus')?.value;

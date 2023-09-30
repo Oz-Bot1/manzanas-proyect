@@ -11,7 +11,13 @@ export class ProductosComponent implements OnInit {
 
   constructor(private productos: ProductosService){}
   imagen: any = {};
-  nombreImagen: string = "Upload-65146e84718d4-27092023";
+
+  obtenerNombreImagen(nombre: string): string {
+    if (nombre.endsWith('.jpeg')) {
+      return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
+    }
+    return nombre;
+  }
   ngOnInit(): void {
     this.productos.lista().subscribe(
       {
