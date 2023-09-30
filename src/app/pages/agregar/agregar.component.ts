@@ -30,11 +30,11 @@ export class AgregarComponent implements OnInit {
   constructor(private router: Router, private agregarService: AgregarService, private formBuilder: FormBuilder, private login: LoginService) {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
-      precio: ['', Validators.required],
+      precio: ['', Validators.required, Validators.min(0)],
       descripcion: ['', Validators.required],
-      stock: ['', Validators.required],
+      stock: ['', Validators.required, Validators.min(0)],
       nivel: ['', Validators.required],
-      estatus: ['', Validators.required]
+      estatus: ['1', Validators.required]
     });
   }
   ngOnInit(): void {

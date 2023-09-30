@@ -1,46 +1,51 @@
 <div class="mt-1">
     <span>.</span>
-  </div>
+</div>
 <div class="container">
     <h1 class="mt-5 mb-3 text-center">Agregar Producto</h1>
-</div>
-<div class="container text-center">
-    <button class="btn" (click)="inventario()">Inventario</button>
-    <button class="btn" (click)="ventas()">Ventas</button>
-    <button class="btn" (click)="agregar()">Agregar</button>
 </div>
 <div class="container">
     <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
         <div class="row mb-3">
             <div class="col">
                 <label for="nombre" class="form-label">Nombre del Producto</label>
-                <input type="text" formControlName="nombre" class="form-control" id="nombre" placeholder="Nombre del producto">
+                <input type="text" formControlName="nombre" class="form-control" id="nombre"
+                    placeholder="Nombre del producto">
+            </div>
+            <div class="col">
+                <label for="nivel" class="form-label">Nivel de Madurez</label>
+                <input type="text" class="form-control" formControlName="nivel" id="nivel"
+                    placeholder="Nivel de Madurez">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" formControlName="stock" id="stock"
+                    placeholder="Cantidad en stock">
             </div>
             <div class="col">
                 <label for="precio" class="form-label">Precio</label>
-                <input type="number" class="form-control" formControlName="precio" id="precio" placeholder="Precio del producto">
+                <input type="number" class="form-control" formControlName="precio" id="precio"
+                    placeholder="Precio del producto">
             </div>
         </div>
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="4" placeholder="Descripción del producto"></textarea>
+            <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="4"
+                placeholder="Descripción del producto"></textarea>
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Imagen del Producto</label>
             <input (change)="onFileSelect($event.target)" type="file" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" formControlName="stock" id="stock" placeholder="Cantidad en stock">
-        </div>
-        <div class="mb-3">
-            <label for="nivel" class="form-label">Nivel de Madurez</label>
-            <input type="text" class="form-control" formControlName="nivel" id="nivel" placeholder="Nivel de Madurez">
-        </div>
-        <div class="mb-3">
             <label for="estatus" class="form-label">Estatus</label>
-            <input type="text" class="form-control" formControlName="estatus" id="estatus" placeholder="estatus 1 0 2">
+            <select class="form-select" formControlName="estatus" id="estatus">
+                <option value="1">Activo</option>
+                <option value="2">Desactivado</option>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar Producto</button>
+        <button type="submit" class="btn btn-rojo">Registrar Producto</button>
     </form>
 </div>
