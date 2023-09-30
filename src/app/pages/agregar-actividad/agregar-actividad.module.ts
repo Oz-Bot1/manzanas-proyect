@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AgregarActividadRoutingModule } from './agregar-actividad-routing.module';
 import { AgregarActividadComponent } from './agregar-actividad.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { AgregarActividadComponent } from './agregar-actividad.component';
   ],
   imports: [
     CommonModule,
-    AgregarActividadRoutingModule
+    AgregarActividadRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AgregarActividadModule { }

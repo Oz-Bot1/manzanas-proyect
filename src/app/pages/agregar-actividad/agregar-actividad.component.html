@@ -5,5 +5,19 @@
     <h1 class="mt-5 mb-3 text-center">Agregar Actividad</h1>
 </div>
 <div class="container">
-    Aqui formulario
-</div>
+    <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="foto">Foto</label>
+        <input type="text" class="form-control" id="foto" formControlName="foto">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea class="form-control" id="descripcion" formControlName="descripcion" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
