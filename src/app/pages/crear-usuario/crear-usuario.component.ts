@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CrearUsuarioService } from 'src/app/service/crear-usuario.service';
 export class CrearUsuarioComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private crearUsuarioService: CrearUsuarioService) {
+  constructor(private fb: FormBuilder, private crearUsuarioService: CrearUsuarioService, private router: Router) {
     this.registrationForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -35,7 +36,7 @@ export class CrearUsuarioComponent implements OnInit {
       this.crearUsuarioService.registrarUser(usuario, nombre, contrasenia, apellidoPat, apellidoMat, correo, telefono).subscribe(
         {
           next: () => {
-            console.log("Bien");
+            this.router.navigate(['/login']);
           },
           error: (error) => {
             console.log(error);
