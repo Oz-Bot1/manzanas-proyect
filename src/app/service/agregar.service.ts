@@ -11,8 +11,7 @@ export class AgregarService {
 
   constructor(private http: HttpClient) { }
 
-  registrar(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
-    console.log(foto);
+  registrarProducto(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
     const params = {
       nombre: nombre,
       precio: precio,
@@ -23,6 +22,41 @@ export class AgregarService {
       estatus: estatus
     };
     return this.http.post<any>(`${urlApi}/Manzana/registrar`, params);
+  }
+
+  registrarActividad(nombre: string, descripcion: string, foto: string): Observable<any> {
+    const params = {
+      nombre: nombre,
+      descripcion: descripcion,
+      foto: foto,
+    };
+    return this.http.post<any>(`${urlApi}/actividad/registrar`, params);
+  }
+
+  registrarEvento(nombre: string, descripcion: string, fechaInicio: string, fechaFin: string, latitud: string, longitud: string, foto: string): Observable<any> {
+    const params = {
+      nombre: nombre,
+      descripcion: descripcion,
+      fechaInicio: fechaInicio,
+      fechaFin: fechaFin,
+      latitud: latitud,
+      longitud: longitud,
+      foto: foto
+    };
+    return this.http.post<any>(`${urlApi}/Actividad/registrar`, params);
+  }
+
+  registrarProductor(usuario: string, nombre: string, contrasenia: string, apellidoPat: string, apellidoMat: string, correo: string, telefono: string): Observable<any>{
+    const params = {
+      usuario: usuario,
+      nombre: nombre,
+      contrasenia: contrasenia,
+      apellidoPat: apellidoPat,
+      apellidoMat: apellidoMat,
+      correo: correo,
+      telefono: telefono
+    };
+    return this.http.post<any>(`${urlApi}/registrarProductor`, params);
   }
 
   saveImage(foto: any): Observable<any> {
