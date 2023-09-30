@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InventarioService } from 'src/app/service/inventario.service';
 import { LoginService } from 'src/app/service/login.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -12,23 +13,9 @@ Swiper.use([Navigation, Pagination, Autoplay]);
   styleUrls: ['./inventario.component.scss']
 })
 export class InventarioComponent implements OnInit {
-  ventas() {
-    this.router.navigate(['/ventas']);
-  }
+  lista: any[] = [];
 
-  inventario() {
-    this.router.navigate(['/inventario']);
-  }
-
-  logout() {
-    this.login.logout();
-  }
-
-  agregar() {
-    this.router.navigate(['/agregar'])
-  }
-
-  constructor(private router: Router, private login: LoginService){}
+  constructor(private inventarioService: InventarioService){}
 
   ngOnInit(): void {
     const swiper = new Swiper('.swiper-container', {
@@ -45,6 +32,19 @@ export class InventarioComponent implements OnInit {
         delay: 3000,
       },
     });
+    this.inventarioService.lista().subscribe(
+      {
+        next: (data) => {
+          this.lista = data.data;
+          console.log(this.lista);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+        }
+      }
+    );
   }
 
 }
