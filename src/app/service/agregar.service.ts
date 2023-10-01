@@ -59,6 +59,18 @@ export class AgregarService {
     return this.http.post<any>(`${urlApi}/registrarProductor`, params);
   }
 
+  registrarPunto(nombre: string, foto: string, latitud: string, longitud: string, estatus: string, horario: string): Observable<any>{
+    const params = {
+      foto: foto,
+      nombre: nombre,
+      latitud: latitud,
+      longitud: longitud,
+      estatus: estatus,
+      horario: horario
+    };
+    return this.http.post<any>(`${urlApi}/PuntoVenta/registrar`, params);
+  }
+
   saveImage(foto: any): Observable<any> {
     const params = {
       foto: foto
