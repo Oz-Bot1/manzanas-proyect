@@ -4,3 +4,39 @@
 <div class="container">
     <h1 class="mt-5 mb-3 text-center">Eventos a</h1>
 </div>
+<div class="container mt-3">
+    Aqui la tabla de eventos
+</div>
+<div class="container mt-3">
+    <h1 class="mt-5 mb-3 text-center">Puntos de venta</h1>
+</div>
+<div class="container mt-3">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Estatus</th>
+          <th>Horario</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of listaPuntos" class="text-center">
+          <th>{{ list.id }}</th>
+          <th>{{ list.nombre }}</th>
+          <td>{{ list.estatus }}</td>
+          <td>{{ list.horario }}</td>
+          <td>
+            <button class="btn btn-rojo" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Actualizar</button>
+          </td>
+          <td>
+            <button class="btn btn-rojo" data-bs-toggle="modal"
+              data-bs-target="#eliminar">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
