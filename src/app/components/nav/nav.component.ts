@@ -41,6 +41,10 @@ export class NavComponent {
     this.router.navigate(['/agregarEvento']);
   }
 
+  agregarPunto(){
+    this.router.navigate(['/agregarPunto']);
+  }
+
   agregarProductor(){
     this.router.navigate(['/agregarProductor']);
 

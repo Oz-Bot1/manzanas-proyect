@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'actividadesAdmin', loadChildren: () => import('./pages/actividades-admin/actividades-admin.module').then(m => m.ActividadesAdminModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
   { path: 'eventos', loadChildren: () => import('./pages/eventos/eventos.module').then(m => m.EventosModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
   { path: 'agregarProductor', loadChildren: () => import('./pages/agregar-productor/agregar-productor.module').then(m => m.AgregarProductorModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
-  { path: 'agregarEvento', loadChildren: () => import('./pages/agregar-evento/agregar-evento.module').then(m => m.AgregarEventoModule), component: LayoutAdminComponent, canActivate: [AuthGuard] }];
+  { path: 'agregarEvento', loadChildren: () => import('./pages/agregar-evento/agregar-evento.module').then(m => m.AgregarEventoModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
+  { path: 'agregarPunto', loadChildren: () => import('./pages/agregar-punto/agregar-punto.module').then(m => m.AgregarPuntoModule), component: LayoutAdminComponent, canActivate: [AuthGuard] }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
