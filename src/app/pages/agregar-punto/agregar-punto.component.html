@@ -1,39 +1,35 @@
 <div class="mt-1">
     <span>.</span>
-  </div>
-  <div class="container">
+</div>
+<div class="container">
     <h1 class="mt-5 mb-3 text-center">Agregar Punto de Venta</h1>
-  </div>
-  <div class="container">
+</div>
+<div class="container">
     <form [formGroup]="puntoVentaForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
-      </div>
-      <div class="mb-3">
-        <label for="foto" class="form-label">Imagen del Producto</label>
-        <input (change)="onFileSelect($event.target)" type="file" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="latitud" class="form-label">Latitud</label>
-        <input type="text" class="form-control" id="latitud" formControlName="latitud" placeholder="Latitud">
-      </div>
-      <div class="mb-3">
-        <label for="longitud" class="form-label">Longitud</label>
-        <input type="text" class="form-control" id="longitud" formControlName="longitud" placeholder="longitud">
-      </div>
-      <div class="mb-3">
-        <label for="estatus" class="form-label">Estatus</label>
-        <select class="form-control" id="estatus" formControlName="estatus">
-          <option value="1">Activo</option>
-          <option value="2">Inactivo</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="horario" class="form-label">Horario</label>
-        <input type="text" class="form-control" id="horario" formControlName="horario" placeholder="Horario">
-      </div>
-      <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="foto" class="form-label">Imagen del Producto</label>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+        </div>
+        <div class="mb-3">
+            <div class="mx-auto" id="map" style="width: 100%; height: 300px;"></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="estatus" class="form-label">Estatus</label>
+                <select class="form-control" id="estatus" formControlName="estatus">
+                    <option value="1">Activo</option>
+                    <option value="2">Inactivo</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="horario" class="form-label">Horario</label>
+                <input type="text" class="form-control" id="horario" formControlName="horario" placeholder="Horario">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-rojo">Agregar Punto de Venta</button>
     </form>
-  </div>
-  
+</div>
