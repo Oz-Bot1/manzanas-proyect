@@ -11,22 +11,9 @@ export class ActividadesService {
 
   constructor(private http: HttpClient) { }
 
-  registrarActividad(empresa: string, fechaInicial: string, fechaFinal: string): Observable<any> {
-    const params = {
-      empresa: empresa,
-      fechaInicial: fechaInicial,
-      fechaFinal: fechaFinal
-    };
-    return this.http.post<any>(`${urlApi}/Actividad/registrar`, params);
-  }
-
-  lista(empresa: string, fechaInicial: string, fechaFinal: string): Observable<any> {
-    const params = {
-      empresa: empresa,
-      fechaInicial: fechaInicial,
-      fechaFinal: fechaFinal
-    };
-    return this.http.post<any>(`${urlApi}/Actividad/lista`, params);
+  lista(): Observable<any> {
+    const params = { };
+    return this.http.post<any>(`${urlApi}/Dashboard/listaActividades`, params);
   }
 
   buscar(empresa: string, fechaInicial: string, fechaFinal: string): Observable<any> {

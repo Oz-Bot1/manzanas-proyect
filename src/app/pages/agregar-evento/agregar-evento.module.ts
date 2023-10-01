@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AgregarEventoRoutingModule } from './agregar-evento-routing.module';
 import { AgregarEventoComponent } from './agregar-evento.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { AgregarEventoComponent } from './agregar-evento.component';
   ],
   imports: [
     CommonModule,
-    AgregarEventoRoutingModule
+    AgregarEventoRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AgregarEventoModule { }

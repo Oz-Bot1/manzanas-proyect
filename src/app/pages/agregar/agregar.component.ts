@@ -10,21 +10,6 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./agregar.component.scss']
 })
 export class AgregarComponent implements OnInit {
-  ventas() {
-    this.router.navigate(['/ventas']);
-  }
-
-  inventario() {
-    this.router.navigate(['/inventario']);
-  }
-
-  logout() {
-    this.login.logout();
-  }
-
-  agregar() {
-    this.router.navigate(['/agregar'])
-  }
 
   formulario: FormGroup;
   constructor(private router: Router, private agregarService: AgregarService, private formBuilder: FormBuilder, private login: LoginService) {
@@ -71,9 +56,9 @@ export class AgregarComponent implements OnInit {
       const nivel = this.formulario.get('nivel')?.value;
       const estatus = this.formulario.get('estatus')?.value;
 
-      this.agregarService.registrar(nombre, precio, descripcion, fotoControl, stock, nivel, estatus).subscribe({
+      this.agregarService.registrarProducto(nombre, precio, descripcion, fotoControl, stock, nivel, estatus).subscribe({
         next: () => {
-          this.router.navigate(['/ventas']);
+          this.router.navigate(['/inventario']);
         },
         error: (error) => {
           console.log(error);

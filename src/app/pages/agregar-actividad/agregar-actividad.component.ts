@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
-import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-agregar-actividad',

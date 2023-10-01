@@ -4,3 +4,27 @@
   <div class="container">
     <h1 class="mt-5 mb-3 text-center">Actividades Admin</h1>
   </div>
+  <div class="container mt-3">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Foto</th>
+          <th>Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of lista" class="text-center">
+          <th>{{ list.id }}</th>
+          <th>{{ list.nombre }}</th>
+          <td>{{ list.descripcion }}</td>
+          <td>foto</td>
+          <td>
+            <button class="btn btn-rojo">Actualizar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

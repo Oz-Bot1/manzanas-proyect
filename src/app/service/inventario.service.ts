@@ -13,6 +13,7 @@ export class InventarioService {
 
   lista(): Observable<any> {
     const params = {};
-    return this.http.post<any>(`${urlApi}/Manzana/lista`, params);
+    return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
   }
+
 }

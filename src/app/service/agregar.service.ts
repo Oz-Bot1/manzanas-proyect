@@ -43,7 +43,7 @@ export class AgregarService {
       longitud: longitud,
       foto: foto
     };
-    return this.http.post<any>(`${urlApi}/Actividad/registrar`, params);
+    return this.http.post<any>(`${urlApi}/Eventos/registrar`, params);
   }
 
   registrarProductor(usuario: string, nombre: string, contrasenia: string, apellidoPat: string, apellidoMat: string, correo: string, telefono: string): Observable<any>{
