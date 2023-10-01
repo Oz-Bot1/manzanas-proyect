@@ -6,7 +6,6 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { LoginService } from './service/login.service';
 import { CookieService } from 'ngx-cookie-service';
 
