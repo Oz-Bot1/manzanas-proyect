@@ -15,9 +15,9 @@ export class AgregarComponent implements OnInit {
   constructor(private router: Router, private agregarService: AgregarService, private formBuilder: FormBuilder, private login: LoginService) {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
-      precio: ['', Validators.required, Validators.min(0)],
+      precio: ['', Validators.required],
       descripcion: ['', Validators.required],
-      stock: ['', Validators.required, Validators.min(0)],
+      stock: ['', Validators.required],
       nivel: ['', Validators.required],
       estatus: ['1', Validators.required]
     });
