@@ -3,6 +3,7 @@
 @import "~font-awesome/css/font-awesome.css";
 @import 'leaflet/dist/leaflet.css';
 @import 'swiper/swiper-bundle.css';
+
 .rojo {
     background-color: rgb(171, 105, 105);
 }
@@ -49,4 +50,8 @@
 .btn-rojo:hover {
     color: #353535;
 }
-  
+
+.img-table {
+    height: 50%;
+    width: 59%;
+}

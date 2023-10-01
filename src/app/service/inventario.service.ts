@@ -16,4 +16,32 @@ export class InventarioService {
     return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
   }
 
+  buscar(id: number): Observable<any> {
+    const params = {
+      id: id
+    };
+    return this.http.post<any>(`${urlApi}/Dashboard/buscarManzana`, params);
+  }
+
+  actualizar(id: string, nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
+    const params = {
+      id: id,
+      nombre: nombre,
+      precio: precio,
+      descripcion: descripcion,
+      foto: foto,
+      stock: stock,
+      nivelMadurez: nivel,
+      estatus: estatus
+    };
+    return this.http.post<any>(`${urlApi}/Manzana/actualizar`, params);
+  }
+
+  eliminar(id: number): Observable<any> {
+    const params = {
+      id: id
+    };
+    return this.http.post<any>(`${urlApi}/Manzana/eliminar`, params);
+  }
+
 }

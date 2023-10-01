@@ -1,30 +1,89 @@
 <div class="mt-1">
-    <span>.</span>
+  <span>.</span>
+</div>
+<div class="container">
+  <h1 class="mt-5 mb-3 text-center">Actividades Admin</h1>
+</div>
+<div class="container mt-3">
+  <table class="table table-hover">
+    <thead>
+      <tr class="text-center">
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Foto</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of lista" class="text-center">
+        <th>{{ list.id }}</th>
+        <th>{{ list.nombre }}</th>
+        <td>{{ list.descripcion }}</td>
+        <td>
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="..." class="img-table">
+        </td>
+        <td>
+          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Actualizar</button>
+        </td>
+        <td>
+          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
+            data-bs-target="#eliminar">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para actualizar -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre de la actividad">
+          </div>
+          <div class="mb-3">
+            <label for="foto" class="form-label">Imagen del Producto</label>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" formControlName="descripcion"
+              placeholder="Descripcion de la actividad"></textarea>
+          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-rojo">Actualizar</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <h1 class="mt-5 mb-3 text-center">Actividades Admin</h1>
+</div>
+
+<!-- Modal para eliminar -->
+<div class="modal fade" id="eliminar" tabindex="-1"
+  aria-labelledby="eliminar" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="eliminar">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar {{ nombreProducto }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="eliminar()">Save changes</button>
+      </div>
+    </div>
   </div>
-  <div class="container mt-3">
-    <table class="table table-hover">
-      <thead>
-        <tr class="text-center">
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Foto</th>
-          <th>Actualizar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let list of lista" class="text-center">
-          <th>{{ list.id }}</th>
-          <th>{{ list.nombre }}</th>
-          <td>{{ list.descripcion }}</td>
-          <td>foto</td>
-          <td>
-            <button class="btn btn-rojo">Actualizar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+</div>
