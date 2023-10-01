@@ -57,8 +57,4 @@ export class AgregarActividadComponent {
       console.log('Complete el formulario');
     }
   }
-
-  liberar() {
-    this.router.navigate(['/liberar']);
-  }
 }

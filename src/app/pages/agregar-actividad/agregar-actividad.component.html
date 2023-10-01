@@ -1,23 +1,24 @@
 <div class="mt-1">
-    <span>.</span>
-  </div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">Agregar Actividad</h1>
+  <span>.</span>
 </div>
 <div class="container">
-    <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre de la actividad">
-      </div>
-      <div class="mb-3">
-        <label for="foto" class="form-label">Imagen del Producto</label>
-        <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+  <h1 class="mt-5 mb-3 text-center">Agregar Actividad</h1>
+</div>
+<div class="container">
+  <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre de la actividad">
     </div>
-      <div class="form-group">
-        <label for="descripcion">Descripción</label>
-        <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion de la actividad"></textarea>
-      </div>
-      <button type="submit" class="btn btn-rojo">Registrar Actividad</button>
-    </form>
-  </div>
+    <div class="mb-3">
+      <label for="foto" class="form-label">Imagen del Producto</label>
+      <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea class="form-control" id="descripcion" formControlName="descripcion"
+        placeholder="Descripcion de la actividad"></textarea>
+    </div>
+    <button type="submit" class="btn btn-rojo">Registrar Actividad</button>
+  </form>
+</div>
