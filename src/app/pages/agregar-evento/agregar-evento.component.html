@@ -24,16 +24,9 @@
             <label for="foto" class="form-label">Imagen del Producto</label>
             <input (change)="onFileSelect($event.target)" type="file" class="form-control">
         </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label for="latitud" class="form-label">Latitud</label>
-                <input type="text" class="form-control" id="latitud" formControlName="latitud" placeholder="Latitud">
-              </div>
-              <div class="col">
-                <label for="longitud" class="form-label">Longitud</label>
-                <input type="text" class="form-control" id="longitud" formControlName="longitud" placeholder="Longitud">
-              </div>
-        </div>
+        <div class="mb-3">
+          <div class="mx-auto" id="map" style="width: 100%; height: 300px;"></div>
+      </div>
         <div class="mb-3">
           <label for="descripcion" class="form-label">Descripción</label>
           <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion"></textarea>

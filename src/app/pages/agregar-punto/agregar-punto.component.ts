@@ -40,7 +40,7 @@ export class AgregarPuntoComponent implements OnInit {
     });
 
     const marker = L.marker([this.coor1, this.coor2], { icon: customIcon })
-      .bindPopup('¡Hola, mundo!')
+      .bindPopup('¡Aqui!')
       .openPopup();
 
     marker.addTo(map);
