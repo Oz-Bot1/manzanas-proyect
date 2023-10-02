@@ -15,7 +15,6 @@ export class AgregarPuntoComponent implements OnInit {
   constructor(private fb: FormBuilder, private agregarService: AgregarService, private router: Router) {
     this.puntoVentaForm = this.fb.group({
       nombre: ['', Validators.required],
-      foto: [''],
       estatus: ['1'], // Valor por defecto 'Activo'
       horario: ['', Validators.required],
     });
