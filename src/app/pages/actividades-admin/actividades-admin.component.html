@@ -17,18 +17,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of lista" class="text-center">
-        <th>{{ list.id }}</th>
-        <th>{{ list.nombre }}</th>
-        <td>{{ list.descripcion }}</td>
-        <td>
+      <tr *ngFor="let list of lista">
+        <th class="text-center vertical_align">{{ list.id }}</th>
+        <th class="text-center vertical_align">{{ list.nombre }}</th>
+        <td class="text-center vertical_align">{{ list.descripcion }}</td>
+        <td class="text-center vertical_align">
           <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="..." class="img-table">
         </td>
-        <td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
             data-bs-target="#exampleModal">Actualizar</button>
         </td>
-        <td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
             data-bs-target="#eliminar">Eliminar</button>
         </td>

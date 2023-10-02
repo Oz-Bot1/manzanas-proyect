@@ -52,6 +52,10 @@
 }
 
 .img-table {
-    height: 50%;
-    width: 59%;
+    background-image: none !important;
+    width: 100px;
+}
+
+.vertical_align {
+    vertical-align: middle !important;
 }
