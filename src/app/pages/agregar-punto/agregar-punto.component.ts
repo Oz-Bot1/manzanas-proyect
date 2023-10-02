@@ -20,12 +20,10 @@ export class AgregarPuntoComponent implements OnInit {
     });
   }
 
-  coor1: number = 19.776097222715837;
-  coor2: number = -97.38592150346066;
-  latitud: number = 0;
-  longitud: number = 0;
+  latitud: number = 19.7760972227;
+  longitud: number = -97.385921503;
   ngOnInit(): void {
-    const map = L.map('map').setView([this.coor1, this.coor2], 15);
+    const map = L.map('map').setView([this.latitud, this.longitud], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -38,7 +36,7 @@ export class AgregarPuntoComponent implements OnInit {
       iconAnchor: [16, 32], // Punto de anclaje del icono [horizontal, vertical]
     });
 
-    const marker = L.marker([this.coor1, this.coor2], { icon: customIcon })
+    const marker = L.marker([this.latitud, this.longitud], { icon: customIcon })
       .bindPopup('¡Aqui!')
       .openPopup();
 
@@ -52,9 +50,14 @@ export class AgregarPuntoComponent implements OnInit {
       // Mover el marcador a las coordenadas donde se hizo clic
       marker.setLatLng(latLng);
 
-      this.latitud = latLng.lat;
-      this.longitud = latLng.lng;
+      this.latitud = this.eliminarUltimosDigitos(latLng.lat, 5);
+      this.longitud = this.eliminarUltimosDigitos(latLng.lng, 5);
     });
+  }
+
+  eliminarUltimosDigitos(coordenada: number, cantidadDigitos: number): number {
+    const factor = Math.pow(10, cantidadDigitos);
+    return Math.floor(coordenada * factor) / factor;
   }
 
   obj: any = {};

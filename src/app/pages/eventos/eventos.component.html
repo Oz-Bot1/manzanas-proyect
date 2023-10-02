@@ -1,69 +1,124 @@
 <div class="mt-1">
-    <span>.</span>
+  <span>.</span>
 </div>
 <div class="container">
-    <h1 class="mt-5 mb-3 text-center">Eventos</h1>
+  <h1 class="mt-5 mb-3 text-center">Eventos</h1>
 </div>
 <div class="container mt-3">
-    <table class="table table-hover">
-        <thead>
-          <tr class="text-center">
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Estatus</th>
-            <th>Horario</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let list of listaPuntos" class="text-center">
-            <th>{{ list.id }}</th>
-            <th>{{ list.nombre }}</th>
-            <td>{{ list.estatus }}</td>
-            <td>{{ list.horario }}</td>
-            <td>
-              <button class="btn btn-rojo" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Actualizar</button>
-            </td>
-            <td>
-              <button class="btn btn-rojo" data-bs-toggle="modal"
-                data-bs-target="#eliminar">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table table-hover">
+    <thead>
+      <tr class="text-center">
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Estatus</th>
+        <th>Horario</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listaPuntos" class="text-center">
+        <th>{{ list.id }}</th>
+        <th>{{ list.nombre }}</th>
+        <td>{{ list.estatus }}</td>
+        <td>{{ list.horario }}</td>
+        <td>
+          <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Actualizar</button>
+        </td>
+        <td>
+          <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class="container mt-3">
-    <h1 class="mt-5 mb-3 text-center">Puntos de venta</h1>
+  <h1 class="mt-5 mb-3 text-center">Puntos de venta</h1>
 </div>
 <div class="container mt-3">
-    <table class="table table-hover">
-      <thead>
-        <tr class="text-center">
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Estatus</th>
-          <th>Horario</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let list of listaPuntos" class="text-center">
-          <th>{{ list.id }}</th>
-          <th>{{ list.nombre }}</th>
-          <td>{{ list.estatus }}</td>
-          <td>{{ list.horario }}</td>
-          <td>
-            <button class="btn btn-rojo" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">Actualizar</button>
-          </td>
-          <td>
-            <button class="btn btn-rojo" data-bs-toggle="modal"
-              data-bs-target="#eliminar">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table table-hover">
+    <thead>
+      <tr class="text-center">
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Estatus</th>
+        <th>Horario</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listaPuntos" class="text-center">
+        <th>{{ list.id }}</th>
+        <th>{{ list.nombre }}</th>
+        <td>{{ list.estatus }}</td>
+        <td>{{ list.horario }}</td>
+        <td>
+          <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#actualizarPunto">Actualizar</button>
+        </td>
+        <td>
+          <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#eliminarPunto">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Modal para actualizar -->
+<div class="modal fade" id="actualizarPunto" tabindex="-1" aria-labelledby="actualizarPunto" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="actualizarPunto">Actualizar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="puntoVentaForm" (ngSubmit)="actualizarPunto()">
+          <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+          </div>
+          <div class="mb-3">
+              <label for="foto" class="form-label">Imagen del Producto</label>
+              <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+          </div>
+          <div class="mb-3">
+              <div class="mx-auto" id="map" style="width: 100%; height: 200px;"></div>
+          </div>
+          <div class="row mb-3">
+              <div class="col">
+                  <label for="estatus" class="form-label">Estatus</label>
+                  <select class="form-control" id="estatus" formControlName="estatus">
+                      <option value="1">Activo</option>
+                      <option value="2">Inactivo</option>
+                  </select>
+              </div>
+              <div class="col">
+                  <label for="horario" class="form-label">Horario</label>
+                  <input type="text" class="form-control" id="horario" formControlName="horario" placeholder="Horario">
+              </div>
+          </div>
+          <button type="submit" class="btn btn-rojo">Actualizar</button>
+      </form>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- Modal para eliminar -->
+<div class="modal fade" id="eliminarPunto" tabindex="-1" aria-labelledby="eliminarPunto" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="eliminarPunto">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar {{ nombreProducto }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarPunto()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

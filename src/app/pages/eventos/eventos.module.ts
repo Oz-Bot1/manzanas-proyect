@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EventosRoutingModule } from './eventos-routing.module';
 import { EventosComponent } from './eventos.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { EventosComponent } from './eventos.component';
   ],
   imports: [
     CommonModule,
-    EventosRoutingModule
+    EventosRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class EventosModule { }
