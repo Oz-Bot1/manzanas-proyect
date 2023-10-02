@@ -22,6 +22,7 @@ export class InventarioComponent implements OnInit {
       nombre: ['', Validators.required],
       precio: ['', Validators.required],
       descripcion: ['', Validators.required],
+      foto: [''],
       stock: ['', Validators.required],
       nivel: ['', Validators.required],
       estatus: ['1', Validators.required]
@@ -47,7 +48,6 @@ export class InventarioComponent implements OnInit {
       {
         next: (data) => {
           this.lista = data.data;
-          console.log(this.lista);
         },
         error: (error) => {
           console.log(error);
@@ -108,6 +108,12 @@ export class InventarioComponent implements OnInit {
     }
   }
 
+  obtenerNombreImagen(nombre: string): string {
+    if (nombre.endsWith('.jpeg')) {
+      return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
+    }
+    return nombre;
+  }
 
   submitForm() {
     if (this.formulario.valid) {

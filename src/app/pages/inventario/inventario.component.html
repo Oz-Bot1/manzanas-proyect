@@ -91,7 +91,10 @@
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Imagen del Producto</label>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+            <div class="text-center">
+              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
+            </div>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
           </div>
           <div class="mb-3">
             <label for="estatus" class="form-label">Estatus</label>

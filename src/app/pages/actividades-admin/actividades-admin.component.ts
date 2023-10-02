@@ -16,7 +16,6 @@ export class ActividadesAdminComponent implements OnInit {
   constructor(private fb: FormBuilder,private actividadesService: ActividadesService, private agregarService: AgregarService){
     this.actividadForm = this.fb.group({
       nombre: ['', Validators.required],
-      foto: [''],
       descripcion: ['', Validators.required],
     });
   }
