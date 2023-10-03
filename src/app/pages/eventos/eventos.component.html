@@ -10,22 +10,24 @@
       <tr class="text-center">
         <th>#</th>
         <th>Nombre</th>
-        <th>Estatus</th>
-        <th>Horario</th>
+        <th>Imagen</th>
+        <th>Descripcion</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of listaPuntos" class="text-center">
-        <th>{{ list.id }}</th>
-        <th>{{ list.nombre }}</th>
-        <td>{{ list.estatus }}</td>
-        <td>{{ list.horario }}</td>
-        <td>
+      <tr *ngFor="let list of listaEventos">
+        <th class="text-center vertical_align">{{ list.id }}</th>
+        <th class="text-center vertical_align">{{ list.nombre }}</th>
+        <td class="text-center vertical_align">
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
+        </td>
+        <td class="text-center vertical_align">{{ list.descripcion }}</td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Actualizar</button>
         </td>
-        <td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Eliminar</button>
         </td>
       </tr>
@@ -48,15 +50,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let list of listaPuntos" class="text-center">
-        <th>{{ list.id }}</th>
-        <th>{{ list.nombre }}</th>
-        <td>{{ list.estatus }}</td>
-        <td>{{ list.horario }}</td>
-        <td>
+      <tr *ngFor="let list of listaPuntos">
+        <th class="text-center vertical_align">{{ list.id }}</th>
+        <th class="text-center vertical_align">{{ list.nombre }}</th>
+        <td class="text-center vertical_align">{{ list.estatus }}</td>
+        <td class="text-center vertical_align">{{ list.horario }}</td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#actualizarPunto">Actualizar</button>
         </td>
-        <td>
+        <td class="text-center vertical_align">
           <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#eliminarPunto">Eliminar</button>
         </td>
       </tr>
@@ -78,8 +80,11 @@
               <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
           </div>
           <div class="mb-3">
-              <label for="foto" class="form-label">Imagen del Producto</label>
-              <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+            <label for="foto" class="form-label">Imagen del Producto</label>
+            <div class="text-center">
+              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
+            </div>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
           </div>
           <div class="mb-3">
               <div class="mx-auto" id="map" style="width: 100%; height: 200px;"></div>

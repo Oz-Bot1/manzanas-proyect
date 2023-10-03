@@ -15,6 +15,8 @@ export class EventosComponent implements OnInit {
   latitud: number = 0;
   longitud: number = 0;
 
+  listaEventos: any[] =[];
+
   constructor(private fb: FormBuilder, private eventosService: EventosService, private agregarService: AgregarService) {
     this.puntoVentaForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -32,6 +34,19 @@ export class EventosComponent implements OnInit {
         console.log(error);
       }
     });
+
+    this.eventosService.listaEventos().subscribe({
+      next: (data) => {
+        this.listaEventos = data.data;
+      }
+    })
+  }
+
+  obtenerNombreImagen(nombre: string): string {
+    if (nombre.endsWith('.jpeg')) {
+      return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
+    }
+    return nombre;
   }
 
   idAct: number = 0;
