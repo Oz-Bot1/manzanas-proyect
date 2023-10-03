@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { EventosService } from 'src/app/service/eventos.service';
 import * as L from 'leaflet';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
@@ -246,8 +246,13 @@ export class EventosComponent implements OnInit {
     });
   }
 
+  mostrarAlerta() {
+    Swal.fire('¡Hola, mundo!', 'Este es un mensaje de SweetAlert2', 'success');
+  }
+
   onSubmit() {
     if (this.eventoForm.valid) {
+      const id = this.idAct.toString();
       const nombre = this.eventoForm.get('nombre')?.value;
       const descripcion = this.eventoForm.get('descripcion')?.value;
       const fechaInicio = this.eventoForm.get('fechaInicio')?.value;
@@ -255,8 +260,8 @@ export class EventosComponent implements OnInit {
       const latitud = this.latitud.toString();
       const longitud = this.longitud.toString();
       const foto = this.nombrefoto;
-
-      this.agregarService.registrarEvento(nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
+      console.log(id, nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto)
+      this.eventosService.actualizarEvento(id, nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
         next: () => {
           location.reload();
         },
@@ -265,7 +270,7 @@ export class EventosComponent implements OnInit {
         }
       });
     } else {
-      console.log('Complete el formulario');
+      this.mostrarAlerta();
     }
   }
 

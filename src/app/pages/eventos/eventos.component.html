@@ -65,6 +65,9 @@
     </tbody>
   </table>
 </div>
+<div class="container">
+  <button class="btn" (click)="mostrarAlerta()">Aqui</button>
+</div>
 <!-- Modal para actualizar evento -->
 <div class="modal fade" id="actualizarEvento" tabindex="-1" aria-labelledby="actualizarEvento" aria-hidden="true">
   <div class="modal-dialog">
@@ -100,7 +103,7 @@
             <label for="descripcion" class="form-label">Descripción</label>
             <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion"></textarea>
           </div>
-          <button type="submit" class="btn btn-rojo">Registrar Evento</button>
+          <button type="submit" class="btn btn-rojo">Actualizar</button>
         </form>
       </div>
     </div>
