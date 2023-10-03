@@ -30,6 +30,13 @@ export class EventosService {
     return this.http.post<any>(`${urlApi}/Dashboard/buscarPuntoVenta`, params);
   }
 
+  buscarEvento(id: number): Observable<any> {
+    const params = {
+      id: id
+    };
+    return this.http.post<any>(`${urlApi}/Dashboard/buscarEvento`, params);
+  }
+
   actualizarPunto(id: number, nombre: string, foto: string, latitud: string, longitud: string, estatus: string, horario: string): Observable<any> {
     const params = {
       id: id,
@@ -43,7 +50,28 @@ export class EventosService {
     return this.http.post<any>(`${urlApi}/PuntoVenta/actualizar`, params);
   }
 
+  actualizarEvento(id: number, nombre: string, foto: string, latitud: string, longitud: string, descripcion: string, fechaInicio: string, fechaFin: string): Observable<any> {
+    const params = {
+      id: id,
+      nombre: nombre,
+      foto: foto,
+      latitud: latitud,
+      longitud: longitud,
+      descripcion: descripcion,
+      fechaInicio: fechaInicio,
+      fechaFin: fechaFin
+    };
+    return this.http.post<any>(`${urlApi}/PuntoVenta/actualizar`, params);
+  }
+
   eliminarPunto(id: number): Observable<any> {
+    const params = {
+      id: id
+    };
+    return this.http.post<any>(`${urlApi}/PuntoVenta/eliminar`, params);
+  }
+
+  eliminarEvento(id: number): Observable<any> {
     const params = {
       id: id
     };

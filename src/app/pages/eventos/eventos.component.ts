@@ -23,6 +23,12 @@ export class EventosComponent implements OnInit {
       estatus: ['1'], // Valor por defecto 'Activo'
       horario: ['', Validators.required],
     });
+    this.eventoForm = this.fb.group({
+      nombre: ['', Validators.required],
+      fechaInicio: ['', Validators.required],
+      fechaFin: ['', Validators.required],
+      descripcion: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -167,6 +173,100 @@ export class EventosComponent implements OnInit {
         console.log(error);
       }
     });
+  }
+
+  buscarEvento(id: number) {
+    this.eventosService.buscarEvento(id).subscribe(
+      {
+        next: (data) => {
+          this.idAct = data.data[0].id;
+          this.nombreProducto = data.data[0].nombre;
+          const actividad = data.data[0];
+          this.nombrefoto = actividad.foto;
+          this.eventoForm.patchValue({
+            nombre: actividad.nombre,
+            foto: actividad.foto,
+            descripcion: actividad.descripcion,
+            fechaInicio: actividad.fechaInicio,
+            fechaFin: actividad.fechaFin
+          });
+          this.latitud = actividad.latitud;
+          this.longitud = actividad.longitud;
+          console.log(this.latitud, this.longitud)
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+          const map = L.map('mapEvento').setView([this.latitud, this.longitud], 15);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          }).addTo(map);
+
+          // Crear un icono personalizado
+          const customIcon = L.icon({
+            iconUrl: '../../../assets/img/marcador.png',
+            iconSize: [50, 50], // Tamaño del icono [ancho, alto]
+            iconAnchor: [16, 32], // Punto de anclaje del icono [horizontal, vertical]
+          });
+
+          const marker = L.marker([this.latitud, this.longitud], { icon: customIcon })
+            .bindPopup('¡Aqui!')
+            .openPopup();
+
+          marker.addTo(map);
+
+          // Configurar evento de clic en el mapa
+          map.on('click', (e) => {
+            // Obtener las coordenadas donde se hizo clic
+            const latLng = e.latlng;
+
+            // Mover el marcador a las coordenadas donde se hizo clic
+            marker.setLatLng(latLng);
+
+            this.latitud = this.eliminarUltimosDigitos(latLng.lat, 5);
+            this.longitud = this.eliminarUltimosDigitos(latLng.lng, 5);
+          });
+        }
+      }
+    );
+  }
+
+  eventoForm: FormGroup;
+  eliminarEvento() {
+    const id = this.idAct;
+    this.eventosService.eliminarEvento(id).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  onSubmit() {
+    if (this.eventoForm.valid) {
+      const nombre = this.eventoForm.get('nombre')?.value;
+      const descripcion = this.eventoForm.get('descripcion')?.value;
+      const fechaInicio = this.eventoForm.get('fechaInicio')?.value;
+      const fechaFin = this.eventoForm.get('fechaFin')?.value;
+      const latitud = this.latitud.toString();
+      const longitud = this.longitud.toString();
+      const foto = this.nombrefoto;
+
+      this.agregarService.registrarEvento(nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
+        next: () => {
+          location.reload();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    } else {
+      console.log('Complete el formulario');
+    }
   }
 
 }

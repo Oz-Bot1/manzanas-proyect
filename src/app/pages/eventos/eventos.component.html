@@ -25,10 +25,10 @@
         </td>
         <td class="text-center vertical_align">{{ list.descripcion }}</td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Actualizar</button>
+          <button class="btn btn-rojo" data-bs-toggle="modal" (click)="buscarEvento(list.id)" data-bs-target="#actualizarEvento">Actualizar</button>
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" data-bs-toggle="modal" data-bs-target="#">Eliminar</button>
+          <button class="btn btn-rojo" data-bs-toggle="modal" (click)="buscarEvento(list.id)" data-bs-target="#eliminarEvento">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -65,7 +65,68 @@
     </tbody>
   </table>
 </div>
-<!-- Modal para actualizar -->
+<!-- Modal para actualizar evento -->
+<div class="modal fade" id="actualizarEvento" tabindex="-1" aria-labelledby="actualizarEvento" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="actualizarEvento">Actualizar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre del Evento">
+          </div>
+          <div class="row mb-3">
+              <div class="col">
+                  <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
+                  <input type="date" class="form-control" id="fechaInicio" formControlName="fechaInicio">
+                </div>
+                <div class="col">
+                  <label for="fechaFin" class="form-label">Fecha de Fin</label>
+                  <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin">
+                </div>
+          </div>
+          <div class="mb-3">
+              <label for="foto" class="form-label">Imagen del Producto</label>
+              <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+          </div>
+          <div class="mb-3">
+            <div class="mx-auto" id="mapEvento" style="width: 100%; height: 300px;"></div>
+        </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion"></textarea>
+          </div>
+          <button type="submit" class="btn btn-rojo">Registrar Evento</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para eliminar evento -->
+<div class="modal fade" id="eliminarEvento" tabindex="-1" aria-labelledby="eliminarEvento" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="eliminarEvento">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar {{ nombreProducto }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarEvento()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para actualizar punto -->
 <div class="modal fade" id="actualizarPunto" tabindex="-1" aria-labelledby="actualizarPunto" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -109,7 +170,7 @@
   </div>
 </div>
 
-<!-- Modal para eliminar -->
+<!-- Modal para eliminar punto -->
 <div class="modal fade" id="eliminarPunto" tabindex="-1" aria-labelledby="eliminarPunto" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
