@@ -190,9 +190,8 @@ export class EventosComponent implements OnInit {
             fechaInicio: actividad.fechaInicio,
             fechaFin: actividad.fechaFin
           });
-          this.latitud = actividad.latitud;
-          this.longitud = actividad.longitud;
-          console.log(this.latitud, this.longitud)
+          this.latitud = this.eliminarUltimosDigitos(actividad.latitud, 5);
+          this.longitud = this.eliminarUltimosDigitos(actividad.longitud, 5);
         },
         error: (error) => {
           console.log(error);
@@ -246,11 +245,7 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  mostrarAlerta() {
-    Swal.fire('¡Hola, mundo!', 'Este es un mensaje de SweetAlert2', 'success');
-  }
-
-  onSubmit() {
+  actualizarEvento() {
     if (this.eventoForm.valid) {
       const id = this.idAct.toString();
       const nombre = this.eventoForm.get('nombre')?.value;
@@ -260,8 +255,7 @@ export class EventosComponent implements OnInit {
       const latitud = this.latitud.toString();
       const longitud = this.longitud.toString();
       const foto = this.nombrefoto;
-      console.log(id, nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto)
-      this.eventosService.actualizarEvento(id, nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
+      this.eventosService.actualizarEvento(id, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
         next: () => {
           location.reload();
         },
@@ -270,7 +264,7 @@ export class EventosComponent implements OnInit {
         }
       });
     } else {
-      this.mostrarAlerta();
+      alert('invalido');
     }
   }
 

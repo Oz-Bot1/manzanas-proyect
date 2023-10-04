@@ -59,7 +59,7 @@ export class EventosService {
       longitud: longitud,
       descripcion: descripcion,
       fechaInicio: fechaInicio,
-      fechaFin: fechaFin
+      fechaFin: fechaFin,
     };
     return this.http.post<any>(`${urlApi}/Eventos/actualizar`, params);
   }
