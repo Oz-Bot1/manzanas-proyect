@@ -33,6 +33,10 @@ export class NavComponent {
     this.router.navigate(['/agregar']);
   }
 
+  agregarDerivado() {
+    this.router.navigate(['/agregarDerivado']);
+  }
+
   agregarActividad(){
     this.router.navigate(['/agregarActividad']);
   }
