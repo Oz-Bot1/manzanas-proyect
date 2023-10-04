@@ -19,7 +19,12 @@
             <p>{{ aux.descripcion }}</p>
             <p class="card-text">Precio: ${{aux.precio}} por kg</p>
             <p class="card-text">En Stock: {{ aux.stock }} kg</p>
-            <button class="btn btn-primary">Comprar</button>
+            <ng-container *ngIf="banderaBtn; else btnContent">
+              <button class="btn btn-primary" (click)="comprar()">Comprar</button>
+            </ng-container>
+            <ng-template #btnContent>
+              <button class="btn btn-secondary" [disabled]="true">Comprar</button>
+            </ng-template>
           </div>
         </div>
       </div>

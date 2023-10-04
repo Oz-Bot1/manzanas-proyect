@@ -43,4 +43,11 @@ export class ProductosService {
     return this.http.post<any>(`${urlApi}/Manzana/eliminar`, params);
   }
 
+  carrito(id: string): Observable<any> {
+    const params = {
+      id: id
+    };
+    return this.http.post<any>(`${urlApi}/Carrito/agregarCarrito`, params);
+  }
+
 }
