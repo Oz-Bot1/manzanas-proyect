@@ -71,6 +71,15 @@ export class AgregarService {
     return this.http.post<any>(`${urlApi}/PuntoVenta/registrar`, params);
   }
 
+  registrarDerivado(nombre: string, foto: string, descripcion: string): Observable<any>{
+    const params = {
+      nombre: nombre,
+      foto: foto,
+      descripcion: descripcion
+    };
+    return this.http.post<any>(`${urlApi}/DerivadosManzana/registrar`, params);
+  }
+
   saveImage(foto: any): Observable<any> {
     const params = {
       foto: foto
