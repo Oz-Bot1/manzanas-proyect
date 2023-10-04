@@ -13,7 +13,7 @@
     <ng-container *ngFor="let aux of lista">
       <div class="col">
         <div class="card">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-top" alt="...">
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed text-center" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ aux.nombre }}</h5>
             <p>{{ aux.descripcion }}</p>
@@ -24,6 +24,5 @@
         </div>
       </div>
     </ng-container>
-    
   </div>
 </div>
