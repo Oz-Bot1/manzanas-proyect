@@ -27,9 +27,6 @@ export class NavbarComponent implements OnInit {
   login() {
     this.router.navigate(['/login']);
   }
-  carrito() {
-    this.router.navigate(['/carrito']);
-  }
   logout() {
     this.loginService.logout();
   }
