@@ -10,7 +10,6 @@ import { ProductosService } from 'src/app/service/productos.service';
 export class ProductosComponent implements OnInit {
   lista: any[] = [];
   idRol = this.cookie.get('idRol');
-  banderaBtn: boolean = false;
 
   constructor(private productos: ProductosService, private cookie: CookieService){}
   imagen: any = {};
@@ -23,33 +22,11 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.idRol === '3'){
-      this.banderaBtn = true;
-    }else{
-      this.banderaBtn = false;
-    }
-    console.log(this.banderaBtn)
     this.productos.lista().subscribe(
       {
         next: (data) => {
           this.lista = data.data;
           console.log(this.lista);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
-        }
-      }
-    );
-  }
-
-  comprar() {
-    const id = this.idRol;
-    this.productos.carrito(id).subscribe(
-      {
-        next: () => {
-          console.log('bien');
         },
         error: (error) => {
           console.log(error);
