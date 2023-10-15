@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactoService } from 'src/app/service/contacto.service';
 import * as L from 'leaflet';
+import { PedidosService } from 'src/app/service/pedidos.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -13,10 +13,10 @@ export class PedidosComponent implements OnInit {
   lista: any[] = [];
   mapa: L.Map | undefined;
 
-  constructor(private contactoService: ContactoService) { }
+  constructor(private pedidosService: PedidosService) { }
 
   ngOnInit(): void {
-    this.contactoService.listaPuntos().subscribe({
+    this.pedidosService.listaPuntos().subscribe({
       next: (data) => {
         this.lista = data.data;
         console.log(this.lista);
