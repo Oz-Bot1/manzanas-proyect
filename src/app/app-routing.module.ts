@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'agregarProductor', loadChildren: () => import('./pages/agregar-productor/agregar-productor.module').then(m => m.AgregarProductorModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
   { path: 'agregarEvento', loadChildren: () => import('./pages/agregar-evento/agregar-evento.module').then(m => m.AgregarEventoModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
   { path: 'agregarPunto', loadChildren: () => import('./pages/agregar-punto/agregar-punto.module').then(m => m.AgregarPuntoModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
-  { path: 'agregarDerivado', loadChildren: () => import('./pages/agregar-derivado/agregar-derivado.module').then(m => m.AgregarDerivadoModule), component: LayoutAdminComponent, canActivate: [AuthGuard]  }];
+  { path: 'agregarDerivado', loadChildren: () => import('./pages/agregar-derivado/agregar-derivado.module').then(m => m.AgregarDerivadoModule), component: LayoutAdminComponent, canActivate: [AuthGuard]  },
+  { path: 'pedidos', loadChildren: () => import('./pages/pedidos/pedidos.module').then(m => m.PedidosModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
