@@ -27,6 +27,6 @@ export class PedidosService {
       manzanas: manzanas
     };
     console.log(params)
-    return this.http.post<any>(`${urlApi}/realizarPedido`, params);
+    return this.http.post<any>(`${urlApi}/Dashboard/realizarPedido`, params);
   }
 }
