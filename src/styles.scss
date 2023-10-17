@@ -59,3 +59,22 @@
 .vertical_align {
     vertical-align: middle !important;
 }
+
+.card-img-fixed {
+    width: 250px;
+    /* Cambia este valor al tamaño deseado */
+    height: 200px;
+    /* Cambia este valor al tamaño deseado */
+    object-fit: cover;
+    /* Esto mantendrá la proporción de aspecto y recortará la imagen si es necesario */
+}
+
+.check-mark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white; /* Color del texto del check */
+    padding: 5px; /* Espaciado interior del check */
+    border-radius: 50%; /* Hace que el check sea circular */
+  }
+  

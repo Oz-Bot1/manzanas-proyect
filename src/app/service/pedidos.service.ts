@@ -16,4 +16,17 @@ export class PedidosService {
     };
     return this.http.post<any>(`${urlApi}/Dashboard/listaPuntosVenta`, params);
   }
+
+  pedido(nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{
+    const params = {
+      nombreCliente: nombre,
+      estadoCliente: estado,
+      ciudadCliente: ciudad,
+      correoCliente: correo,
+      telefonoCliente: telefono,
+      manzanas: manzanas
+    };
+    console.log(params)
+    return this.http.post<any>(`${urlApi}/realizarPedido`, params);
+  }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { PedidosService } from 'src/app/service/pedidos.service';
-
+import { ProductosService } from 'src/app/service/productos.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
@@ -11,9 +12,20 @@ export class PedidosComponent implements OnInit {
   latitud: number = 19.776097222715837;
   longitud: number = -97.38592150346066;
   lista: any[] = [];
+  listaProductos: any[] = [];
+  banderaContacto: boolean = false;
   mapa: L.Map | undefined;
+  productForm: FormGroup;
 
-  constructor(private pedidosService: PedidosService) { }
+  constructor(private pedidosService: PedidosService, private productosService: ProductosService, private fb: FormBuilder) {
+    this.productForm = this.fb.group({
+      nombre: [''],
+      estado: [''],
+      ciudad: [''],
+      email: [''],
+      telefono: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.pedidosService.listaPuntos().subscribe({
@@ -26,7 +38,17 @@ export class PedidosComponent implements OnInit {
       error: (error) => {
         console.log(error);
       }
-    })
+    });
+
+    this.productosService.lista().subscribe({
+      next: (data) => {
+        this.listaProductos = data.data;
+        console.log(this.listaProductos);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   inicializarMapa() {
@@ -52,4 +74,56 @@ export class PedidosComponent implements OnInit {
         .addTo(this.mapa!);
     });
   }
+
+  obtenerNombreImagen(nombre: string): string {
+    if (nombre.endsWith('.jpeg')) {
+      return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
+    }
+    return nombre;
+  }
+
+  actualizarBanderaContacto() {
+    this.banderaContacto = this.listaProductos.some(product => product.selected);
+  }
+
+  productosSeleccionados: any[] = [];
+
+  onProductSelected(product: any,) {
+    console.log(product)
+    product.selected = !product.selected;
+
+    if (product.selected) {
+      // Agregar el producto a la lista de productos seleccionados
+      const productoSimplificado: any = {
+        idManzana: product.id,
+        cantidad: product.cantidad,
+      };
+      this.productosSeleccionados.push(productoSimplificado);
+    } else {
+      // Eliminar el producto de la lista de productos seleccionados
+      this.productosSeleccionados = this.productosSeleccionados.filter(
+        (p) => p.id !== product.id
+      );
+    }
+
+    this.actualizarBanderaContacto();
+  }
+
+  submitForm() {
+    const formData = this.productForm.value; // Datos del formulario de usuario
+    const nombre = formData.estado;
+    const estado = formData.estado;
+    const ciudad = formData.ciudad;
+    const correo = formData.email;
+    const telefono = formData.telefono;
+
+    this.pedidosService.pedido(nombre, estado, ciudad, correo, telefono, this.productosSeleccionados).subscribe({
+      next: (data) => {
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
 }
