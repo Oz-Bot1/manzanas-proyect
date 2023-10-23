@@ -11,7 +11,7 @@ export class AgregarService {
 
   constructor(private http: HttpClient) { }
 
-  registrarProducto(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
+  registrarProducto(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string, precioCaja: string, precioTonelada: string): Observable<any> {
     const params = {
       nombre: nombre,
       precio: precio,
@@ -19,7 +19,9 @@ export class AgregarService {
       foto: foto,
       stock: stock,
       nivelMadurez: nivel,
-      estatus: estatus
+      estatus: estatus,
+      precioCaja: precioCaja,
+      precioTonelada: precioTonelada
     };
     return this.http.post<any>(`${urlApi}/Manzana/registrar`, params);
   }

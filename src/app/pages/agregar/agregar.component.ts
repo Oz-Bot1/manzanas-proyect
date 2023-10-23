@@ -15,7 +15,9 @@ export class AgregarComponent implements OnInit {
   constructor(private router: Router, private agregarService: AgregarService, private formBuilder: FormBuilder, private login: LoginService) {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
-      precio: ['', Validators.required],
+      precioKilo: ['', Validators.required],
+      precioCaja: ['', Validators.required],
+      precioTonelada: ['', Validators.required],
       descripcion: ['', Validators.required],
       stock: ['', Validators.required],
       nivel: ['', Validators.required],
@@ -49,14 +51,16 @@ export class AgregarComponent implements OnInit {
   submitForm() {
     if (this.formulario.valid) {
       const nombre = this.formulario.get('nombre')?.value;
-      const precio = this.formulario.get('precio')?.value;
+      const precioKilo = this.formulario.get('precio')?.value;
       const descripcion = this.formulario.get('descripcion')?.value;
       const fotoControl = this.nombrefoto;
       const stock = this.formulario.get('stock')?.value;
       const nivel = this.formulario.get('nivel')?.value;
       const estatus = this.formulario.get('estatus')?.value;
+      const precioCaja = this.formulario.get('estatus')?.value;
+      const precioTonelada = this.formulario.get('estatus')?.value;
 
-      this.agregarService.registrarProducto(nombre, precio, descripcion, fotoControl, stock, nivel, estatus).subscribe({
+      this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada).subscribe({
         next: () => {
           this.router.navigate(['/inventario']);
         },
