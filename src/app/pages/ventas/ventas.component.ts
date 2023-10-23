@@ -1,49 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/service/login.service';
+import { VentasService } from 'src/app/service/ventas.service';
 
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.scss']
 })
-export class VentasComponent {
+export class VentasComponent implements OnInit {
 
-  ventas() {
-    this.router.navigate(['/ventas']);
+  constructor(private router: Router, private ventasService: VentasService){}
+
+  pedidosLista: any[] = [];
+  ngOnInit(): void {
+    this.ventasService.listaPedidos().subscribe({
+      next: (data) => {
+        this.pedidosLista = data.data;
+        console.log(this.pedidosLista);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
-  inventario() {
-    this.router.navigate(['/inventario']);
-  }
-
-  actividades() {
-    this.router.navigate(['/actividadesAdmin'])
-  }
-
-  logout() {
-    this.login.logout();
-  }
-
-  agregarProducto() {
-    this.router.navigate(['/agregar']);
-  }
-
-  agregarActividad(){
-    this.router.navigate(['/agregarActividad']);
-  }
-
-  agregarEvento(){
+  liberar(){
 
   }
-
-  agregarProductor(){
-
-  }
-
-  liberar() {
-    this.router.navigate(['/liberar']);
-  }
-  constructor(private router: Router, private login: LoginService){}
-
 }

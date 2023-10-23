@@ -25,15 +25,25 @@
                     placeholder="Cantidad en stock">
             </div>
             <div class="col">
-                <label for="precio" class="form-label">Precio</label>
-                <input type="number" class="form-control" formControlName="precio" id="precio"
-                    placeholder="Precio del producto">
+                <label for="precioKilo" class="form-label">Precio por kilo</label>
+                <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
+                    placeholder="Precio del producto por kilo">
             </div>
         </div>
         <div class="mb-3">
+            <label for="precioCaja" class="form-label">Precio por caja</label>
+            <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
+                placeholder="Precio por caja">
+        </div>
+        <div class="mb-3">
+            <label for="precioTonelada" class="form-label">Precio por tonelada</label>
+            <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada" rows="4"
+                placeholder="Precio por tenelada">
+        </div>
+        <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="4"
-                placeholder="Descripción del producto"></textarea>
+            <input type="number" class="form-control" formControlName="descripcion" id="descripcion" rows="4"
+                placeholder="Descripción del producto">
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Imagen del Producto</label>

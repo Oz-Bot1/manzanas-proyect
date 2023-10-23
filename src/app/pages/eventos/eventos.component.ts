@@ -4,6 +4,7 @@ import { AgregarService } from 'src/app/service/agregar.service';
 import { EventosService } from 'src/app/service/eventos.service';
 import * as L from 'leaflet';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
@@ -15,9 +16,9 @@ export class EventosComponent implements OnInit {
   latitud: number = 0;
   longitud: number = 0;
 
-  listaEventos: any[] =[];
+  listaEventos: any[] = [];
 
-  constructor(private fb: FormBuilder, private eventosService: EventosService, private agregarService: AgregarService) {
+  constructor(private fb: FormBuilder, private eventosService: EventosService, private agregarService: AgregarService, private router: Router) {
     this.puntoVentaForm = this.fb.group({
       nombre: ['', Validators.required],
       estatus: ['1'], // Valor por defecto 'Activo'
@@ -73,7 +74,6 @@ export class EventosComponent implements OnInit {
           });
           this.latitud = actividad.latitud;
           this.longitud = actividad.longitud;
-          console.log(this.latitud, this.longitud)
         },
         error: (error) => {
           console.log(error);
@@ -180,18 +180,20 @@ export class EventosComponent implements OnInit {
       {
         next: (data) => {
           this.idAct = data.data[0].id;
-          this.nombreProducto = data.data[0].nombre;
-          const actividad = data.data[0];
-          this.nombrefoto = actividad.foto;
-          this.eventoForm.patchValue({
-            nombre: actividad.nombre,
-            foto: actividad.foto,
-            descripcion: actividad.descripcion,
-            fechaInicio: actividad.fechaInicio,
-            fechaFin: actividad.fechaFin
-          });
-          this.latitud = this.eliminarUltimosDigitos(actividad.latitud, 5);
-          this.longitud = this.eliminarUltimosDigitos(actividad.longitud, 5);
+          localStorage.setItem('idAct', this.idAct.toString());
+          this.router.navigate(['/agregarEvento']);
+           this.nombreProducto = data.data[0].nombre;
+          // const actividad = data.data[0];
+          // this.nombrefoto = actividad.foto;
+          // this.eventoForm.patchValue({
+          //   nombre: actividad.nombre,
+          //   foto: actividad.foto,
+          //   descripcion: actividad.descripcion,
+          //   fechaInicio: actividad.fechaInicio,
+          //   fechaFin: actividad.fechaFin
+          // });
+          // this.latitud = this.eliminarUltimosDigitos(actividad.latitud, 5);
+          // this.longitud = this.eliminarUltimosDigitos(actividad.longitud, 5);
         },
         error: (error) => {
           console.log(error);

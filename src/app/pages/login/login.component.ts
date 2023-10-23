@@ -21,14 +21,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  inventario() {
-    this.router.navigate(['/inventario']);
-  }
-
-  crearUsuario() {
-    this.router.navigate(['/crearUsuario']);
-  }
-
   onLogin() {
     if (this.loginForm.valid) {
         const usuario = this.loginForm.get('usuario')?.value;

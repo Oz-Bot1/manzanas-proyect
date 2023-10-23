@@ -3,6 +3,8 @@ import * as L from 'leaflet';
 import { PedidosService } from 'src/app/service/pedidos.service';
 import { ProductosService } from 'src/app/service/productos.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
@@ -31,7 +33,6 @@ export class PedidosComponent implements OnInit {
     this.pedidosService.listaPuntos().subscribe({
       next: (data) => {
         this.lista = data.data;
-        console.log(this.lista);
         this.inicializarMapa();
         this.agregarMarcadores(this.lista);
       },
@@ -43,7 +44,6 @@ export class PedidosComponent implements OnInit {
     this.productosService.lista().subscribe({
       next: (data) => {
         this.listaProductos = data.data;
-        console.log(this.listaProductos);
       },
       error: (error) => {
         console.log(error);
@@ -82,32 +82,46 @@ export class PedidosComponent implements OnInit {
     return nombre;
   }
 
+  productosSeleccionados: any[] = [];
+
+  onProductSelected(product: any,) {
+    product.selected = !product.selected;
+    this.actualizarBanderaContacto();
+  }
+
   actualizarBanderaContacto() {
     this.banderaContacto = this.listaProductos.some(product => product.selected);
   }
 
-  productosSeleccionados: any[] = [];
+  productosNota: any[]= [];
 
-  onProductSelected(product: any,) {
-    console.log(product)
-    product.selected = !product.selected;
+  onCantidadBlur(product: any) {
+    if (product.cantidad > 0) {
+      // Busca el producto en la lista de productos seleccionados
+      const productoExistente = this.productosSeleccionados.find((p) => p.idManzana === product.id);
 
-    if (product.selected) {
-      // Agregar el producto a la lista de productos seleccionados
-      const productoSimplificado: any = {
-        idManzana: product.id,
-        cantidad: product.cantidad,
-      };
-      this.productosSeleccionados.push(productoSimplificado);
+      if (productoExistente) {
+        // Si el producto ya está en la lista, actualiza la cantidad
+        productoExistente.cantidad = product.cantidad;
+      } else {
+        // Si el producto no está en la lista, agrégalo
+        const productoSimplificado: any = {
+          idManzana: product.id,
+          cantidad: product.cantidad,
+        };
+        //aqui la nota(cambiar)
+        this.productosNota = product;
+        this.productosSeleccionados.push(productoSimplificado);
+        console.log(this.productosSeleccionados);
+      }
     } else {
-      // Eliminar el producto de la lista de productos seleccionados
+      // Si la cantidad es 0, elimina el producto de la lista de productos seleccionados
       this.productosSeleccionados = this.productosSeleccionados.filter(
-        (p) => p.id !== product.id
+        (p) => p.idManzana !== product.id
       );
     }
-
-    this.actualizarBanderaContacto();
   }
+
 
   submitForm() {
     const formData = this.productForm.value; // Datos del formulario de usuario
@@ -119,6 +133,12 @@ export class PedidosComponent implements OnInit {
 
     this.pedidosService.pedido(nombre, estado, ciudad, correo, telefono, this.productosSeleccionados).subscribe({
       next: (data) => {
+        Swal.fire({
+          title: '¡Bien!',
+          text: 'Excelente',
+          icon: 'warning',
+          confirmButtonColor: '#2b3643'
+        });
       },
       error: (error) => {
         console.log(error);

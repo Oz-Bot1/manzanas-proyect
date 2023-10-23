@@ -22,7 +22,7 @@
                 tabindex="0">
                 <div class="mr-5">
                     <form (ngSubmit)="submitForm()">
-                        <div class="row">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
                             <ng-container *ngFor="let aux of listaProductos">
                                 <div class="col mb-2">
                                     <div class="card">
@@ -49,70 +49,74 @@
                                                 <div class="col">
                                                     <label for="cantidad">Cantidad:</label>
                                                     <input type="number" class="form-control" [disabled]="!aux.selected"
-                                                        [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad">
+                                                        [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
+                                                        (blur)="onCantidadBlur(aux)">
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </ng-container>
-                            <ng-container *ngIf="banderaContacto">
-                                <div class="container mt-5 mb-4">
-                                    <h1 class="text-center">Contáctanos</h1>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <form [formGroup]="productForm">
-                                                <div class="mb-3">
-                                                    <label for="nombre" class="form-label">Nombre</label>
-                                                    <input type="text" class="form-control" id="nombre"
-                                                        placeholder="Tu nombre" formControlName="nombre">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="estado" class="form-label">Estado</label>
-                                                    <input type="text" class="form-control" id="estado"
-                                                        placeholder="" formControlName="estado">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="ciudad" class="form-label">Ciudad</label>
-                                                    <input type="text" class="form-control" id="ciudad" placeholder=""
-                                                        formControlName="ciudad">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="email" class="form-label">Correo Electrónico</label>
-                                                    <input type="email" class="form-control" id="email"
-                                                        placeholder="tucorreo@example.com" formControlName="email">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="telefono" class="form-label">Telefono</label>
-                                                    <input type="phone" class="form-control" id="telefono"
-                                                        placeholder="" formControlName="telefono">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h4>Nuestra Ubicación</h4>
-                                            <p>Dirección: Calle Principal, Ciudad, País</p>
-                                            <h4>Información de Contacto</h4>
-                                            <p>Correo Electrónico: info@example.com</p>
-                                            <p>Teléfono: +123 456 789</p>
-                                        </div>
+                        </div>
+                        <ng-container *ngIf="banderaContacto">
+                            <div class="container">
+                                <h2>Productos a comprar</h2>
+                                <ng-container *ngFor="let pro of productosSeleccionados; let i = index">
+                                    <div class="producto-seleccionado">
+                                        <h6>ID de Manzana: {{ pro.idManzana }}</h6>
+                                        <h6>Cantidad: {{ pro.cantidad }}</h6>
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <div class="container mt-5 mb-4">
+                                <h1 class="text-center">Contáctanos</h1>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form [formGroup]="productForm">
+                                            <div class="mb-3">
+                                                <label for="nombre" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="nombre"
+                                                    placeholder="Tu nombre" formControlName="nombre">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="estado" class="form-label">Estado</label>
+                                                <input type="text" class="form-control" id="estado" placeholder=""
+                                                    formControlName="estado">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="ciudad" class="form-label">Ciudad</label>
+                                                <input type="text" class="form-control" id="ciudad" placeholder=""
+                                                    formControlName="ciudad">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Correo Electrónico</label>
+                                                <input type="email" class="form-control" id="email"
+                                                    placeholder="tucorreo@example.com" formControlName="email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="telefono" class="form-label">Telefono</label>
+                                                <input type="phone" class="form-control" id="telefono" placeholder=""
+                                                    formControlName="telefono">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="mt-5">
-                                    <button type="submit" class="btn btn-primary">Guardar Selección</button>
-                                </div>
-                            </ng-container>
-                        </div>
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-primary">Guardar Selección</button>
+                            </div>
+                        </ng-container>
                     </form>
                 </div>
             </div>
             <!-- Seccion de menudeo -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
                 tabindex="0">
-                <div class="row">
+                <div class="row mb-3 row-cols-1 row-cols-md-3 g-4">
                     <ng-container *ngFor="let aux of listaProductos">
                         <div class="col">
-                            <div class="card">
+                            <div class="card mb-2">
                                 <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
                                     class="card-img-fixed text-center" alt="...">
                                 <div class="card-body">
@@ -125,8 +129,11 @@
                         </div>
                     </ng-container>
                 </div>
-                <div class="mx-auto" id="map" style="width: 90%; height: 500px;"></div>
             </div>
         </div>
+    </div>
+    <div>
+        <h1 style="margin-left: 110px;">Puntos de Venta</h1>
+        <div id="map" style="width: 90%; height: 500px; margin-left: 110px;"></div>
     </div>
 </div>

@@ -28,18 +28,6 @@
             <a class="nav-link" (click)="quienesSomos()"><i class="blanco fa fa-users"></i>
                 <span class="blanco"> ¿Quienes Somos?</span></a>
           </li>
-          <li class="nav-item cursor_pointer">
-            <ng-container *ngIf="!isLoggedIn; else loggedIn">
-              <a class="nav-link" (click)="login()"><i class="blanco fa fa-sign-in"></i>
-                <span class="blanco"> Iniciar Sesión</span>
-              </a>
-            </ng-container>
-            <ng-template #loggedIn>
-              <a class="nav-link" (click)="logout()"><i class="blanco fa fa-sign-out"></i>
-                <span class="blanco"> Cerrar Sesión</span>
-              </a>
-            </ng-template>
-          </li>
         </ul>
       </div>
     </div>

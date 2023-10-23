@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { EventosRoutingModule } from './eventos-routing.module';
 import { EventosComponent } from './eventos.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
 
 @NgModule({
   declarations: [
@@ -15,8 +13,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     CommonModule,
     EventosRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    SweetAlert2Module.forRoot()
+    FormsModule
   ]
 })
 export class EventosModule { }
