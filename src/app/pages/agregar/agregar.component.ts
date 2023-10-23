@@ -51,14 +51,14 @@ export class AgregarComponent implements OnInit {
   submitForm() {
     if (this.formulario.valid) {
       const nombre = this.formulario.get('nombre')?.value;
-      const precioKilo = this.formulario.get('precio')?.value;
+      const precioKilo = this.formulario.get('precioKilo')?.value;
       const descripcion = this.formulario.get('descripcion')?.value;
       const fotoControl = this.nombrefoto;
       const stock = this.formulario.get('stock')?.value;
       const nivel = this.formulario.get('nivel')?.value;
       const estatus = this.formulario.get('estatus')?.value;
-      const precioCaja = this.formulario.get('estatus')?.value;
-      const precioTonelada = this.formulario.get('estatus')?.value;
+      const precioCaja = this.formulario.get('precioCaja')?.value;
+      const precioTonelada = this.formulario.get('precioTonelada')?.value;
 
       this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada).subscribe({
         next: () => {

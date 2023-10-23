@@ -11,10 +11,10 @@ export class AgregarService {
 
   constructor(private http: HttpClient) { }
 
-  registrarProducto(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string, precioCaja: string, precioTonelada: string): Observable<any> {
+  registrarProducto(nombre: string, precioKilo: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string, precioCaja: string, precioTonelada: string): Observable<any> {
     const params = {
       nombre: nombre,
-      precioKilo: precio,
+      precioKilo: precioKilo,
       descripcion: descripcion,
       foto: foto,
       stock: stock,
