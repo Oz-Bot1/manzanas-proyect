@@ -14,7 +14,7 @@ export class AgregarService {
   registrarProducto(nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string, precioCaja: string, precioTonelada: string): Observable<any> {
     const params = {
       nombre: nombre,
-      precio: precio,
+      precioKilo: precio,
       descripcion: descripcion,
       foto: foto,
       stock: stock,
