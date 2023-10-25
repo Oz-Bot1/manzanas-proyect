@@ -49,23 +49,13 @@ export class EventosComponent implements OnInit {
     return nombre;
   }
 
-  buscarPunto(id: number, rol: number) {
-    this.eventosService.buscarPunto(id).subscribe(
-      {
-        next: (data) => {
-          this.idAct = data.data[0].id;
-          if (rol === 1) {
-            localStorage.setItem('idAct', this.idAct.toString());
-            this.router.navigate(['/agregarPunto']);
-          } else {
-            this.nombreProducto = data.data[0].nombre;
-          }
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      }
-    );
+  buscarPunto(id: number, rol: number, nombre: string) {
+    if (rol === 1) {
+      localStorage.setItem('idAct', id.toString());
+      this.router.navigate(['/agregarPunto']);
+    } else {
+      this.nombreProducto = nombre;
+    }
   }
 
   actualizarPunto() {
@@ -103,20 +93,13 @@ export class EventosComponent implements OnInit {
     });
   }
 
-  buscarEvento(id: number, rol: number) {
-    this.eventosService.buscarEvento(id).subscribe(
-      {
-        next: (data) => {
-          this.idAct = data.data[0].id;
-          if (rol === 1) {
-            localStorage.setItem('idAct', this.idAct.toString());
-            this.router.navigate(['/agregarEvento']);
-          } else {
-            this.nombreProducto = data.data[0].nombre;
-          }
-        }
-      }
-    );
+  buscarEvento(id: number, rol: number, nombre: string) {
+    if (rol === 1) {
+      localStorage.setItem('idAct', id.toString());
+      this.router.navigate(['/agregarEvento']);
+    } else {
+      this.nombreProducto = nombre;
+    }
   }
 
   eliminarEvento() {

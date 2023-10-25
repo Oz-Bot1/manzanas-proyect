@@ -15,4 +15,11 @@ export class VentasService {
     const params = { };
     return this.http.post<any>(`${urlApi}/Pedidos/lista`, params);
   }
+
+  buscarPedido(id: number): Observable<any> {
+    const params = { 
+      idPedido: id
+    };
+    return this.http.post<any>(`${urlApi}/Pedidos/litarId`, params);
+  }
 }
