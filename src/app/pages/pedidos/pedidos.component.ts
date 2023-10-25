@@ -103,6 +103,12 @@ export class PedidosComponent implements OnInit {
 
   onProductSelected(product: any,) {
     product.selected = !product.selected;
+    if (!product.selected) {
+      // Si el producto se ha deseleccionado, elimínalo de la lista productosSeleccionados
+      this.productosSeleccionados = this.productosSeleccionados.filter(
+        (p) => p.idManzana !== product.id
+      );
+    }
     this.actualizarBanderaContacto();
   }
 
@@ -110,28 +116,25 @@ export class PedidosComponent implements OnInit {
     this.banderaContacto = this.listaProductos.some(product => product.selected);
   }
 
-  productosNota: any[] = [];
-
   onCantidadBlur(product: any) {
     if (product.cantidad > 0) {
       // Busca el producto en la lista de productos seleccionados
       const productoExistente = this.productosSeleccionados.find((p) => p.idManzana === product.id);
+      const subtotal = product.precioTonelada * product.cantidad;
 
       if (productoExistente) {
         // Si el producto ya está en la lista, actualiza la cantidad
         productoExistente.cantidad = product.cantidad;
+        productoExistente.subtotal = subtotal;
       } else {
         // Si el producto no está en la lista, agrégalo
         const productoSimplificado: any = {
           idManzana: product.id,
           cantidad: product.cantidad,
-        };
-        const productoSimplificadoNota: any = {
           nombre: product.nombre,
           precio: product.precioTonelada,
-          cantidad: product.cantidad,
+          subtotal: subtotal
         };
-        this.productosNota.push(productoSimplificadoNota);
         this.productosSeleccionados.push(productoSimplificado);
       }
     } else {
