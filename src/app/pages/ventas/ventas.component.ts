@@ -9,7 +9,7 @@ import { VentasService } from 'src/app/service/ventas.service';
 })
 export class VentasComponent implements OnInit {
 
-  constructor(private router: Router, private ventasService: VentasService){}
+  constructor(private router: Router, private ventasService: VentasService) { }
 
   pedidosLista: any[] = [];
   ngOnInit(): void {
@@ -24,9 +24,12 @@ export class VentasComponent implements OnInit {
     });
   }
 
-  liberar(id: number, manzana: any[]) {
+  idAct: number = 0;
+  liberar(id: number) {
+    localStorage.setItem('idAct', id.toString());
+    this.router.navigate(['/liberar']);
+
     console.log("ID del pedido a liberar:", id);
-    console.log(manzana);
   }
-  
+
 }
