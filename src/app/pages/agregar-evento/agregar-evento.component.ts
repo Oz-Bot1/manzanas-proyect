@@ -66,7 +66,6 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
           });
           this.latitud = this.eliminarUltimosDigitos(actividad.latitud, 5);
           this.longitud = this.eliminarUltimosDigitos(actividad.longitud, 5);
-
         },
         error: (error) => {
           console.log(error);
@@ -155,7 +154,7 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
       if (this.id !== null) {
         const idAsNumber = parseInt(this.id, 10);
         if (!isNaN(idAsNumber)) {
-          this.eventosService.actualizarEvento(this.id, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
+          this.eventosService.actualizarEvento(idAsNumber, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
             next: () => {
               this.router.navigate(['/eventos']);
             },

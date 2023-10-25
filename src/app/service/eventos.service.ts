@@ -50,7 +50,7 @@ export class EventosService {
     return this.http.post<any>(`${urlApi}/PuntoVenta/actualizar`, params);
   }
 
-  actualizarEvento(id: string, nombre: string, foto: string, latitud: string, longitud: string, descripcion: string, fechaInicio: string, fechaFin: string): Observable<any> {
+  actualizarEvento(id: number, nombre: string, foto: string, latitud: string, longitud: string, descripcion: string, fechaInicio: string, fechaFin: string): Observable<any> {
     const params = {
       id: id,
       nombre: nombre,
