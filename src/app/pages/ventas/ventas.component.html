@@ -1,25 +1,36 @@
-
 <div class="mt-1">
-    <span>.</span>
-  </div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">Pedidos</h1>
+  <span>.</span>
 </div>
 <div class="container">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Liberar Pedido</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <button type="button" class="btn" (click)="liberar()">Liberar</button>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="mt-5 mb-3 text-center">Pedidos</h1>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead class="text-center">
+      <tr>
+        <th>Nombre Cliente</th>
+        <th>Correo</th>
+        <th>Estado</th>
+        <th>Ciudad</th>
+        <th>Telefeno</th>
+        <th>Total</th>
+        <th>Fecha de Pedido</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let aux of pedidosLista">
+        <th>{{ aux.nombreCliente }}</th>
+        <td>{{ aux.correoCliente }}</td>
+        <td>{{ aux.estadoCliente }}</td>
+        <td>{{ aux.ciudadCliente }}</td>
+        <td>{{ aux.telefonoCliente }}</td>
+        <td>{{ aux.total }}</td>
+        <td>{{ aux.fechaOrdenado }}</td>
+        <td>
+          <button type="button" class="btn btn-rojo" (click)="liberar(aux.id, aux.manzanas)">Liberar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -24,7 +24,9 @@ export class VentasComponent implements OnInit {
     });
   }
 
-  liberar(){
-
+  liberar(id: number, manzana: any[]) {
+    console.log("ID del pedido a liberar:", id);
+    console.log(manzana);
   }
+  
 }
