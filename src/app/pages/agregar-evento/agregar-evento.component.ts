@@ -14,6 +14,14 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
   titulo: string = 'Agregar Evento';
   tituloBoton: string = 'Agregar Evento';
   eventoForm: FormGroup;
+  //mapa
+  latitud: number = 19.7760972227;
+  longitud: number = -97.385921503;
+  //id para actualizar
+  id = localStorage.getItem('idAct');
+  //Variables de la foto
+  obj: any = {};
+  nombrefoto: string = '';
 
   constructor(private fb: FormBuilder, private router: Router, private agregarService: AgregarService, private eventosService: EventosService) {
     this.eventoForm = this.fb.group({
@@ -23,17 +31,30 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
       descripcion: ['', Validators.required],
     });
   }
+
+  ngOnInit(): void {
+    if (this.id !== null) {
+      const idAsNumber = parseInt(this.id, 10);
+      if (!isNaN(idAsNumber)) {
+        this.titulo = "Actualizar Evento";
+        this.tituloBoton = 'Actualizar Evento'
+        this.buscarEvento(idAsNumber);
+      } else {
+        this.router.navigate(['/eventos']);
+      }
+    } else {
+      this.generarMapa(this.latitud, this.longitud);
+    }
+  }
+
   ngOnDestroy(): void {
     localStorage.clear();
   }
-
-  idAct: number = 0;
 
   buscarEvento(id: number) {
     this.eventosService.buscarEvento(id).subscribe(
       {
         next: (data) => {
-          this.idAct = data.data[0].id;
           const actividad = data.data[0];
           this.nombrefoto = actividad.foto;
           this.eventoForm.patchValue({
@@ -62,24 +83,6 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
       return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
     }
     return nombre;
-  }
-
-  latitud: number = 19.7760972227;
-  longitud: number = -97.385921503;
-  id = localStorage.getItem('idAct');
-  ngOnInit(): void {
-    if (this.id !== null) {
-      const idAsNumber = parseInt(this.id, 10);
-      if (!isNaN(idAsNumber)) {
-        this.titulo = "Actualizar Evento";
-        this.tituloBoton = 'Actualizar Evento'
-        this.buscarEvento(idAsNumber);
-      } else {
-        this.router.navigate(['/eventos']);
-      }
-    } else {
-      this.generarMapa(this.latitud, this.longitud);
-    }
   }
 
   generarMapa(latitud: number, longitud: number) {
@@ -120,8 +123,6 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
     return Math.floor(coordenada * factor) / factor;
   }
 
-  obj: any = {};
-  nombrefoto: string = '';
   onFileSelect(input: any) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -156,7 +157,7 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
         if (!isNaN(idAsNumber)) {
           this.eventosService.actualizarEvento(this.id, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
             next: () => {
-              location.reload();
+              this.router.navigate(['/eventos']);
             },
             error: (error) => {
               console.log(error);
