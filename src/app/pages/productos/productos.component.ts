@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { ProductosService } from 'src/app/service/productos.service';
 
 @Component({
@@ -9,10 +8,8 @@ import { ProductosService } from 'src/app/service/productos.service';
 })
 export class ProductosComponent implements OnInit {
   lista: any[] = [];
-  idRol = this.cookie.get('idRol');
 
-  constructor(private productos: ProductosService, private cookie: CookieService){}
-  imagen: any = {};
+  constructor(private productos: ProductosService){}
 
   obtenerNombreImagen(nombre: string): string {
     if (nombre.endsWith('.jpeg')) {
