@@ -25,10 +25,10 @@
         </td>
         <td class="text-center vertical_align">{{ list.descripcion }}</td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" data-bs-toggle="modal" (click)="buscarEvento(list.id)">Actualizar</button>
+          <button class="btn btn-rojo" (click)="buscarEvento(list.id, 1)">Actualizar</button>
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" data-bs-toggle="modal" (click)="buscarEvento(list.id)" data-bs-target="#eliminarEvento">Eliminar</button>
+          <button class="btn btn-rojo" data-bs-toggle="modal" (click)="buscarEvento(list.id, 2)" data-bs-target="#eliminarEvento">Eliminar</button>
         </td>
       </tr>
     </tbody>
@@ -56,58 +56,14 @@
         <td class="text-center vertical_align">{{ list.estatus }}</td>
         <td class="text-center vertical_align">{{ list.horario }}</td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#actualizarPunto">Actualizar</button>
+          <button class="btn btn-rojo" (click)="buscarPunto(list.id, 1)">Actualizar</button>
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscarPunto(list.id)" data-bs-toggle="modal" data-bs-target="#eliminarPunto">Eliminar</button>
+          <button class="btn btn-rojo" (click)="buscarPunto(list.id, 2)" data-bs-toggle="modal" data-bs-target="#eliminarPunto">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
-<!-- Modal para actualizar evento -->
-<div class="modal fade" id="actualizarEvento" tabindex="-1" aria-labelledby="actualizarEvento" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="actualizarEvento">Actualizar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="eventoForm" (ngSubmit)="actualizarEvento()">
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre del Evento">
-          </div>
-          <div class="row mb-3">
-              <div class="col">
-                  <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
-                  <input type="date" class="form-control" id="fechaInicio" formControlName="fechaInicio">
-                </div>
-                <div class="col">
-                  <label for="fechaFin" class="form-label">Fecha de Fin</label>
-                  <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin">
-                </div>
-          </div>
-          <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Evento</label>
-            <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
-            </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
-          <div class="mb-3">
-            <div class="mx-auto" id="mapEvento" style="width: 450px; height: 200px;"></div>
-        </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion"></textarea>
-          </div>
-          <button type="submit" class="btn btn-rojo">Actualizar</button>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- Modal para eliminar evento -->
@@ -124,50 +80,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="eliminarEvento()">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal para actualizar punto -->
-<div class="modal fade" id="actualizarPunto" tabindex="-1" aria-labelledby="actualizarPunto" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="actualizarPunto">Actualizar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="puntoVentaForm" (ngSubmit)="actualizarPunto()">
-          <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
-          </div>
-          <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Producto</label>
-            <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
-            </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
-          <div class="mb-3">
-              <div class="mx-auto" id="map" style="width: 100%; height: 200px;"></div>
-          </div>
-          <div class="row mb-3">
-              <div class="col">
-                  <label for="estatus" class="form-label">Estatus</label>
-                  <select class="form-control" id="estatus" formControlName="estatus">
-                      <option value="1">Activo</option>
-                      <option value="2">Inactivo</option>
-                  </select>
-              </div>
-              <div class="col">
-                  <label for="horario" class="form-label">Horario</label>
-                  <input type="text" class="form-control" id="horario" formControlName="horario" placeholder="Horario">
-              </div>
-          </div>
-          <button type="submit" class="btn btn-rojo">Actualizar</button>
-      </form>
       </div>
     </div>
   </div>
