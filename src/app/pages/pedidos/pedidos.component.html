@@ -62,17 +62,18 @@
                         <ng-container *ngIf="banderaContacto">
                             <div class="container">
                                 <h2>Productos a comprar</h2>
-                                <ng-container *ngFor="let pro of productosSeleccionados; let i = index">
+                                <ng-container *ngFor="let pro of productosNota; let i = index">
                                     <div class="producto-seleccionado">
-                                        <h6>ID de Manzana: {{ pro.idManzana }}</h6>
+                                        <h6>Manzana: {{ pro.nombre }}</h6>
                                         <h6>Cantidad: {{ pro.cantidad }}</h6>
+                                        <h6>Precio: {{ pro.precio }}</h6>
                                     </div>
                                 </ng-container>
                             </div>
                             <div class="container mt-5 mb-4">
                                 <h1 class="text-center">Contáctanos</h1>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col">
                                         <form [formGroup]="productForm">
                                             <div class="mb-3">
                                                 <label for="nombre" class="form-label">Nombre</label>
@@ -104,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="mt-5">
-                                <button type="submit" class="btn btn-primary">Guardar Selección</button>
+                                <button type="submit" class="btn btn-rojo">Guardar Selección</button>
                             </div>
                         </ng-container>
                     </form>

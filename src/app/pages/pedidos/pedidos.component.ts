@@ -126,10 +126,13 @@ export class PedidosComponent implements OnInit {
           idManzana: product.id,
           cantidad: product.cantidad,
         };
-        //aqui la nota(cambiar)
-        this.productosNota = product;
+        const productoSimplificadoNota: any = {
+          nombre: product.nombre,
+          precio: product.precioTonelada,
+          cantidad: product.cantidad,
+        };
+        this.productosNota.push(productoSimplificadoNota);
         this.productosSeleccionados.push(productoSimplificado);
-        console.log(this.productosSeleccionados);
       }
     } else {
       // Si la cantidad es 0, elimina el producto de la lista de productos seleccionados
