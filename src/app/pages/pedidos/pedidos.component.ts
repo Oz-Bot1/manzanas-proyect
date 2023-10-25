@@ -29,6 +29,19 @@ export class PedidosComponent implements OnInit {
     });
   }
 
+  banderaMapa: boolean = false;
+  cambiarMapa() {
+    this.banderaMapa = !this.banderaMapa;
+    const id = document.getElementById('banderaMapa');
+    id?.classList.remove('ocultar');
+    id?.classList.remove('mostrar');
+    if (this.banderaMapa == true) {
+      id?.classList.add('mostrar');
+    } else {
+      id?.classList.add('ocultar');
+    }
+  }
+
   ngOnInit(): void {
     this.pedidosService.listaPuntos().subscribe({
       next: (data) => {
@@ -38,6 +51,10 @@ export class PedidosComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
+      },
+      complete: () => {
+        this.banderaMapa = true;
+        this.cambiarMapa();
       }
     });
 
@@ -93,7 +110,7 @@ export class PedidosComponent implements OnInit {
     this.banderaContacto = this.listaProductos.some(product => product.selected);
   }
 
-  productosNota: any[]= [];
+  productosNota: any[] = [];
 
   onCantidadBlur(product: any) {
     if (product.cantidad > 0) {
