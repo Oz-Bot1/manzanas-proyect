@@ -58,29 +58,6 @@ export class EventosComponent implements OnInit {
     }
   }
 
-  actualizarPunto() {
-    if (this.puntoVentaForm.valid) {
-      const id = this.idAct;
-      const nombre = this.puntoVentaForm.get('nombre')?.value;
-      const fotoControl = '';
-      const latitud = this.latitud.toString();
-      const longitud = this.longitud.toString();
-      const estatus = this.puntoVentaForm.get('estatus')?.value;
-      const horario = this.puntoVentaForm.get('horario')?.value;
-
-      this.eventosService.actualizarPunto(id, nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
-        next: () => {
-          location.reload();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-    } else {
-      console.log('Complete el formulario');
-    }
-  }
-
   eliminarPunto() {
     const id = this.idAct;
     this.eventosService.eliminarPunto(id).subscribe({

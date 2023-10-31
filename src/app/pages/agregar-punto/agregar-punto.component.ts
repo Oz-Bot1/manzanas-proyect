@@ -39,7 +39,7 @@ export class AgregarPuntoComponent implements OnInit, OnDestroy {
       const idAsNumber = parseInt(this.id, 10);
       if (!isNaN(idAsNumber)) {
         this.titulo = "Actualizar Punto de Venta";
-        this.tituloBoton = 'Actualizar Punto de Venta'
+        this.tituloBoton = 'Actualizar Punto de Venta';
         this.buscarPunto(idAsNumber);
       } else {
         this.router.navigate(['/eventos']);

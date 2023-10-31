@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { InventarioService } from 'src/app/service/inventario.service';
-import { LoginService } from 'src/app/service/login.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
@@ -17,16 +15,7 @@ Swiper.use([Navigation, Pagination, Autoplay]);
 export class InventarioComponent implements OnInit {
   lista: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private inventarioService: InventarioService, private agregarService: AgregarService) {
-    this.formulario = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      precio: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      foto: [''],
-      stock: ['', Validators.required],
-      nivel: ['', Validators.required],
-      estatus: ['1', Validators.required]
-    });
+  constructor(private inventarioService: InventarioService, private agregarService: AgregarService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -60,32 +49,14 @@ export class InventarioComponent implements OnInit {
 
   idAct: number = 0;
   nombreProducto: string = '';
-  buscar(id: number) {
-    this.inventarioService.buscar(id).subscribe(
-      {
-        next: (data) => {
-          this.idAct = data.data[0].id;
-          this.nombreProducto = data.data[0].nombre;
-          const actividad = data.data[0];
-          this.nombrefoto = actividad.foto;
-          this.formulario.patchValue({
-            nombre: actividad.nombre,
-            descripcion: actividad.descripcion,
-            foto: actividad.foto,
-            nivel: actividad.nivelMadurez,
-            stock: actividad.stock,
-            precio: actividad.precio,
-            estatus: actividad.estatus
-          });
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      }
-    );
+  buscar(id: number, rol: number, nombre: string) {
+    if (rol === 1) {
+      localStorage.setItem('idAct', id.toString());
+      this.router.navigate(['/agregar']);
+    } else {
+      this.nombreProducto = nombre;
+    }
   }
-
-  formulario: FormGroup;
 
   obj: any = {};
   nombrefoto: string = '';
@@ -113,30 +84,6 @@ export class InventarioComponent implements OnInit {
       return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
     }
     return nombre;
-  }
-
-  submitForm() {
-    if (this.formulario.valid) {
-      const id = this.idAct.toString();
-      const nombre = this.formulario.get('nombre')?.value;
-      const precio = this.formulario.get('precio')?.value;
-      const descripcion = this.formulario.get('descripcion')?.value;
-      const fotoControl = this.nombrefoto;
-      const stock = this.formulario.get('stock')?.value;
-      const nivel = this.formulario.get('nivel')?.value;
-      const estatus = this.formulario.get('estatus')?.value;
-
-      this.inventarioService.actualizar(id, nombre, precio, descripcion, fotoControl, stock, nivel, estatus).subscribe({
-        next: () => {
-          location.reload();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-    } else {
-      console.log('Complete el formulario');
-    }
   }
 
   eliminar() {

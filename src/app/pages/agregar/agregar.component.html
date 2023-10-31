@@ -2,7 +2,7 @@
     <span>.</span>
 </div>
 <div class="container">
-    <h1 class="mt-5 mb-3 text-center">Agregar Producto</h1>
+    <h1 class="mt-5 mb-3 text-center">{{titulo}}</h1>
 </div>
 <div class="container">
     <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
@@ -46,9 +46,12 @@
                 placeholder="Descripción del producto">
         </div>
         <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Producto</label>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control">
-        </div>
+            <label for="foto" class="form-label">Imagen del Evento</label>
+            <div class="text-center">
+              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+            </div>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
+          </div>
         <div class="mb-3">
             <label for="estatus" class="form-label">Estatus</label>
             <select class="form-select" formControlName="estatus" id="estatus">
@@ -56,6 +59,6 @@
                 <option value="2">Desactivado</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-rojo">Registrar Producto</button>
+        <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
     </form>
 </div>

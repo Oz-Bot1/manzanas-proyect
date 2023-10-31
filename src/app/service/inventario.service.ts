@@ -23,16 +23,18 @@ export class InventarioService {
     return this.http.post<any>(`${urlApi}/Dashboard/buscarManzana`, params);
   }
 
-  actualizar(id: string, nombre: string, precio: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string): Observable<any> {
+  actualizar(id: number, nombre: string, precioKilo: string, descripcion: string, foto: string, stock: string, nivel:string, estatus: string, precioCaja: string, precioTonelada: string): Observable<any> {
     const params = {
       id: id,
       nombre: nombre,
-      precio: precio,
+      precioKilo: precioKilo,
       descripcion: descripcion,
       foto: foto,
       stock: stock,
       nivelMadurez: nivel,
-      estatus: estatus
+      estatus: estatus,
+      precioCaja: precioCaja,
+      precioTonelada: precioTonelada
     };
     return this.http.post<any>(`${urlApi}/Manzana/actualizar`, params);
   }

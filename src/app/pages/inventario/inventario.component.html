@@ -44,79 +44,17 @@
           <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
+          <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)" data-bs-toggle="modal"
             data-bs-target="#exampleModal">Actualizar</button>
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
+          <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
             data-bs-target="#eliminar">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<!-- Modal para actualizar -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
-          <div class="row mb-3">
-            <div class="col">
-              <label for="nombre" class="form-label">Nombre del Producto</label>
-              <input type="text" formControlName="nombre" class="form-control" id="nombre"
-                placeholder="Nombre del producto">
-            </div>
-            <div class="col">
-              <label for="nivel" class="form-label">Nivel de Madurez</label>
-              <input type="text" class="form-control" formControlName="nivel" id="nivel" placeholder="Nivel de Madurez">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <label for="stock" class="form-label">Stock</label>
-              <input type="number" class="form-control" formControlName="stock" id="stock"
-                placeholder="Cantidad en stock">
-            </div>
-            <div class="col">
-              <label for="precio" class="form-label">Precio</label>
-              <input type="number" class="form-control" formControlName="precio" id="precio"
-                placeholder="Precio del producto">
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea class="form-control" formControlName="descripcion" id="descripcion" rows="4"
-              placeholder="Descripción del producto"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Producto</label>
-            <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
-            </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
-          <div class="mb-3">
-            <label for="estatus" class="form-label">Estatus</label>
-            <select class="form-select" formControlName="estatus" id="estatus">
-              <option value="1">Activo</option>
-              <option value="2">Desactivado</option>
-            </select>
-          </div>
-          <div>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Modal para eliminar -->
 <div class="modal fade" id="eliminar" tabindex="-1"
   aria-labelledby="eliminar" aria-hidden="true">
