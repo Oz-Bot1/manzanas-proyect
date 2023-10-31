@@ -26,7 +26,6 @@ export class PedidosService {
       telefonoCliente: telefono,
       manzanas: manzanas
     };
-    console.log(params)
     return this.http.post<any>(`${urlApi}/Dashboard/realizarPedido`, params);
   }
 }

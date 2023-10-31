@@ -50,7 +50,7 @@
                                                     <label for="cantidad">Cantidad:</label>
                                                     <input type="number" class="form-control" [disabled]="!aux.selected"
                                                         [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
-                                                        (blur)="onCantidadBlur(aux)">
+                                                        (change)="onCantidadBlur(aux)" [min]="1">
 
                                                 </div>
                                             </div>
@@ -70,7 +70,7 @@
                                         <h6>subtotal: {{ pro.subtotal }}</h6>
                                     </div>
                                 </ng-container>
-                                <h2>Total : </h2>
+                                <h2>Total : {{total}}</h2>
                             </div>
                             <div class="container mt-5 mb-4">
                                 <h1 class="text-center">Contáctanos</h1>

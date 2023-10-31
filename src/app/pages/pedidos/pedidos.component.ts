@@ -105,9 +105,13 @@ export class PedidosComponent implements OnInit {
     product.selected = !product.selected;
     if (!product.selected) {
       // Si el producto se ha deseleccionado, elimínalo de la lista productosSeleccionados
+      const sub = product.cantidad*product.precioTonelada;
+      this.total -= sub;
       this.productosSeleccionados = this.productosSeleccionados.filter(
         (p) => p.idManzana !== product.id
       );
+    } else {
+      this.onCantidadBlur(product);
     }
     this.actualizarBanderaContacto();
   }
@@ -116,39 +120,52 @@ export class PedidosComponent implements OnInit {
     this.banderaContacto = this.listaProductos.some(product => product.selected);
   }
 
-  onCantidadBlur(product: any) {
-    if (product.cantidad > 0) {
-      // Busca el producto en la lista de productos seleccionados
-      const productoExistente = this.productosSeleccionados.find((p) => p.idManzana === product.id);
-      const subtotal = product.precioTonelada * product.cantidad;
+  total: number = 0;
 
+  onCantidadBlur(product: any) {
+    const nuevaCantidad = product.cantidad;
+    const nuevoSubtotal = product.precioTonelada * nuevaCantidad;
+  
+    const productoExistente = this.productosSeleccionados.find((p) => p.idManzana === product.id);
+  
+    if (nuevaCantidad > 0) {
       if (productoExistente) {
-        // Si el producto ya está en la lista, actualiza la cantidad
-        productoExistente.cantidad = product.cantidad;
-        productoExistente.subtotal = subtotal;
+        // Restar el subtotal anterior del producto al total
+        this.total -= productoExistente.subtotal;
+        
+        // Actualizar la cantidad y el subtotal del producto
+        productoExistente.cantidad = nuevaCantidad;
+        productoExistente.subtotal = nuevoSubtotal;
       } else {
         // Si el producto no está en la lista, agrégalo
         const productoSimplificado: any = {
           idManzana: product.id,
-          cantidad: product.cantidad,
+          cantidad: nuevaCantidad,
           nombre: product.nombre,
           precio: product.precioTonelada,
-          subtotal: subtotal
+          subtotal: nuevoSubtotal
         };
         this.productosSeleccionados.push(productoSimplificado);
       }
-    } else {
-      // Si la cantidad es 0, elimina el producto de la lista de productos seleccionados
+      
+      // Sumar el nuevo subtotal al total
+      this.total += nuevoSubtotal;
+    } else if (productoExistente) {
+      // Si la cantidad es 0 y el producto existe en la lista, eliminarlo y restar su subtotal del total
       this.productosSeleccionados = this.productosSeleccionados.filter(
         (p) => p.idManzana !== product.id
       );
+      this.total -= productoExistente.subtotal;
+    } else{
+      
     }
   }
+  
 
 
   submitForm() {
     const formData = this.productForm.value; // Datos del formulario de usuario
-    const nombre = formData.estado;
+    const nombre = formData.nombre;
     const estado = formData.estado;
     const ciudad = formData.ciudad;
     const correo = formData.email;
@@ -162,6 +179,7 @@ export class PedidosComponent implements OnInit {
           icon: 'warning',
           confirmButtonColor: '#2b3643'
         });
+        location.reload();
       },
       error: (error) => {
         console.log(error);

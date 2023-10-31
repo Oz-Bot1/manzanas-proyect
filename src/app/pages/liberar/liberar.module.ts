@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LiberarRoutingModule } from './liberar-routing.module';
 import { LiberarComponent } from './liberar.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { LiberarComponent } from './liberar.component';
   ],
   imports: [
     CommonModule,
-    LiberarRoutingModule
+    LiberarRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LiberarModule { }
