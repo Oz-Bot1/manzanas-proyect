@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'productos', loadChildren: () => import('./pages/productos/productos.module').then(m => m.ProductosModule), component: LayoutMainComponent},
   { path: 'actividades', loadChildren: () => import('./pages/actividades/actividades.module').then(m => m.ActividadesModule), component: LayoutMainComponent},
   { path: 'quienesSomos', loadChildren: () => import('./pages/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule), component: LayoutMainComponent},
-  { path: 'carrito', loadChildren: () => import('./pages/carrito/carrito.module').then(m => m.CarritoModule), component: LayoutMainComponent},
   { path: 'inventario', loadChildren: () => import('./pages/inventario/inventario.module').then(m => m.InventarioModule), component: LayoutAdminComponent, canActivate: [AuthGuard]},
   { path: 'ventas', loadChildren: () => import('./pages/ventas/ventas.module').then(m => m.VentasModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
   { path: 'agregar', loadChildren: () => import('./pages/agregar/agregar.module').then(m => m.AgregarModule), component: LayoutAdminComponent, canActivate: [AuthGuard] },
