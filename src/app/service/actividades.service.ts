@@ -23,7 +23,7 @@ export class ActividadesService {
     return this.http.post<any>(`${urlApi}/Dashboard/buscarActividad`, params);
   }
 
-  actualizar(id: string, nombre: string, descripcion: string, foto: string): Observable<any> {
+  actualizar(id: number, nombre: string, descripcion: string, foto: string): Observable<any> {
     const params = {
       id: id,
       nombre: nombre,

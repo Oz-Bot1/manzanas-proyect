@@ -54,28 +54,8 @@ export class InventarioComponent implements OnInit {
       localStorage.setItem('idAct', id.toString());
       this.router.navigate(['/agregar']);
     } else {
+      this.idAct = id;
       this.nombreProducto = nombre;
-    }
-  }
-
-  obj: any = {};
-  nombrefoto: string = '';
-  onFileSelect(input: any) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.obj.photoUrl = e.target.result;
-        this.agregarService.saveImage(this.obj.photoUrl).subscribe({
-          next: (data) => {
-            this.nombrefoto = data.fileName.nombre;
-            console.log(this.nombrefoto);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
-      }
-      reader.readAsDataURL(input.files[0]);
     }
   }
 

@@ -25,52 +25,16 @@
           <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="..." class="img-table">
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">Actualizar</button>
+          <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)">Actualizar</button>
         </td>
         <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id)" data-bs-toggle="modal"
+          <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
             data-bs-target="#eliminar">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<!-- Modal para actualizar -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre de la actividad">
-          </div>
-          <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Producto</label>
-            <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="Imagen por defecto" width="100">
-            </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
-          <div class="form-group">
-            <label for="descripcion">Descripción</label>
-            <textarea class="form-control" id="descripcion" formControlName="descripcion"
-              placeholder="Descripcion de la actividad"></textarea>
-          </div>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-rojo">Actualizar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Modal para eliminar -->
 <div class="modal fade" id="eliminar" tabindex="-1"
   aria-labelledby="eliminar" aria-hidden="true">

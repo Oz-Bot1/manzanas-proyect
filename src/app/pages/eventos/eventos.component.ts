@@ -54,6 +54,7 @@ export class EventosComponent implements OnInit {
       localStorage.setItem('idAct', id.toString());
       this.router.navigate(['/agregarPunto']);
     } else {
+      this.idAct = id;
       this.nombreProducto = nombre;
     }
   }

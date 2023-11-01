@@ -13,7 +13,7 @@ export class ActividadesAdminComponent implements OnInit {
   lista: any[] = [];
   actividadForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private actividadesService: ActividadesService, private agregarService: AgregarService){
+  constructor(private fb: FormBuilder,private actividadesService: ActividadesService, private agregarService: AgregarService, private router: Router){
     this.actividadForm = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -46,65 +46,13 @@ export class ActividadesAdminComponent implements OnInit {
   idAct: number = 0;
   nombreProducto: string = '';
 
-  obj: any = {};
-  nombrefoto: string = '';
-  onFileSelect(input: any) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.obj.photoUrl = e.target.result;
-        this.agregarService.saveImage(this.obj.photoUrl).subscribe({
-          next: (data) => {
-            this.nombrefoto = data.fileName.nombre;
-            console.log(this.nombrefoto);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-  buscar(id: number) {
-    this.actividadesService.buscar(id).subscribe(
-      {
-        next: (data) => {
-          this.idAct = data.data[0].id;
-          this.nombreProducto = data.data[0].nombre;
-          const actividad = data.data[0];
-          this.nombrefoto = actividad.foto;
-          this.actividadForm.patchValue({
-            nombre: actividad.nombre,
-            descripcion: actividad.descripcion,
-            foto: actividad.foto,
-          });
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      }
-    );
-  }
-
-  onSubmit() {
-    if (this.actividadForm.valid) {
-      const id = this.idAct.toString();
-      const nombre = this.actividadForm.get('nombre')?.value;
-      const descripcion = this.actividadForm.get('descripcion')?.value;
-      const fotoControl = this.nombrefoto;
-
-      this.actividadesService.actualizar(id, nombre, descripcion, fotoControl).subscribe({
-        next: () => {
-          location.reload();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+  buscar(id: number, rol: number, nombre: string) {
+    if (rol === 1) {
+      localStorage.setItem('idAct', id.toString());
+      this.router.navigate(['/agregarActividad']);
     } else {
-      console.log('Complete el formulario');
+      this.idAct = id;
+      this.nombreProducto = nombre;
     }
   }
 

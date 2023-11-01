@@ -2,7 +2,7 @@
   <span>.</span>
 </div>
 <div class="container">
-  <h1 class="mt-5 mb-3 text-center">Agregar Actividad</h1>
+  <h1 class="mt-5 mb-3 text-center">{{titulo}}</h1>
 </div>
 <div class="container">
   <form [formGroup]="actividadForm" (ngSubmit)="onSubmit()">
@@ -11,14 +11,17 @@
       <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre de la actividad">
     </div>
     <div class="mb-3">
-      <label for="foto" class="form-label">Imagen del Producto</label>
-      <input (change)="onFileSelect($event.target)" type="file" class="form-control">
+      <label for="foto" class="form-label">Imagen del Evento</label>
+      <div class="text-center">
+        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+      </div>
+      <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
     </div>
     <div class="form-group">
       <label for="descripcion">Descripción</label>
       <textarea class="form-control" id="descripcion" formControlName="descripcion"
         placeholder="Descripcion de la actividad"></textarea>
     </div>
-    <button type="submit" class="btn btn-rojo">Registrar Actividad</button>
+    <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
   </form>
 </div>
