@@ -11,14 +11,15 @@ export class LiberarService {
 
   constructor(private http: HttpClient) { }
 
-  actualizar(nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{
+  actualizar(id: number, nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{
     const params = {
+      idPedido: id,
       nombreCliente: nombre,
       estadoCliente: estado,
       ciudadCliente: ciudad,
       correoCliente: correo,
       telefonoCliente: telefono,
-      manzanas: manzanas
+      manzanas: manzanas,
     };
     return this.http.post<any>(`${urlApi}/Pedidos/actualizar`, params);
   }

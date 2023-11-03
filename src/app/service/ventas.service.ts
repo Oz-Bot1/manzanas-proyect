@@ -16,6 +16,11 @@ export class VentasService {
     return this.http.post<any>(`${urlApi}/Pedidos/lista`, params);
   }
 
+  listaVentas(): Observable<any> {
+    const params = { };
+    return this.http.post<any>(`${urlApi}/Ventas/lista`, params);
+  }
+
   buscarPedido(id: number): Observable<any> {
     const params = { 
       idPedido: id

@@ -2,20 +2,22 @@
   <div class="row m-0">
       <div class="col-12 p-0">
           <img src="../../../assets/img/largo.webp" class="img-fluid" alt="...">
-          <div class="overlay">
-              <h1 class="text-white text-center">Productos</h1>
-          </div>
       </div>
   </div>
+</div>
+<div class="container text-center mt-5 mb-5">
+  <h6>Manzana Serrana</h6>
+  <h1>Nuestros</h1>
+  <h1>Productos</h1>
 </div>
 <div class="container mb-4 mt-3">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <ng-container *ngFor="let aux of lista">
       <div class="col">
-        <div class="card">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed text-center" alt="...">
+        <div class="card borde">
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{ aux.nombre }}</h5>
+            <h5 class="card-title text-center">{{ aux.nombre }}</h5>
             <p>{{ aux.descripcion }}</p>
             <p class="card-text">Precio: ${{aux.precio}} por kg</p>
             <p class="card-text">En Stock: {{ aux.stock }} kg</p>

@@ -54,8 +54,8 @@
                         <td>{{aux.cantidad}}</td>
                         <td>{{aux.subtotal}}</td>
                         <td>
-                            <button class="btn btn-rojo" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" [disabled]="confirmado">Cambiar</button>
+                            <button type="button" class="btn btn-rojo" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" [disabled]="confirmado" (click)="onProductSelected(aux)">Cambiar</button>
                         </td>
                     </tr>
                 </tbody>

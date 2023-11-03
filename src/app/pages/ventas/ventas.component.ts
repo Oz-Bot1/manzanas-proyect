@@ -12,11 +12,20 @@ export class VentasComponent implements OnInit {
   constructor(private router: Router, private ventasService: VentasService) { }
 
   pedidosLista: any[] = [];
+  ventasLista: any[] = [];
   ngOnInit(): void {
     this.ventasService.listaPedidos().subscribe({
       next: (data) => {
         this.pedidosLista = data.data;
-        console.log(this.pedidosLista);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+    this.ventasService.listaPedidos().subscribe({
+      next: (data) => {
+        this.ventasLista = data.data;
+        console.log(this.ventasLista);
       },
       error: (error) => {
         console.log(error);

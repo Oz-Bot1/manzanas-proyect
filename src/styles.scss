@@ -5,7 +5,7 @@
 @import 'swiper/swiper-bundle.css';
 
 .rojo {
-    background-color: rgb(171, 105, 105);
+    background-color: rgb(248, 248, 248);
 }
 
 .blanco {
@@ -13,7 +13,7 @@
 }
 
 .gris {
-    background-color: #353535;
+    color: #353535;
 }
 
 .cursor_pointer {
@@ -61,10 +61,6 @@
 }
 
 .card-img-fixed {
-    width: 250px;
-    /* Cambia este valor al tamaño deseado */
-    height: 200px;
-    /* Cambia este valor al tamaño deseado */
     object-fit: cover;
     /* Esto mantendrá la proporción de aspecto y recortará la imagen si es necesario */
 }
@@ -87,4 +83,28 @@
 
 .mostrar {
     display: initial;
+}
+
+//estilos del navbar
+.navbar {
+    height: 80px;
+    /* Ajusta la altura a tu preferencia */
+}
+
+/* Estilo para los elementos del menú */
+.navbar-nav .nav-item {
+    margin: 0 10px;
+    /* Espacio entre los elementos del menú */
+}
+
+/* Estilo para el texto de los elementos del menú */
+.navbar-nav .nav-item .blanco {
+    font-size: 18px;
+    /* Tamaño de fuente del texto */
+}
+
+$color_verde: #4E9545;
+
+.borde {
+    border-color: $color_verde;
 }

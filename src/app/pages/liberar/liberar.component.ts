@@ -32,6 +32,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
       total: [0, Validators.required],
     });
     this.formularioModal = this.fb.group({
+      id: [0],
       nombre: ['', Validators.required],
       cantidad: [0, [Validators.required, Validators.min(0)]],
       subtotal: [0, Validators.min(0)],
@@ -59,8 +60,32 @@ export class LiberarComponent implements OnInit, OnDestroy {
     if (this.formularioModal.valid) {
       const formDat = this.formularioModal.value;
       const formData = this.formulario.value;
-      console.log('Formulario enviado con los siguientes datos:', formData);
-      console.log('Formulario enviado con los siguientes datos:', formDat);
+      const id = this.idNumber;
+      const nombre = formData.nombreCliente;
+      const estado = formData.estadoCliente;
+      const ciudad = formData.ciudadCliente;
+      const correo = formData.correoCliente;
+      const telefono = formData.telefonoCliente;
+      const manzanaIndex = this.datosManzanas.findIndex((manzana) => manzana.id === id);
+      console.log(manzanaIndex)
+
+      if (manzanaIndex !== -1) {
+        this.datosManzanas[manzanaIndex] = { ...formDat };
+      } else {
+        // El objeto no existe en datosManzanas, así que puedes agregarlo
+        this.datosManzanas.push({ ...formDat });
+      }
+      const manzanas = [{ ...formDat }];
+      console.log(this.datosManzanas);
+
+      this.liberarService.actualizar(id, nombre, estado, ciudad, correo, telefono, manzanas).subscribe({
+        next: () => {
+          location.reload();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
     }
   }
 
@@ -78,11 +103,22 @@ export class LiberarComponent implements OnInit, OnDestroy {
     }
   }
 
+  onProductSelected(product: any,) {
+    const datos = product;
+    this.formularioModal.patchValue({
+      id: datos.id,
+      nombre: datos.nombre,
+      subtotal: datos.subtotal,
+      cantidad: datos.cantidad,
+    });
+  }
+
   datosPedido: any = {};
   datosManzanas: any[] = [];
   buscarPedido(id: number) {
     this.ventas.buscarPedido(id).subscribe({
       next: (data) => {
+        console.log(data);
         this.datosPedido = data.data[0];
         this.datosManzanas = data.data[0].manzanas;
         this.formulario.patchValue({
@@ -94,7 +130,6 @@ export class LiberarComponent implements OnInit, OnDestroy {
           fechaOrdenado: this.datosPedido.fechaOrdenado,
           total: this.datosPedido.total,
         });
-        console.log(this.datosManzanas);
       },
       error: (error) => {
         console.log(error);

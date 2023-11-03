@@ -25,11 +25,38 @@
         <td>{{ aux.estadoCliente }}</td>
         <td>{{ aux.ciudadCliente }}</td>
         <td>{{ aux.telefonoCliente }}</td>
-        <td>{{ aux.total }}</td>
+        <td>${{ aux.total }}</td>
         <td>{{ aux.fechaOrdenado }}</td>
         <td>
           <button type="button" class="btn btn-rojo" (click)="liberar(aux.id)">Liberar</button>
         </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <h1 class="mt-5 mb-3 text-center">Ventas</h1>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead class="text-center">
+      <tr>
+        <th>Nombre Cliente</th>
+        <th>Estado</th>
+        <th>Ciudad</th>
+        <th>Telefeno</th>
+        <th>Total</th>
+        <th>Fecha de Pedido</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let aux of ventasLista">
+        <th>{{ aux.nombreCliente }}</th>
+        <td>{{ aux.estadoCliente }}</td>
+        <td>{{ aux.ciudadCliente }}</td>
+        <td>{{ aux.telefonoCliente }}</td>
+        <td>${{ aux.total }}</td>
+        <td>{{ aux.fechaOrdenado }}</td>
       </tr>
     </tbody>
   </table>
