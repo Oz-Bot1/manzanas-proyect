@@ -6,6 +6,8 @@
 $color_verde: #4E9545;
 $letra: 'open-sans';
 $color_gris: #b3b3b3;
+$color_gris_oscuro: #7c7c7c;
+
 .rojo {
     background-color: rgb(248, 248, 248);
 }
@@ -51,6 +53,16 @@ $color_gris: #b3b3b3;
 
 .btn-rojo:hover {
     color: #353535;
+}
+
+.btn_pedido {
+    padding: 8px 40px 8px 40px;
+    border-color: $color_gris;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 20px;
+    color: $color_gris_oscuro;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .img-table {
@@ -124,6 +136,12 @@ $color_gris: #b3b3b3;
     color: $color_verde;
 }
 
+.texto_card {
+    font-family: $letra;
+    font-size: 30px;
+    color: $color_verde;
+}
+
 .texto_subtitle {
     font-family: $letra;
     font-size: 25px;
@@ -134,6 +152,7 @@ $color_gris: #b3b3b3;
     font-weight: bold;
 }
 
+//revisar este en productos es para que se despliegue palabra por palabra
 .space_text {
     white-space: pre-line;
 }
@@ -142,17 +161,17 @@ $color_gris: #b3b3b3;
     width: 100%;
     height: 100%;
     background: #000;
-  }
+}
 
-  .swiper-slide {
+.swiper-slide {
     font-size: 18px;
     color: #fff;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 40px 60px;
-  }
+}
 
-  .parallax-bg {
+.parallax-bg {
     position: absolute;
     left: 0;
     top: 0;
@@ -161,19 +180,19 @@ $color_gris: #b3b3b3;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center;
-  }
+}
 
-  .swiper-slide .title {
+.swiper-slide .title {
     font-size: 41px;
     font-weight: 300;
-  }
+}
 
-  .swiper-slide .subtitle {
+.swiper-slide .subtitle {
     font-size: 21px;
-  }
+}
 
-  .swiper-slide .text {
+.swiper-slide .text {
     font-size: 14px;
     max-width: 400px;
     line-height: 1.3;
-  }
+}

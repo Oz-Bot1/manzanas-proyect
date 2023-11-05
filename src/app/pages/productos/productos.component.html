@@ -1,9 +1,28 @@
-<div class="container-fluid p-0">
-  <div class="row m-0">
-      <div class="col-12 p-0">
-          <img src="../../../assets/img/largo.webp" class="img-fluid" alt="...">
-      </div>
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 <div class="container text-center mt-5 mb-5">
   <span class="texto_subtitle">Manzana Serrana</span>
@@ -17,10 +36,10 @@
         <div class="card borde">
           <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
           <div class="card-body">
-            <h5 class="card-title text-center">{{ aux.nombre }}</h5>
+            <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
             <p>{{ aux.descripcion }}</p>
             <div class="text-center">
-              <button class="btn">Hacer Pedido</button>
+              <button class="btn_pedido">Hacer Pedido</button>
             </div>
           </div>
         </div>
