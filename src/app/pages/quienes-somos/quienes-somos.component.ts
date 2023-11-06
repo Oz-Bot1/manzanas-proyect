@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-quienes-somos',
   templateUrl: './quienes-somos.component.html',
   styleUrls: ['./quienes-somos.component.scss']
 })
-export class QuienesSomosComponent {
+export class QuienesSomosComponent implements OnInit {
+  ngOnInit(): void {
+  }
 
 }

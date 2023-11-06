@@ -9,10 +9,10 @@
       <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
+      <img src="../../../assets/img/carrusel2.png" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
+      <img src="../../../assets/img/carrusel3.png" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -24,13 +24,26 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<div class="container text-center mt-5 mb-5">
-  <span class="texto_subtitle">Manzana Serrana</span>
-  <br>
-  <p class="texto_title bold space_text">Nuestros Productos</p>
+<div class="container text-center mt-3 mb-4">
+  <span class="texto_subtitle">Manzana Serrana</span><br>
+  <p class="texto_title bold espacios_textos">Nuestros</p><br>
+  <p class="texto_title bold espacios_textos">Productos</p>
 </div>
-<div class="container mb-4 mt-3">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="container mb-4">
+  <div class="d-flex justify-content-center">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link">Roja</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Amarilla</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Verde</a>
+      </li>
+    </ul>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
     <ng-container *ngFor="let aux of lista">
       <div class="col">
         <div class="card borde">
@@ -39,7 +52,7 @@
             <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
             <p>{{ aux.descripcion }}</p>
             <div class="text-center">
-              <button class="btn_pedido">Hacer Pedido</button>
+              <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
             </div>
           </div>
         </div>

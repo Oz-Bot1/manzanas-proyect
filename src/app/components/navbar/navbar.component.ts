@@ -12,18 +12,6 @@ export class NavbarComponent implements OnInit {
   home() {
     this.router.navigate(['/home']);
   }
-  productos() {
-    this.router.navigate(['/productos']);
-  }
-  pedidos() {
-    this.router.navigate(['/pedidos']);
-  }
-  actividades() {
-    this.router.navigate(['/actividades']);
-  }
-  quienesSomos() {
-    this.router.navigate(['/quienesSomos']);
-  }
   login() {
     this.router.navigate(['/login']);
   }

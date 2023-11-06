@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NavComponent } from './nav/nav.component';
     NavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     NavbarComponent,

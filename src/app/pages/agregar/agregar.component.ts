@@ -28,7 +28,8 @@ export class AgregarComponent implements OnInit, OnDestroy {
       descripcion: ['', Validators.required],
       stock: ['', Validators.required],
       nivel: ['', Validators.required],
-      estatus: ['1', Validators.required]
+      estatus: ['1', Validators.required],
+      categoria: ['roja', Validators.required],
     });
   }
 
@@ -55,7 +56,7 @@ export class AgregarComponent implements OnInit, OnDestroy {
         next: (data) => {
           const actividad = data.data[0];
           this.nombrefoto = actividad.foto;
-          console.log(actividad);
+          console.log(actividad.categoria_nombre);
           this.formulario.patchValue({
             nombre: actividad.nombre,
             estatus: actividad.estatus,
@@ -65,6 +66,7 @@ export class AgregarComponent implements OnInit, OnDestroy {
             precioKilo: actividad.precioKilo,
             precioTonelada: actividad.precioTonelada,
             stock: actividad.stock,
+            categoria: actividad.categoria_nombre,
           });
         },
         error: (error) => {
@@ -111,11 +113,23 @@ export class AgregarComponent implements OnInit, OnDestroy {
       const estatus = this.formulario.get('estatus')?.value;
       const precioCaja = this.formulario.get('precioCaja')?.value;
       const precioTonelada = this.formulario.get('precioTonelada')?.value;
+      const categoria = this.formulario.get('categoria')?.value;
+      var numCategoria = 1;
+      if(categoria === 'roja'){
+        numCategoria = 1;
+      }
+      if(categoria === 'verde'){
+        numCategoria = 2;
+      }
+      if(categoria === 'amarilla'){
+        numCategoria = 3;
+      }
+      console.log('fomr', numCategoria)
 
       if (this.id !== null) {
         const idAsNumber = parseInt(this.id, 10);
         if (!isNaN(idAsNumber)) {
-          this.inventarioService.actualizar(idAsNumber, nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada).subscribe({
+          this.inventarioService.actualizar(idAsNumber, nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
             next: () => {
               this.router.navigate(['/inventario']);
             },
@@ -127,7 +141,7 @@ export class AgregarComponent implements OnInit, OnDestroy {
           this.router.navigate(['/eventos']);
         }
       } else {
-        this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada).subscribe({
+        this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
           next: () => {
             this.router.navigate(['/inventario']);
           },

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { PedidosService } from 'src/app/service/pedidos.service';
 import { ProductosService } from 'src/app/service/productos.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-pedidos',
@@ -21,11 +22,11 @@ export class PedidosComponent implements OnInit {
 
   constructor(private pedidosService: PedidosService, private productosService: ProductosService, private fb: FormBuilder) {
     this.productForm = this.fb.group({
-      nombre: [''],
-      estado: [''],
-      ciudad: [''],
-      email: [''],
-      telefono: [''],
+      nombre: ['', [Validators.required]],
+      estado: ['', [Validators.required]],
+      ciudad: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: ['', [Validators.required, Validators.pattern('^\\d{10}$')]],
     });
   }
 
@@ -66,6 +67,23 @@ export class PedidosComponent implements OnInit {
         console.log(error);
       }
     });
+
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
   }
 
   inicializarMapa() {
@@ -105,12 +123,15 @@ export class PedidosComponent implements OnInit {
     product.selected = !product.selected;
     if (!product.selected) {
       // Si el producto se ha deseleccionado, elimínalo de la lista productosSeleccionados
-      const sub = product.cantidad*product.precioTonelada;
+      const sub = product.cantidad * product.precioTonelada;
       this.total -= sub;
       this.productosSeleccionados = this.productosSeleccionados.filter(
         (p) => p.idManzana !== product.id
       );
     } else {
+      if (!product.cantidad) {
+        product.cantidad = 1;
+      }
       this.onCantidadBlur(product);
     }
     this.actualizarBanderaContacto();
@@ -125,14 +146,13 @@ export class PedidosComponent implements OnInit {
   onCantidadBlur(product: any) {
     const nuevaCantidad = product.cantidad;
     const nuevoSubtotal = product.precioTonelada * nuevaCantidad;
-  
+
     const productoExistente = this.productosSeleccionados.find((p) => p.idManzana === product.id);
-  
     if (nuevaCantidad > 0) {
       if (productoExistente) {
         // Restar el subtotal anterior del producto al total
         this.total -= productoExistente.subtotal;
-        
+
         // Actualizar la cantidad y el subtotal del producto
         productoExistente.cantidad = nuevaCantidad;
         productoExistente.subtotal = nuevoSubtotal;
@@ -140,6 +160,7 @@ export class PedidosComponent implements OnInit {
         // Si el producto no está en la lista, agrégalo
         const productoSimplificado: any = {
           idManzana: product.id,
+          foto: product.foto,
           cantidad: nuevaCantidad,
           nombre: product.nombre,
           precio: product.precioTonelada,
@@ -147,7 +168,7 @@ export class PedidosComponent implements OnInit {
         };
         this.productosSeleccionados.push(productoSimplificado);
       }
-      
+
       // Sumar el nuevo subtotal al total
       this.total += nuevoSubtotal;
     } else if (productoExistente) {
@@ -156,35 +177,43 @@ export class PedidosComponent implements OnInit {
         (p) => p.idManzana !== product.id
       );
       this.total -= productoExistente.subtotal;
-    } else{
-      
+    } else {
+
     }
   }
-  
+
 
 
   submitForm() {
-    const formData = this.productForm.value; // Datos del formulario de usuario
+    const formData = this.productForm.value;
     const nombre = formData.nombre;
     const estado = formData.estado;
     const ciudad = formData.ciudad;
     const correo = formData.email;
     const telefono = formData.telefono;
 
-    this.pedidosService.pedido(nombre, estado, ciudad, correo, telefono, this.productosSeleccionados).subscribe({
-      next: (data) => {
-        Swal.fire({
-          title: '¡Bien!',
-          text: 'Excelente',
-          icon: 'warning',
-          confirmButtonColor: '#2b3643'
-        });
-        location.reload();
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+    if (this.productForm.valid) {
+      this.pedidosService.pedido(nombre, estado, ciudad, correo, telefono, this.productosSeleccionados).subscribe({
+        next: () => {
+          Swal.fire({
+            title: '¡Bien!',
+            text: 'Excelente',
+            icon: 'warning',
+            confirmButtonColor: '#4E9545'
+          });
+          location.reload();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }else{
+      Swal.fire({
+        title: 'Porfavor',
+        text: 'Complete lo campos',
+        icon: 'error',
+        confirmButtonColor: '#4E9545'
+      });
+    }
   }
-
 }

@@ -48,16 +48,29 @@
         <div class="mb-3">
             <label for="foto" class="form-label">Imagen del Evento</label>
             <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+                <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
             </div>
             <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="estatus" class="form-label">Estatus</label>
+                <select class="form-select" formControlName="estatus" id="estatus">
+                    <option value="1">Activo</option>
+                    <option value="2">Desactivado</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select" formControlName="categoria" id="catgeoria">
+                    <option value="roja">Roja</option>
+                    <option value="amarilla">Amarilla</option>
+                    <option value="verde">Verde</option>
+                </select>
+            </div>
+        </div>
         <div class="mb-3">
-            <label for="estatus" class="form-label">Estatus</label>
-            <select class="form-select" formControlName="estatus" id="estatus">
-                <option value="1">Activo</option>
-                <option value="2">Desactivado</option>
-            </select>
+
         </div>
         <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
     </form>
