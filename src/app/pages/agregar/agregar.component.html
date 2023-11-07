@@ -1,10 +1,9 @@
-<div class="mt-1">
-    <span>.</span>
-</div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">{{titulo}}</h1>
-</div>
-<div class="container">
+<div class="container fondo_card p-4" style="margin-top: 100px;">
+    <div class="text-center">
+        <span class="texto_subtitle">Manzana Serrana</span>
+        <br>
+        <p class="texto_title bold space_text">{{titulo}}</p>
+    </div>
     <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
         <div class="row mb-3">
             <div class="col">
@@ -17,28 +16,28 @@
                 <input type="text" class="form-control" formControlName="nivel" id="nivel"
                     placeholder="Nivel de Madurez">
             </div>
-        </div>
-        <div class="row mb-3">
             <div class="col">
                 <label for="stock" class="form-label">Stock</label>
                 <input type="number" class="form-control" formControlName="stock" id="stock"
                     placeholder="Cantidad en stock">
             </div>
+        </div>
+        <div class="row mb-3">
             <div class="col">
                 <label for="precioKilo" class="form-label">Precio por kilo</label>
                 <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
                     placeholder="Precio del producto por kilo">
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="precioCaja" class="form-label">Precio por caja</label>
+            <div class="col">
+                <label for="precioCaja" class="form-label">Precio por caja</label>
             <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
                 placeholder="Precio por caja">
-        </div>
-        <div class="mb-3">
-            <label for="precioTonelada" class="form-label">Precio por tonelada</label>
+            </div>
+            <div class="col">
+                <label for="precioTonelada" class="form-label">Precio por tonelada</label>
             <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
                 placeholder="Precio por tenelada">
+            </div>
         </div>
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
@@ -69,9 +68,8 @@
                 </select>
             </div>
         </div>
-        <div class="mb-3">
-
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
         </div>
-        <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
     </form>
 </div>

@@ -90,6 +90,8 @@ $color_fondo_card: #F6F5F1;
 
 .card-img-fixed {
     object-fit: cover;
+    width: 100%;
+    height: 200px;
 }
 
 .check-mark {
@@ -113,7 +115,7 @@ $color_fondo_card: #F6F5F1;
     height: auto;
     width: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('./assets/img/fondo_prueba.png');
+    background-image: url('./assets/img/pruebanav.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -130,6 +132,19 @@ $color_fondo_card: #F6F5F1;
 
 .nav-link {
     color: black;
+}
+.boton_expand_cat {
+    padding: 0% 3%;
+}
+
+.active_categoria {
+    height: auto;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('./assets/img/fondo_categoria.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .borde {

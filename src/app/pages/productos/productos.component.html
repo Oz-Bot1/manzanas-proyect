@@ -1,8 +1,11 @@
 <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -31,32 +34,69 @@
 </div>
 <div class="container mb-4">
   <div class="d-flex justify-content-center">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link">Roja</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Amarilla</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">Verde</a>
-      </li>
-    </ul>
+    <div class="boton_expand_cat active_categoria" id="btnRoja" (click)="cambiarCategoria('roja')">
+    Roja
+    </div>
+    <div class="boton_expand_cat" id="btnVerde" (click)="cambiarCategoria('verde')">
+    Verde
+    </div>
+    <div class="boton_expand_cat" id="btnAmarilla" (click)="cambiarCategoria('amarilla')">
+    Amarilla
+    </div>
   </div>
-  <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
-    <ng-container *ngFor="let aux of lista">
-      <div class="col">
-        <div class="card borde">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
-            <p>{{ aux.descripcion }}</p>
-            <div class="text-center">
-              <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+  <div class="mostrar" id="rojas">
+    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+      <ng-container *ngFor="let aux of listaRojas">
+        <div class="col">
+          <div class="card p-4 borde">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
+              <p>{{ aux.descripcion }}</p>
+              <div class="text-center">
+                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </ng-container>
+      </ng-container>
+    </div>
   </div>
+  <div class="ocultar" id="verdes">
+    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+      <ng-container *ngFor="let aux of listaVerdes">
+        <div class="col">
+          <div class="card borde">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
+              <p>{{ aux.descripcion }}</p>
+              <div class="text-center">
+                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="ocultar" id="amarillas">
+    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+      <ng-container *ngFor="let aux of listaAmarillas">
+        <div class="col">
+          <div class="card borde">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
+              <p>{{ aux.descripcion }}</p>
+              <div class="text-center">
+                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  
 </div>

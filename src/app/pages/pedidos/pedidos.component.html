@@ -29,6 +29,21 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<div class="container text-center mt-3 mb-4">
+    <span class="texto_subtitle">Manzana Serrana</span><br>
+    <p class="texto_title bold espacios_textos">Nuestros</p><br>
+    <p class="texto_title bold espacios_textos">Productos</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link">Mayoreo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Menudeo</a>
+      </li>
+    </ul>
+  </div>
 <div class="container mt-5 mb-5">
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -48,7 +63,7 @@
                         <div class="row row-cols-1 row-cols-md-3 g-5">
                             <ng-container *ngFor="let aux of listaProductos">
                                 <div class="col mb-2">
-                                    <div class="card">
+                                    <div class="card borde p-3">
                                         <div class="check-mark">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
@@ -59,7 +74,7 @@
                                         <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
                                             class="card-img-fixed text-center" alt="...">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ aux.nombre }}</h5>
+                                            <h5 class="card-title texto_card bold text-center">{{ aux.nombre }}</h5>
                                             <p>{{ aux.descripcion }}</p>
                                             <ng-container *ngIf="aux.estatus == 1; else no">
                                                 <p class="card-text" style="color: green;">Disponible</p>
