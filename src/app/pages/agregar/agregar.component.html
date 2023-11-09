@@ -5,11 +5,15 @@
         <p class="texto_title bold space_text">{{titulo}}</p>
     </div>
     <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
-        <div class="row mb-3">
+        <div class="row mb-3 texto_card">
             <div class="col">
                 <label for="nombre" class="form-label">Nombre del Producto</label>
                 <input type="text" formControlName="nombre" class="form-control" id="nombre"
                     placeholder="Nombre del producto">
+                <div *ngIf="formulario?.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
             <div class="col">
                 <label for="nivel" class="form-label">Nivel de Madurez</label>
@@ -17,12 +21,12 @@
                     placeholder="Nivel de Madurez">
             </div>
             <div class="col">
-                <label for="stock" class="form-label">Stock</label>
+                <label for="stock" class="form-label">Stock de tonaledas</label>
                 <input type="number" class="form-control" formControlName="stock" id="stock"
                     placeholder="Cantidad en stock">
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3 texto_card">
             <div class="col">
                 <label for="precioKilo" class="form-label">Precio por kilo</label>
                 <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
@@ -30,28 +34,28 @@
             </div>
             <div class="col">
                 <label for="precioCaja" class="form-label">Precio por caja</label>
-            <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
-                placeholder="Precio por caja">
+                <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
+                    placeholder="Precio por caja">
             </div>
             <div class="col">
                 <label for="precioTonelada" class="form-label">Precio por tonelada</label>
-            <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
-                placeholder="Precio por tenelada">
+                <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
+                    placeholder="Precio por tenelada">
             </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 texto_card">
             <label for="descripcion" class="form-label">Descripción</label>
             <input class="form-control" formControlName="descripcion" id="descripcion" rows="4"
                 placeholder="Descripción del producto">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 texto_card">
             <label for="foto" class="form-label">Imagen del Evento</label>
             <div class="text-center">
                 <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
             </div>
             <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
         </div>
-        <div class="row mb-3">
+        <div class="row mb-3 texto_card">
             <div class="col">
                 <label for="estatus" class="form-label">Estatus</label>
                 <select class="form-select" formControlName="estatus" id="estatus">

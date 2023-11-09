@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { InventarioService } from 'src/app/service/inventario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar',
@@ -103,29 +104,27 @@ export class AgregarComponent implements OnInit, OnDestroy {
   }
 
   submitForm() {
+    const nombre = this.formulario.get('nombre')?.value;
+    const precioKilo = this.formulario.get('precioKilo')?.value;
+    const descripcion = this.formulario.get('descripcion')?.value;
+    const fotoControl = this.nombrefoto;
+    const stock = this.formulario.get('stock')?.value;
+    const nivel = this.formulario.get('nivel')?.value;
+    const estatus = this.formulario.get('estatus')?.value;
+    const precioCaja = this.formulario.get('precioCaja')?.value;
+    const precioTonelada = this.formulario.get('precioTonelada')?.value;
+    const categoria = this.formulario.get('categoria')?.value;
+    var numCategoria = 1;
+    if (categoria === 'roja') {
+      numCategoria = 1;
+    }
+    if (categoria === 'verde') {
+      numCategoria = 2;
+    }
+    if (categoria === 'amarilla') {
+      numCategoria = 3;
+    }
     if (this.formulario.valid) {
-      const nombre = this.formulario.get('nombre')?.value;
-      const precioKilo = this.formulario.get('precioKilo')?.value;
-      const descripcion = this.formulario.get('descripcion')?.value;
-      const fotoControl = this.nombrefoto;
-      const stock = this.formulario.get('stock')?.value;
-      const nivel = this.formulario.get('nivel')?.value;
-      const estatus = this.formulario.get('estatus')?.value;
-      const precioCaja = this.formulario.get('precioCaja')?.value;
-      const precioTonelada = this.formulario.get('precioTonelada')?.value;
-      const categoria = this.formulario.get('categoria')?.value;
-      var numCategoria = 1;
-      if(categoria === 'roja'){
-        numCategoria = 1;
-      }
-      if(categoria === 'verde'){
-        numCategoria = 2;
-      }
-      if(categoria === 'amarilla'){
-        numCategoria = 3;
-      }
-      console.log('fomr', numCategoria)
-
       if (this.id !== null) {
         const idAsNumber = parseInt(this.id, 10);
         if (!isNaN(idAsNumber)) {
@@ -151,7 +150,12 @@ export class AgregarComponent implements OnInit, OnDestroy {
         });
       }
     } else {
-      console.log('Complete el formulario');
+      Swal.fire({
+        title: 'Porfavor',
+        text: 'Complete lo campos',
+        icon: 'error',
+        confirmButtonColor: '#4E9545'
+      });
     }
   }
 }

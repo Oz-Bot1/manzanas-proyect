@@ -33,29 +33,33 @@
   <p class="texto_title bold espacios_textos">Productos</p>
 </div>
 <div class="container mb-4">
-  <div class="d-flex justify-content-center">
-    <div class="boton_expand_cat active_categoria" id="btnRoja" (click)="cambiarCategoria('roja')">
-    Roja
+  <div class="d-flex justify-content-center texto_catgeorias">
+    <div class="boton_expand_cat active_categoria cursor_pointer" id="btnRoja" (click)="cambiarCategoria('roja')">
+      Roja
     </div>
-    <div class="boton_expand_cat" id="btnVerde" (click)="cambiarCategoria('verde')">
-    Verde
+    <div class="boton_expand_cat cursor_pointer" id="btnVerde" (click)="cambiarCategoria('verde')">
+      Verde
     </div>
-    <div class="boton_expand_cat" id="btnAmarilla" (click)="cambiarCategoria('amarilla')">
-    Amarilla
+    <div class="boton_expand_cat cursor_pointer" id="btnAmarilla" (click)="cambiarCategoria('amarilla')">
+      Amarilla
     </div>
   </div>
   <div class="mostrar" id="rojas">
     <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
       <ng-container *ngFor="let aux of listaRojas">
         <div class="col">
-          <div class="card p-4 borde">
-            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+          <div class="card p-4 borde" style="min-height: 100%;">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
+              alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
-              <p>{{ aux.descripcion }}</p>
               <div class="text-center">
-                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+                <p class="texto_card text-center espacios_textos">Manzana</p><br>
+                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}</p>
               </div>
+              <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
+            </div>
+            <div class="text-center cursor_pointer">
+              <div class="btn_pedido" routerLink="/pedidos">Hacer Pedido</div>
             </div>
           </div>
         </div>
@@ -66,14 +70,18 @@
     <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
       <ng-container *ngFor="let aux of listaVerdes">
         <div class="col">
-          <div class="card borde">
-            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+          <div class="card p-4 borde" style="min-height: 100%;">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
+              alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
-              <p>{{ aux.descripcion }}</p>
               <div class="text-center">
-                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+                <p class="texto_card text-center espacios_textos">Manzana</p><br>
+                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}</p>
               </div>
+              <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
+            </div>
+            <div class="text-center cursor_pointer">
+              <div class="btn_pedido" routerLink="/pedidos">Hacer Pedido</div>
             </div>
           </div>
         </div>
@@ -84,19 +92,22 @@
     <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
       <ng-container *ngFor="let aux of listaAmarillas">
         <div class="col">
-          <div class="card borde">
-            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed" alt="...">
+          <div class="card p-4 borde" style="min-height: 100%;">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
+              alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center texto_card bold">{{ aux.nombre }}</h5>
-              <p>{{ aux.descripcion }}</p>
               <div class="text-center">
-                <button class="btn_pedido" routerLink="/pedidos">Hacer Pedido</button>
+                <p class="texto_card text-center espacios_textos">Manzana</p><br>
+                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}</p>
               </div>
+              <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
+            </div>
+            <div class="text-center cursor_pointer">
+              <div class="btn_pedido" routerLink="/pedidos">Hacer Pedido</div>
             </div>
           </div>
         </div>
       </ng-container>
     </div>
   </div>
-  
 </div>

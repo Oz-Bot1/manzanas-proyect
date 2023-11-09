@@ -3,9 +3,23 @@
 @import "~font-awesome/css/font-awesome.css";
 @import 'leaflet/dist/leaflet.css';
 @import 'swiper/swiper-bundle.css';
+@import 'assets/scss/fonts.scss';
+@import 'assets/scss/iconos.scss';
+
+$kamerik-bold: 'kamerik-bold';
+$kamerik-book-oblique: 'kamerik-book-oblique';
+$kamerik-book: 'kamerik-book';
+$kamerik-light-oblique: 'kamerik-light-oblique';
+$kamerik-light: 'kamerik-light';
+$kamerik-thin-oblique: 'kamerik-thin-oblique';
+$kamerik-thin: 'kamerik-thin';
+
 $color_verde: #4E9545;
-$letra: 'open-sans';
-$color_gris: #b3b3b3;
+$color_verde_card: #72ad3f;
+$color_verde_nav: #94b600;
+$color_verde_footer: #3aa56c;
+$color_verde_dark: #1e8950;
+$color_gris: #929292;
 $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
 
@@ -58,14 +72,22 @@ $color_fondo_card: #F6F5F1;
 }
 
 .btn_pedido {
-    padding: 8px 40px 8px 40px;
-    border-color: $color_gris;
-    background-color: rgba(0, 0, 0, 0);
+    padding: 15px 40px;
+    text-transform: uppercase;
+    background-color: rgba(201, 34, 34, 0);
     border-radius: 20px;
-    color: $color_gris_oscuro;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: $color_gris;
+    font-weight: bolder;
+    font-family: $kamerik-light;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
+
+.btn_pedido:hover {
+    background-color: $color_verde_card;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
 
 .btn_enviar_pedido {
     width: 100%;
@@ -91,7 +113,7 @@ $color_fondo_card: #F6F5F1;
 .card-img-fixed {
     object-fit: cover;
     width: 100%;
-    height: 200px;
+    height: 300px;
 }
 
 .check-mark {
@@ -122,22 +144,18 @@ $color_fondo_card: #F6F5F1;
 }
 
 /* Estilo para los elementos del menú */
-.navbar-nav .nav-item {
-    margin: 0 10px;
+.color_nav_item{
+    color: $color_gris !important;
+    font-size: medium;
 }
 
-.navbar-nav .nav-item .blanco {
-    font-size: 18px;
-}
-
-.nav-link {
-    color: black;
-}
 .boton_expand_cat {
     padding: 0% 3%;
 }
 
 .active_categoria {
+    font-weight: bold;
+    color: white;
     height: auto;
     width: auto;
     background-color: rgba(0, 0, 0, 0);
@@ -148,13 +166,13 @@ $color_fondo_card: #F6F5F1;
 }
 
 .borde {
-    border: 2px solid $color_verde;
+    border: 2px solid $color_verde_card;
     border-radius: 0%;
 }
 
 
 .texto_title {
-    font-family: $letra;
+    font-family: $kamerik-bold;
     font-size: 65px;
     color: $color_verde;
     padding: 0%;
@@ -162,15 +180,37 @@ $color_fondo_card: #F6F5F1;
 }
 
 .texto_card {
-    font-family: $letra;
+    font-family: $kamerik-bold;
+    font-size: 15px;
+    color: $color_verde_card;
+    font-weight: bold;
+    padding: 0%;
+    margin: 0%;
+}
+
+.texto_card_big {
+    font-family: $kamerik-bold;
     font-size: 30px;
-    color: $color_verde;
+    color: $color_verde_card;
+    font-weight: bold;
+    padding: 0%;
+    margin: 0%;
 }
 
 .texto_subtitle {
-    font-family: $letra;
-    font-size: 25px;
+    font-family: $kamerik-book;
+    font-size: 20px;
     color: $color_gris;
+    font-weight: bold;
+}
+
+.texto_catgeorias {
+    font-family: $kamerik-book;
+    font-size: 20px;
+}
+
+.descripcion_card {
+    text-align: justify;
 }
 
 .bold {
