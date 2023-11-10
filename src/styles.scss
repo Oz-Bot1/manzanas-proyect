@@ -24,8 +24,10 @@ $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
 
 .invalid-check {
-    font-size: small ;
+    font-size: small;
     color: red !important;
+    font-family: $kamerik-thin;
+    font-weight: bold;
 }
 
 .blanco {
@@ -41,7 +43,7 @@ $color_fondo_card: #F6F5F1;
 }
 
 .espacio {
-    height: 25px;
+    margin-top: 80px;
 }
 
 .overlay {
@@ -86,8 +88,7 @@ $color_fondo_card: #F6F5F1;
     background-color: $color_verde_card;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: #fff;
-    transform: translateY(-7px);
-  }
+}
 
 .btn_enviar_pedido {
     width: 100%;
@@ -100,7 +101,14 @@ $color_fondo_card: #F6F5F1;
     padding: 10px 10px;
     color: $color_verde_card;
     text-transform: lowercase;
-  }  
+}
+
+.btn_enviar_pedido:hover {
+    background-color: $color_verde_card;
+    border: 2px solid $color_verde_card;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+}
 
 .img-table {
     background-image: none !important;
@@ -124,6 +132,11 @@ $color_fondo_card: #F6F5F1;
     color: white;
     padding: 5px;
     border-radius: 50%;
+}
+
+.form-check-input[type="checkbox"] {
+    width: 23px;
+    height: 23px;
 }
 
 .ocultar {
@@ -166,7 +179,7 @@ footer {
 }
 
 /* Estilo para los elementos del menú */
-.color_nav_item{
+.color_nav_item {
     color: $color_gris !important;
     font-size: medium;
 }
@@ -237,6 +250,8 @@ footer {
 
 .descripcion_card {
     text-align: justify;
+    font-family: $kamerik-book;
+    color: $color_gris;
 }
 
 .bold {
@@ -266,6 +281,7 @@ footer {
     cursor: pointer;
     color: $color_gris;
 }
+
 .icon_footer:hover {
     text-decoration: none;
     cursor: pointer;
@@ -279,12 +295,15 @@ footer {
 .icon .path1::before {
     color: $color_gris !important;
 }
+
 .icon .path2::before {
     color: $color_gris !important;
 }
+
 .icon .path3::before {
     color: $color_gris !important;
 }
+
 
 //revisar este en productos es para que se despliegue palabra por palabra
 .space_text {
@@ -292,5 +311,6 @@ footer {
 }
 
 .espacios_textos {
-    display: inline-block; line-height: 1;
+    display: inline-block;
+    line-height: 1;
 }

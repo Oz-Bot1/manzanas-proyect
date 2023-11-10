@@ -32,17 +32,6 @@ export class PedidosComponent implements OnInit {
   }
 
   banderaMapa: boolean = false;
-  cambiarMapa() {
-    this.banderaMapa = !this.banderaMapa;
-    const id = document.getElementById('banderaMapa');
-    id?.classList.remove('ocultar');
-    id?.classList.remove('mostrar');
-    if (this.banderaMapa == true) {
-      id?.classList.add('mostrar');
-    } else {
-      id?.classList.add('ocultar');
-    }
-  }
 
   ngOnInit(): void {
     this.pedidosService.listaPuntos().subscribe({
@@ -219,6 +208,25 @@ export class PedidosComponent implements OnInit {
         icon: 'error',
         confirmButtonColor: '#4E9545'
       });
+    }
+  }
+
+  cambiarMapa() {
+    this.banderaMapa = !this.banderaMapa;
+    const id = document.getElementById('banderaMapa');
+    const mayoreo = document.getElementById('mayoreo');
+    const menudeo = document.getElementById('menudeo');
+    id?.classList.remove('ocultar', 'mostrar');
+    mayoreo?.classList.remove('ocultar', 'mostrar');
+    menudeo?.classList.remove('ocultar', 'mostrar');
+    if (this.banderaMapa == true) {
+      id?.classList.add('mostrar');
+      menudeo?.classList.add('mostrar');
+      mayoreo?.classList.add('ocultar');
+    } else {
+      id?.classList.add('ocultar');
+      menudeo?.classList.add('ocultar');
+      mayoreo?.classList.add('mostrar');
     }
   }
 }
