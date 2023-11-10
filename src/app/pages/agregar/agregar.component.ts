@@ -46,7 +46,7 @@ export class AgregarComponent implements OnInit, OnDestroy {
         this.tituloBoton = 'Actualizar Producto';
         this.buscarPunto(idAsNumber);
       } else {
-        this.router.navigate(['/eventos']);
+        this.router.navigate(['/admin/inventario']);
       }
     }
   }
@@ -130,19 +130,19 @@ export class AgregarComponent implements OnInit, OnDestroy {
         if (!isNaN(idAsNumber)) {
           this.inventarioService.actualizar(idAsNumber, nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
             next: () => {
-              this.router.navigate(['/inventario']);
+              this.router.navigate(['/admin/inventario']);
             },
             error: (error) => {
               console.log(error);
             }
           });
         } else {
-          this.router.navigate(['/eventos']);
+          this.router.navigate(['/admin/inventario']);
         }
       } else {
         this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
           next: () => {
-            this.router.navigate(['/inventario']);
+            this.router.navigate(['/admin/inventario']);
           },
           error: (error) => {
             console.log(error);

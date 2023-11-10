@@ -52,7 +52,7 @@ export class EventosComponent implements OnInit {
   buscarPunto(id: number, rol: number, nombre: string) {
     if (rol === 1) {
       localStorage.setItem('idAct', id.toString());
-      this.router.navigate(['/agregarPunto']);
+      this.router.navigate(['/admin/agregarPunto']);
     } else {
       this.idAct = id;
       this.nombreProducto = nombre;
@@ -74,7 +74,7 @@ export class EventosComponent implements OnInit {
   buscarEvento(id: number, rol: number, nombre: string) {
     if (rol === 1) {
       localStorage.setItem('idAct', id.toString());
-      this.router.navigate(['/agregarEvento']);
+      this.router.navigate(['/admin/agregarEvento']);
     } else {
       this.nombreProducto = nombre;
     }

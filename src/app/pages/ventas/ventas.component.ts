@@ -36,7 +36,7 @@ export class VentasComponent implements OnInit {
   idAct: number = 0;
   liberar(id: number) {
     localStorage.setItem('idAct', id.toString());
-    this.router.navigate(['/liberar']);
+    this.router.navigate(['/admin/liberar']);
 
     console.log("ID del pedido a liberar:", id);
   }

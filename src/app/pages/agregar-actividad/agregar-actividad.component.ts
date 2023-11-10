@@ -10,8 +10,8 @@ import { AgregarService } from 'src/app/service/agregar.service';
   styleUrls: ['./agregar-actividad.component.scss']
 })
 export class AgregarActividadComponent implements OnInit, OnDestroy {
-  titulo: string = 'Agregar Evento';
-  tituloBoton: string = 'Agregar Evento';
+  titulo: string = 'Agregar Actividad';
+  tituloBoton: string = 'Agregar Actividad';
   //id para actualizar
   id = localStorage.getItem('idAct');
   //Variables de la foto
@@ -35,8 +35,8 @@ export class AgregarActividadComponent implements OnInit, OnDestroy {
     if (this.id !== null) {
       const idAsNumber = parseInt(this.id, 10);
       if (!isNaN(idAsNumber)) {
-        this.titulo = "Actualizar Evento";
-        this.tituloBoton = 'Actualizar Evento'
+        this.titulo = "Actualizar Actividad";
+        this.tituloBoton = 'Actualizar Actividad'
         this.buscar(idAsNumber);
       } else {
         this.router.navigate(['/eventos']);
@@ -99,19 +99,19 @@ export class AgregarActividadComponent implements OnInit, OnDestroy {
         if (!isNaN(idAsNumber)) {
           this.actividadesService.actualizar(idAsNumber, nombre, descripcion, fotoControl).subscribe({
             next: () => {
-              this.router.navigate(['/actividadesAdmin']);
+              this.router.navigate(['/admin/actividadesAdmin']);
             },
             error: (error) => {
               console.log(error);
             }
           });
         } else {
-          this.router.navigate(['/eventos']);
+          this.router.navigate(['/admin/eventos']);
         }
       } else {
         this.agregarService.registrarActividad(nombre, descripcion, fotoControl).subscribe({
           next: () => {
-            this.router.navigate(['/actividadesAdmin']);
+            this.router.navigate(['/admin/actividadesAdmin']);
           },
           error: (error) => {
             console.log(error);

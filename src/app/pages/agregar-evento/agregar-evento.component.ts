@@ -40,7 +40,7 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
         this.tituloBoton = 'Actualizar Evento'
         this.buscarEvento(idAsNumber);
       } else {
-        this.router.navigate(['/eventos']);
+        this.router.navigate(['/admin/eventos']);
       }
     } else {
       this.generarMapa(this.latitud, this.longitud);
@@ -156,19 +156,19 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
         if (!isNaN(idAsNumber)) {
           this.eventosService.actualizarEvento(idAsNumber, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
             next: () => {
-              this.router.navigate(['/eventos']);
+              this.router.navigate(['/admin/eventos']);
             },
             error: (error) => {
               console.log(error);
             }
           });
         } else {
-          this.router.navigate(['/eventos']);
+          this.router.navigate(['/admin/eventos']);
         }
       } else {
         this.agregarService.registrarEvento(nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
           next: () => {
-            this.router.navigate(['/eventos']);
+            this.router.navigate(['/admin/eventos']);
           },
           error: (error) => {
             console.log(error);

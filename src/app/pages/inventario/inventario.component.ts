@@ -52,7 +52,7 @@ export class InventarioComponent implements OnInit {
   buscar(id: number, rol: number, nombre: string) {
     if (rol === 1) {
       localStorage.setItem('idAct', id.toString());
-      this.router.navigate(['/agregar']);
+      this.router.navigate(['/admin/agregar']);
     } else {
       this.idAct = id;
       this.nombreProducto = nombre;

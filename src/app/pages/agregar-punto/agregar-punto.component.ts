@@ -42,7 +42,7 @@ export class AgregarPuntoComponent implements OnInit, OnDestroy {
         this.tituloBoton = 'Actualizar Punto de Venta';
         this.buscarPunto(idAsNumber);
       } else {
-        this.router.navigate(['/eventos']);
+        this.router.navigate(['/admin/eventos']);
       }
     } else {
       this.generarMapa(this.latitud, this.longitud);
@@ -118,19 +118,19 @@ export class AgregarPuntoComponent implements OnInit, OnDestroy {
         if (!isNaN(idAsNumber)) {
           this.eventosService.actualizarPunto(idAsNumber, nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
             next: () => {
-              this.router.navigate(['/eventos']);
+              this.router.navigate(['/admin/eventos']);
             },
             error: (error) => {
               console.log(error);
             }
           });
         } else {
-          this.router.navigate(['/eventos']);
+          this.router.navigate(['/admin/eventos']);
         }
       } else {
         this.agregarService.registrarPunto(nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
           next: () => {
-            this.router.navigate(['/eventos']);
+            this.router.navigate(['/admin/eventos']);
           },
           error: (error) => {
             console.log(error);

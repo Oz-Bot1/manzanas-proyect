@@ -49,7 +49,7 @@ export class ActividadesAdminComponent implements OnInit {
   buscar(id: number, rol: number, nombre: string) {
     if (rol === 1) {
       localStorage.setItem('idAct', id.toString());
-      this.router.navigate(['/agregarActividad']);
+      this.router.navigate(['/admin/agregarActividad']);
     } else {
       this.idAct = id;
       this.nombreProducto = nombre;

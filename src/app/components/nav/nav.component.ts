@@ -10,19 +10,19 @@ import { LoginService } from 'src/app/service/login.service';
 export class NavComponent {
   constructor(private router: Router, private login: LoginService) {}
   ventas() {
-    this.router.navigate(['/ventas']);
+    this.router.navigate(['/admin/ventas']);
   }
 
   inventario() {
-    this.router.navigate(['/inventario']);
+    this.router.navigate(['/admin/inventario']);
   }
 
   actividades() {
-    this.router.navigate(['/actividadesAdmin']);
+    this.router.navigate(['/admin/actividadesAdmin']);
   }
 
   eventos() {
-    this.router.navigate(['/eventos']);
+    this.router.navigate(['/admin/eventos']);
   }
 
   logout() {
@@ -30,32 +30,32 @@ export class NavComponent {
   }
 
   agregarProducto() {
-    this.router.navigate(['/agregar']);
+    this.router.navigate(['/admin/agregar']);
   }
 
   agregarDerivado() {
-    this.router.navigate(['/agregarDerivado']);
+    this.router.navigate(['/admin/agregarDerivado']);
   }
 
   agregarActividad(){
-    this.router.navigate(['/agregarActividad']);
+    this.router.navigate(['/admin/agregarActividad']);
   }
 
   agregarEvento(){
-    this.router.navigate(['/agregarEvento']);
+    this.router.navigate(['/admin/agregarEvento']);
   }
 
   agregarPunto(){
-    this.router.navigate(['/agregarPunto']);
+    this.router.navigate(['/admin/agregarPunto']);
   }
 
   agregarProductor(){
-    this.router.navigate(['/agregarProductor']);
+    this.router.navigate(['/admin/agregarProductor']);
 
   }
 
   liberar() {
-    this.router.navigate(['/liberar']);
+    this.router.navigate(['/admin/liberar']);
   }
 
 }

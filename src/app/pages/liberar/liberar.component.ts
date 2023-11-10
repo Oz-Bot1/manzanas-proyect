@@ -51,7 +51,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
         this.idNumber = idAsNumber;
         this.buscarPedido(idAsNumber);
       } else {
-        this.router.navigate(['/eventos']);
+        this.router.navigate(['/admin/eventos']);
       }
     }
   }
@@ -94,7 +94,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
       const id = this.idNumber;
       this.liberarService.liberar(id).subscribe({
         next: () => {
-          this.router.navigate(['/ventas']);
+          this.router.navigate(['/admin/ventas']);
         },
         error: (error) => {
           console.log(error);

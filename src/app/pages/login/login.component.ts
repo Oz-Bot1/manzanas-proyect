@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
               const token = response.data.token;
               this.loginService.flagChange(true);
               if (response.data.idRol == 1) {
-                this.router.navigate(['/ventas']);
+                this.router.navigate(['/admin/ventas']);
                 console.log(token);
               } else {
                 this.router.navigate(['/home']);
