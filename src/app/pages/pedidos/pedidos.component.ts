@@ -16,6 +16,7 @@ export class PedidosComponent implements OnInit {
   longitud: number = -97.38592150346066;
   lista: any[] = [];
   listaProductos: any[] = [];
+  listaProductosCompleta: any[] = [];
   banderaContacto: boolean = false;
   mapa: L.Map | undefined;
   productForm: FormGroup;
@@ -62,9 +63,13 @@ export class PedidosComponent implements OnInit {
     this.productosService.lista().subscribe({
       next: (data) => {
         this.listaProductos = data.data;
+        this.listaProductosCompleta = data.data;
       },
       error: (error) => {
         console.log(error);
+      },
+      complete: () => {
+        this.listaProductos = this.listaProductos.filter((producto) => producto.estatus === 1);
       }
     });
 
@@ -201,7 +206,7 @@ export class PedidosComponent implements OnInit {
             icon: 'warning',
             confirmButtonColor: '#4E9545'
           });
-          location.reload();
+          this.ngOnInit();
         },
         error: (error) => {
           console.log(error);
