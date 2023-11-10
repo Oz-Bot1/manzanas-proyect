@@ -14,6 +14,7 @@ Swiper.use([Navigation, Pagination, Autoplay]);
 })
 export class InventarioComponent implements OnInit {
   lista: any[] = [];
+  listaDerivados: any[] = [];
 
   constructor(private inventarioService: InventarioService, private agregarService: AgregarService, private router: Router) {
   }
@@ -45,6 +46,18 @@ export class InventarioComponent implements OnInit {
         }
       }
     );
+    this.inventarioService.listaDerivados().subscribe(
+      {
+        next: (data) => {
+          this.listaDerivados = data.data;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+        }
+      }
+    );
   }
 
   idAct: number = 0;
@@ -53,6 +66,16 @@ export class InventarioComponent implements OnInit {
     if (rol === 1) {
       localStorage.setItem('idAct', id.toString());
       this.router.navigate(['/admin/agregar']);
+    } else {
+      this.idAct = id;
+      this.nombreProducto = nombre;
+    }
+  }
+
+  buscarDerivado(id: number, rol: number, nombre: string) {
+    if (rol === 1) {
+      localStorage.setItem('idAct', id.toString());
+      this.router.navigate(['/admin/agregarDerivado']);
     } else {
       this.idAct = id;
       this.nombreProducto = nombre;
@@ -69,6 +92,18 @@ export class InventarioComponent implements OnInit {
   eliminar() {
     const id = this.idAct;
     this.inventarioService.eliminar(id).subscribe({
+      next: () => {
+        location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  eliminarDerivado() {
+    const id = this.idAct;
+    this.inventarioService.eliminarDerivado(id).subscribe({
       next: () => {
         location.reload();
       },

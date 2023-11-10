@@ -37,6 +37,38 @@
     </tbody>
   </table>
 </div>
+<!-- Derivados -->
+<div class="container mt-3 p-1">
+  <table class="table table-hover">
+    <thead>
+      <tr class="text-center">
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Imagen</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of listaDerivados" >
+        <th class="text-center vertical_align">{{ list.id }}</th>
+        <th class="text-center vertical_align">{{ list.nombre }}</th>
+        <th class="text-center vertical_align">{{ list.descripcion }}</th>
+        <td class="text-center vertical_align">
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
+        </td>
+        <td class="text-center vertical_align">
+          <button class="btn btn-rojo" (click)="buscarDerivado(list.id, 1, list.nombre)">Actualizar</button>
+        </td>
+        <td class="text-center vertical_align">
+          <button class="btn btn-rojo" (click)="buscarDerivado(list.id, 2, list.nombre)" data-bs-toggle="modal"
+            data-bs-target="#eliminarDerivado">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <!-- Modal para eliminar -->
 <div class="modal fade" id="eliminar" tabindex="-1"
   aria-labelledby="eliminar" aria-hidden="true">
@@ -52,6 +84,24 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" (click)="eliminar()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="eliminarDerivado" tabindex="-1"
+  aria-labelledby="eliminarDerivado" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="eliminarDerivado">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar {{ nombreProducto }} ?????
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarDerivado()">Save changes</button>
       </div>
     </div>
   </div>
