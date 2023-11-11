@@ -1,39 +1,58 @@
-<div class="mt-1">
-    <span>.</span>
+<div class="content fondo_card">
+  <div class="text-center">
+    <span class="texto_subtitle">Manzana Serrana</span>
+    <br>
+    <p class="texto_title bold space_text">{{titulo}}</p>
   </div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">{{ titulo }}</h1>
-</div>
-<div class="container">
-    <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col">
         <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre del Evento">
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <label for="fechaInicio" class="form-label">Fecha de Inicio</label>
-                <input type="date" class="form-control" id="fechaInicio" formControlName="fechaInicio">
-              </div>
-              <div class="col">
-                <label for="fechaFin" class="form-label">Fecha de Fin</label>
-                <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin">
-              </div>
-        </div>
-        <div class="mb-3">
-          <label for="foto" class="form-label">Imagen del Evento</label>
-          <div class="text-center">
-            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+          <label for="nombre" class="form-label texto_card">Nombre</label>
+          <input type="text" class="form-control texto_input" id="nombre" formControlName="nombre"
+            placeholder="Nombre del Evento">
+          <div *ngIf="eventoForm.get('nombre')?.hasError('required') && eventoForm.get('nombre')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
           </div>
-          <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
         </div>
-        <div class="mb-3">
-          <div class="mx-auto" id="map" style="width: 100%; height: 300px;"></div>
       </div>
-        <div class="mb-3">
-          <label for="descripcion" class="form-label">Descripción</label>
-          <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripcion"></textarea>
+      <div class="col">
+        <label for="fechaInicio" class="form-label texto_card">Fecha de Inicio</label>
+        <input type="date" class="form-control texto_input" id="fechaInicio" formControlName="fechaInicio">
+        <div *ngIf="eventoForm.get('fechaInicio')?.hasError('required') && eventoForm.get('fechaInicio')?.touched"
+          class="invalid-check">
+          Este campo es requerido.
         </div>
-        <button type="submit" class="btn btn-rojo">{{ tituloBoton }}</button>
-      </form>
+      </div>
+      <div class="col">
+        <label for="fechaFin" class="form-label texto_card">Fecha de Fin</label>
+        <input type="date" class="form-control texto_input" id="fechaFin" formControlName="fechaFin">
+        <div *ngIf="eventoForm.get('fechaFin')?.hasError('required') && eventoForm.get('fechaFin')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="foto" class="form-label texto_card">Imagen del Evento</label>
+      <div class="text-center">
+        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+      </div>
+      <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input" id="foto">
+    </div>
+    <div class="mb-3">
+      <div class="mx-auto" id="map" style="width: 100%; height: 300px;"></div>
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label texto_card">Descripción</label>
+      <textarea class="form-control texto_input" id="descripcion" formControlName="descripcion"
+        placeholder="Descripcion"></textarea>
+        <div *ngIf="eventoForm.get('descripcion')?.hasError('required') && eventoForm.get('descripcion')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
+    </div>
+    <button type="submit" class="btn btn-rojo">{{ tituloBoton }}</button>
+  </form>
 </div>

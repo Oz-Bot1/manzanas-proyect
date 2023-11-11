@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light rojo fixed-top">
+<nav class="navbar fondo_navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <div class="text-center">
+        <div class="">
             <img src="../../../assets/img/Logo Horizontal.svg" alt="" width="70%" height="70%">
           </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -10,43 +10,43 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active cursor_pointer">
-                    <a class="nav-link" (click)="inventario()"><i class="gris fa fa-archive"></i>
-                        <span class="gris"> Inventario</span></a>
+                    <a class="nav-link color_nav_item" (click)="inventario()"><i class="fa fa-archive"></i>
+                        <span> Inventario</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link" (click)="actividades()"><i class="gris fa fa-calendar-check-o"></i>
-                        <span class="gris"> Actividades</span></a>
+                    <a class="nav-link color_nav_item" (click)="actividades()"><i class="fa fa-calendar-check-o"></i>
+                        <span> Actividades</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link" (click)="eventos()"><i class="gris fa fa-bicycle"></i>
-                        <span class="gris"> Eventos</span></a>
+                    <a class="nav-link color_nav_item" (click)="eventos()"><i class="fa fa-bicycle"></i>
+                        <span> Eventos</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link" (click)="ventas()"><i class="gris fa fa-line-chart"></i>
-                        <span class="gris"> Ventas y Pedidos</span></a>
+                    <a class="nav-link color_nav_item" (click)="ventas()"><i class="fa fa-line-chart"></i>
+                        <span> Ventas y Pedidos</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false"><i class="gris fa fa-plus-square"></i>
+                    <a class="nav-link dropdown-toggle color_nav_item" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fa fa-plus-square"></i>
                          Agregar
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" (click)="agregarProducto()">Producto</a></li>
-                        <li><a class="dropdown-item" (click)="agregarDerivado()">Derivado</a></li>
-                        <li><a class="dropdown-item" (click)="agregarActividad()">Actividad</a></li>
-                        <li><a class="dropdown-item" (click)="agregarEvento()">Evento</a></li>
-                        <li><a class="dropdown-item" (click)="agregarPunto()">Punto de venta</a></li>
-                        <li><a class="dropdown-item" (click)="agregarProductor()">Productor</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarProducto()">Producto</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarDerivado()">Derivado</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarActividad()">Actividad</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarEvento()">Evento</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarPunto()">Punto de venta</a></li>
+                        <li><a class="dropdown-item cursor_pointer" (click)="agregarProductor()">Productor</a></li>
                     </ul>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link" (click)="logout()"><i class="gris fa fa-sign-out"></i>
-                        <span class="gris"> Cerrar Sesión</span>
+                    <a class="nav-link color_nav_item" (click)="logout()"><i class="fa fa-sign-out"></i>
+                        <span> Cerrar Sesión</span>
                     </a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                        <i class="fa fa-comments-o gris" aria-hidden="true"></i>
+                    <a class="nav-link color_nav_item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <i class="fa fa-comments-o" aria-hidden="true"></i>
                     </a>
                 </li>
             </ul>

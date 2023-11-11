@@ -13,20 +13,21 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
+                                    <h1 class="texto_card_big mb-4">Bienvenido</h1>
                                 </div>
                                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                                     <!-- Contenido del formulario -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                            formControlName="usuario" id="usuario"
-                                            placeholder="Usuario">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" formControlName="usuario" class="form-control"
+                                            id="floatingInput" placeholder="usuario">
+                                        <label for="floatingInput">Usuario</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                            formControlName="contrasenia" id="contrasenia" placeholder="Contraseña">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" formControlName="contrasenia" class="form-control"
+                                            id="floatingPassword" placeholder="Password">
+                                        <label for="floatingPassword">Password</label>
                                     </div>
-                                    <button type="submit" class="btn btn-rojo btn-user btn-block">Entrar</button>
+                                    <button type="submit" class="btn btn-rojo">Entrar</button>
                                 </form>
                                 <hr>
                                 <div class="text-center">

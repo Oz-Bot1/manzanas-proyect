@@ -4,7 +4,7 @@ import { PedidosService } from 'src/app/service/pedidos.service';
 import { ProductosService } from 'src/app/service/productos.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import Swiper from 'swiper';
+import Swiper, { Pagination, Navigation } from 'swiper';
 
 @Component({
   selector: 'app-pedidos',
@@ -62,21 +62,24 @@ export class PedidosComponent implements OnInit {
       }
     });
 
-    var swiper = new Swiper(".mySwiper", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
+    const swiper = new Swiper('.mySwiper', {
+      modules: [Pagination, Navigation],
+      loop: false,
       pagination: {
-        el: ".swiper-pagination",
+        el: '.swiper-pagination',
+        clickable: true
       },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        
+      },
+      spaceBetween: 16,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+      }
     });
   }
 

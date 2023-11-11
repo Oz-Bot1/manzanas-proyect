@@ -39,8 +39,7 @@ export class LoginService {
     formData.append('contrasenia', contrasenia);
 
     return this.http.post<any>(`${urlApi}/login`, formData).pipe(tap  (response => {
-      this.cookie.set('token', response.data.token);
-      this.cookie.set('idRol', response.data.idRol);
+      
       this.flagChange(true);
     })
     );

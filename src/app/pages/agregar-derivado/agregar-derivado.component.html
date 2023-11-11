@@ -1,26 +1,35 @@
-<div class="mt-1">
-    <span>.</span>
-</div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">{{titulo}}</h1>
-</div>
-<div class="container">
+<div class="content fondo_card">
+    <div class="text-center">
+        <span class="texto_subtitle">Manzana Serrana</span>
+        <br>
+        <p class="texto_title bold space_text">{{titulo}}</p>
+    </div>
     <form [formGroup]="formulario" (ngSubmit)="guardarDerivado()">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="Nombre">
-        </div>
-        <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Evento</label>
-            <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+            <label for="nombre" class="form-label texto_card">Nombre</label>
+            <input type="text" id="nombre" class="form-control texto_input" formControlName="nombre"
+                placeholder="Nombre">
+            <div *ngIf="formulario?.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched"
+                class="invalid-check">
+                Este campo es requerido.
             </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <textarea id="descripcion" class="form-control" formControlName="descripcion" placeholder="Descripcion"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">{{tituloBoton}}</button>
+        <div class="mb-3">
+            <label for="foto" class="form-label texto_card">Imagen del Evento</label>
+            <div class="text-center">
+                <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+            </div>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input" id="foto">
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label texto_card">Descripción</label>
+            <textarea id="descripcion" class="form-control texto_input" formControlName="descripcion"
+                placeholder="Descripcion"></textarea>
+            <div *ngIf="formulario?.get('descripcion')?.hasError('required') && formulario.get('descripcion')?.touched"
+                class="invalid-check">
+                Este campo es requerido.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-rojo">{{tituloBoton}}</button>
     </form>
 </div>

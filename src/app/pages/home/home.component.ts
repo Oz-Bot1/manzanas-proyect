@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeService } from 'src/app/service/home.service';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Swiper,{ Navigation, Pagination } from 'swiper';
 
-Swiper.use([Navigation, Pagination, Autoplay]);
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { InventarioService } from 'src/app/service/inventario.service';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-
-Swiper.use([Navigation, Pagination, Autoplay]);
+import Swiper, { Navigation, Pagination } from 'swiper';
 
 @Component({
   selector: 'app-inventario',

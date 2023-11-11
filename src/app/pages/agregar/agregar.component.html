@@ -1,14 +1,14 @@
-<div class="container fondo_card p-4" style="margin-top: 100px;">
+<div class="content fondo_card">
     <div class="text-center">
         <span class="texto_subtitle">Manzana Serrana</span>
         <br>
         <p class="texto_title bold space_text">{{titulo}}</p>
     </div>
-    <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data">
-        <div class="row mb-3 texto_card">
+    <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data" class="mt-2">
+        <div class="row mb-3">
             <div class="col">
-                <label for="nombre" class="form-label">Nombre del Producto</label>
-                <input type="text" formControlName="nombre" class="form-control" id="nombre"
+                <label for="nombre" class="texto_card form-label">Nombre del Producto</label>
+                <input type="text" formControlName="nombre" class="form-control texto_input" id="nombre"
                     placeholder="Nombre del producto">
                 <div *ngIf="formulario?.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched"
                     class="invalid-check">
@@ -16,56 +16,88 @@
                 </div>
             </div>
             <div class="col">
-                <label for="nivel" class="form-label">Nivel de Madurez</label>
-                <input type="text" class="form-control" formControlName="nivel" id="nivel"
+                <label for="nivel" class="form-label texto_card">Nivel de Madurez</label>
+                <input type="text" class="form-control texto_input" formControlName="nivel" id="nivel"
                     placeholder="Nivel de Madurez">
+                <div *ngIf="formulario?.get('nvel')?.hasError('required') && formulario.get('nivel')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
             <div class="col">
-                <label for="stock" class="form-label">Stock de tonaledas</label>
-                <input type="number" class="form-control" formControlName="stock" id="stock"
+                <label for="stock" class="form-label texto_card">Cantidad de toneladas</label>
+                <input type="number" class="form-control texto_input" formControlName="stock" id="stock"
                     placeholder="Cantidad en stock">
+                <div *ngIf="formulario?.get('stock')?.hasError('required') && formulario.get('stock')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
         </div>
-        <div class="row mb-3 texto_card">
+        <div class="row mb-3">
             <div class="col">
-                <label for="precioKilo" class="form-label">Precio por kilo</label>
-                <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
+                <label for="precioKilo" class="form-label texto_card">Precio por kilo</label>
+                <input type="number" class="form-control texto_input" formControlName="precioKilo" id="precioKilo"
                     placeholder="Precio del producto por kilo">
+                <div *ngIf="formulario?.get('precioKilo')?.hasError('required') && formulario.get('precioKilo')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
             <div class="col">
-                <label for="precioCaja" class="form-label">Precio por caja</label>
-                <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
+                <label for="precioCaja" class="form-label texto_card">Precio por caja</label>
+                <input type="number" class="form-control texto_input" formControlName="precioCaja" id="precioCaja"
                     placeholder="Precio por caja">
+                <div *ngIf="formulario?.get('precioCaja')?.hasError('required') && formulario.get('precioCaja')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
             <div class="col">
-                <label for="precioTonelada" class="form-label">Precio por tonelada</label>
-                <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
-                    placeholder="Precio por tenelada">
+                <label for="precioTonelada" class="form-label texto_card">Precio por tonelada</label>
+                <input type="number" class="form-control texto_input" formControlName="precioTonelada"
+                    id="precioTonelada" placeholder="Precio por tenelada">
+                <div *ngIf="formulario?.get('precioTonelada')?.hasError('required') && formulario.get('precioTonelada')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
         </div>
-        <div class="mb-3 texto_card">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input class="form-control" formControlName="descripcion" id="descripcion" rows="4"
-                placeholder="Descripción del producto">
-        </div>
-        <div class="mb-3 texto_card">
-            <label for="foto" class="form-label">Imagen del Evento</label>
-            <div class="text-center">
-                <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-3 texto_card">
+                    <label for="descripcion" class="form-label texto_card">Descripción</label>
+                    <input class="form-control texto_input" formControlName="descripcion" id="descripcion" rows="4"
+                        placeholder="Descripción del producto">
+                    <div *ngIf="formulario?.get('descripcion')?.hasError('required') && formulario.get('descripcion')?.touched"
+                        class="invalid-check">
+                        Este campo es requerido.
+                    </div>
+                </div>
             </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
+            <div class="col-md-12">
+                <div class="mb-3 texto_card">
+                    <label for="foto" class="form-label texto_card">Imagen del Evento</label>
+                    <div class="text-center">
+                        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt=""
+                            width="100">
+                    </div>
+                    <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input   "
+                        id="foto">
+                </div>
+            </div>
         </div>
-        <div class="row mb-3 texto_card">
+        <div class="row mb-3">
             <div class="col">
-                <label for="estatus" class="form-label">Estatus</label>
-                <select class="form-select" formControlName="estatus" id="estatus">
+                <label for="estatus" class="form-label texto_card">Estatus</label>
+                <select class="form-select texto_input" formControlName="estatus" id="estatus">
                     <option value="1">Activo</option>
                     <option value="2">Desactivado</option>
                 </select>
             </div>
             <div class="col">
-                <label for="categoria" class="form-label">Categoria</label>
-                <select class="form-select" formControlName="categoria" id="catgeoria">
+                <label for="categoria" class="form-label texto_card">Categoria</label>
+                <select class="form-select texto_input" formControlName="categoria" id="catgeoria">
                     <option value="roja">Roja</option>
                     <option value="amarilla">Amarilla</option>
                     <option value="verde">Verde</option>

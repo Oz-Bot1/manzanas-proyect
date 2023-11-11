@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   mensajeError: string = "";
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private loginService: LoginService, private cookie: CookieService) {
     this.loginForm = this.formBuilder.group({
       usuario: ['', Validators.required],
       contrasenia: ['', Validators.required]
@@ -23,29 +24,28 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-        const usuario = this.loginForm.get('usuario')?.value;
-        const contrasenia = this.loginForm.get('contrasenia')?.value;
+      const usuario = this.loginForm.get('usuario')?.value;
+      const contrasenia = this.loginForm.get('contrasenia')?.value;
 
-        this.loginService.Login(usuario, contrasenia).subscribe({
-          next: (response) => {
-            if (response.data.token) {
-              const token = response.data.token;
-              this.loginService.flagChange(true);
-              if (response.data.idRol == 1) {
-                this.router.navigate(['/admin/ventas']);
-                console.log(token);
-              } else {
-                this.router.navigate(['/home']);
-                console.log(token);
-              }
+      this.loginService.Login(usuario, contrasenia).subscribe({
+        next: (response) => {
+          if (response.data.token) {
+            this.loginService.flagChange(true);
+            this.cookie.set('token', response.data.token);
+            this.cookie.set('idRol', response.data.idRol);
+            if (response.data.idRol == 1) {
+              this.router.navigate(['/admin/ventas']);
             } else {
-              this.mensajeError = 'Usuario o contraseña incorrectas';
+              this.router.navigate(['/home']);
             }
-          },
-          error: (error) => {
-            console.error(error);
+          } else {
+            this.mensajeError = 'Usuario o contraseña incorrectas';
           }
-        });
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
     } else {
       this.mensajeError = 'Por favor, complete todos los campos';
     }

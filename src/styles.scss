@@ -2,7 +2,11 @@
 //importaciones del font awesome
 @import "~font-awesome/css/font-awesome.css";
 @import 'leaflet/dist/leaflet.css';
-@import 'swiper/swiper-bundle.css';
+@import 'swiper/scss';
+@import 'swiper/scss/grid';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/scss/pagination';
 @import 'assets/scss/fonts.scss';
 @import 'assets/scss/iconos.scss';
 
@@ -22,6 +26,23 @@ $color_verde_dark: #1e8950;
 $color_gris: #929292;
 $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
+
+.content{
+    padding: 2% 5% 2% 5%;
+    margin: 6% 5% 0px 5%;
+    box-shadow: 0px 10px 20px 10px rgba(39, 41, 40, 0.4);
+}
+
+.contenedor_carrusel {
+    height: auto;
+    width: auto;
+}
+
+.fondo_swiper {
+    width: 100%;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0);
+}
 
 .invalid-check {
     font-size: small;
@@ -65,12 +86,20 @@ $color_fondo_card: #F6F5F1;
 }
 
 .btn-rojo {
-    background-color: #AB6969;
-    color: #fff;
+    width: 100%;
+    background-color: $color_verde;
+    color: white !important;
+    font-family: $kamerik-bold;
+    font-size: 15px;
+    margin-top: 20px;
+    padding: 10px 10px;
+    color: $color_verde_card;
 }
 
 .btn-rojo:hover {
-    color: #353535;
+    background-color: $color_verde_card;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
 }
 
 .btn_pedido {

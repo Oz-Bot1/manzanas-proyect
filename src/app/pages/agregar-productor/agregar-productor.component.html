@@ -1,40 +1,59 @@
-<div class="mt-1">
-    <span>.</span>
+<div class="content fondo_card">
+  <div class="text-center">
+    <span class="texto_subtitle">Manzana Serrana</span>
+    <br>
+    <p class="texto_title bold space_text">Agregar Productor</p>
   </div>
-<div class="container">
-    <h1 class="mt-5 mb-3 text-center">Agregar Productor</h1>
-</div>
-<div class="container">
-    <form [formGroup]="productorForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="productorForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
         <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" required>
+          <label for="nombre" class="form-label texto_card">Nombre</label>
+          <input type="text" class="form-control texto_input" id="nombre" formControlName="nombre" placeholder="Nombre">
         </div>
+      </div>
+      <div class="col">
         <div class="mb-3">
-          <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
-          <input type="text" class="form-control" id="apellidoPaterno" formControlName="apellidoPaterno" required>
+          <label for="apellidoPaterno" class="form-label texto_card">Apellido Paterno</label>
+          <input type="text" class="form-control texto_input" id="apellidoPaterno" formControlName="apellidoPaterno" placeholder="Apellido Paterno">
         </div>
+      </div>
+      <div class="col">
         <div class="mb-3">
-          <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
-          <input type="text" class="form-control" id="apellidoMaterno" formControlName="apellidoMaterno">
+          <label for="apellidoMaterno" class="form-label texto_card">Apellido Materno</label>
+          <input type="text" class="form-control texto_input" id="apellidoMaterno" formControlName="apellidoMaterno" placeholder="Apellido Materno">
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <div class="mb-3">
-          <label for="correo" class="form-label">Correo</label>
-          <input type="email" class="form-control" id="correo" formControlName="correo" required>
+          <label for="correo" class="form-label texto_card">Correo</label>
+          <input type="email" class="form-control texto_input" id="correo" formControlName="correo" placeholder="Correo">
         </div>
+      </div>
+      <div class="col">
         <div class="mb-3">
-          <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" id="telefono" formControlName="telefono">
+          <label for="telefono" class="form-label texto_card">Teléfono</label>
+          <input type="tel" class="form-control texto_input" id="telefono" formControlName="telefono" placeholder="Teléfono">
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <div class="mb-3">
-          <label for="usuario" class="form-label">Usuario</label>
-          <input type="text" class="form-control" id="usuario" formControlName="usuario" required>
+          <label for="usuario" class="form-label texto_card">Usuario</label>
+          <input type="text" class="form-control texto_input" id="usuario" formControlName="usuario" placeholder="Usuario">
         </div>
+      </div>
+      <div class="col">
         <div class="mb-3">
-          <label for="contrasenia" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contrasenia" formControlName="contrasenia" required>
+          <label for="contrasenia" class="form-label texto_card">Contraseña</label>
+          <input type="password" class="form-control texto_input" id="contrasenia" formControlName="contrasenia" placeholder="Contraseña">
         </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </form>
-      
+      </div>
+    </div>
+    <button type="submit" class="btn btn-rojo">Registrar Usuarios</button>
+  </form>
+
 </div>
