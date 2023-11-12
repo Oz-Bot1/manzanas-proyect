@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ActividadesService } from 'src/app/service/actividades.service';
-import { HomeService } from 'src/app/service/home.service';
+import { NotasService } from 'src/app/service/notas.service';
 
 @Component({
   selector: 'app-actividades',
@@ -24,7 +24,7 @@ export class ActividadesComponent implements OnInit {
     }
   }
 
-  constructor(private actividades: ActividadesService, private homeService: HomeService, private cookie: CookieService, private fb: FormBuilder){
+  constructor(private actividades: ActividadesService, private homeService: NotasService, private cookie: CookieService, private fb: FormBuilder){
     this.formulario = this.fb.group({
       tipoManzana: ['1', Validators.required],
       tipoMensaje: ['1', Validators.required],

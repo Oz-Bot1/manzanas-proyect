@@ -4,9 +4,9 @@ import { PedidosService } from 'src/app/service/pedidos.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import Swiper, { Pagination, Navigation } from 'swiper';
-import { HomeService } from 'src/app/service/home.service';
 import { CookieService } from 'ngx-cookie-service';
 import { NavigationEnd, Router } from '@angular/router';
+import { NotasService } from 'src/app/service/notas.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -38,7 +38,7 @@ export class PedidosComponent implements OnInit {
     }
   }
 
-  constructor(private pedidosService: PedidosService, private fb: FormBuilder, private homeService: HomeService, private cookie: CookieService, private router: Router) {
+  constructor(private pedidosService: PedidosService, private fb: FormBuilder, private homeService: NotasService, private cookie: CookieService, private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         window.scrollTo(0, 0); // Mueve la página al inicio

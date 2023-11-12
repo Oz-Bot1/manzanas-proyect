@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { HomeService } from 'src/app/service/home.service';
+import { NotasService } from 'src/app/service/notas.service';
 import { ProductosService } from 'src/app/service/productos.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class ProductosComponent implements OnInit {
     }
   }
 
-  constructor(private productos: ProductosService, private router: Router,private homeService: HomeService, private cookie: CookieService, private fb: FormBuilder) {
+  constructor(private productos: ProductosService, private router: Router,private homeService: NotasService, private cookie: CookieService, private fb: FormBuilder) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         window.scrollTo(0, 0); // Mueve la página al inicio
