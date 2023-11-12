@@ -9,21 +9,6 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class NavComponent {
   constructor(private router: Router, private login: LoginService) {}
-  ventas() {
-    this.router.navigate(['/admin/ventas']);
-  }
-
-  inventario() {
-    this.router.navigate(['/admin/inventario']);
-  }
-
-  actividades() {
-    this.router.navigate(['/admin/actividadesAdmin']);
-  }
-
-  eventos() {
-    this.router.navigate(['/admin/eventos']);
-  }
 
   logout() {
     this.login.logout();
@@ -52,10 +37,6 @@ export class NavComponent {
   agregarProductor(){
     this.router.navigate(['/admin/agregarProductor']);
 
-  }
-
-  liberar() {
-    this.router.navigate(['/admin/liberar']);
   }
 
 }

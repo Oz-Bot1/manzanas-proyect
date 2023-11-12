@@ -51,3 +51,41 @@
       </div>
     </div>
 </div>
+<!-- Message system -->
+<ng-container *ngIf="banderaId">
+  <div class="message-container">
+    <div class="dropdown">
+      <button class="btn btn-rojo" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <i class="fa fa-envelope"></i>
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel" class="texto_subtitle mt-1">Mandar Nota a Administrador</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="tipoManzana" class="form-label texto_card">Tipo de Manzana</label>
+        <select class="form-control texto_input" id="tipoManzana" formControlName="tipoManzana">
+          <option *ngFor="let manzana of listaIdManzana" [value]="manzana.id">{{ manzana.nombre }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="tipoMensaje" class="form-label texto_card">Tipo de Mensaje</label>
+        <select class="form-control texto_input" id="tipoMensaje" formControlName="tipoMensaje">
+          <option *ngFor="let mensaje of listaMensaje" [value]="mensaje.id">{{ mensaje.nombre }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="cantidad" class="form-label texto_card">Cantidad</label>
+        <input type="number" class="form-control texto_input" id="cantidad" formControlName="cantidad">
+      </div>
+      <button type="submit" class="btn btn-rojo">Enviar</button>
+    </form>
+  </div>
+</div>

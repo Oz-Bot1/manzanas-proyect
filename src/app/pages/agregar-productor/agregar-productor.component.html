@@ -10,18 +10,34 @@
         <div class="mb-3">
           <label for="nombre" class="form-label texto_card">Nombre</label>
           <input type="text" class="form-control texto_input" id="nombre" formControlName="nombre" placeholder="Nombre">
+          <div *ngIf="productorForm.get('nombre')?.hasError('required') && productorForm.get('nombre')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
       <div class="col">
         <div class="mb-3">
           <label for="apellidoPaterno" class="form-label texto_card">Apellido Paterno</label>
-          <input type="text" class="form-control texto_input" id="apellidoPaterno" formControlName="apellidoPaterno" placeholder="Apellido Paterno">
+          <input type="text" class="form-control texto_input" id="apellidoPaterno" formControlName="apellidoPaterno"
+            placeholder="Apellido Paterno">
+          <div
+            *ngIf="productorForm.get('apellidoPaterno')?.hasError('required') && productorForm.get('apellidoPaterno')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
       <div class="col">
         <div class="mb-3">
           <label for="apellidoMaterno" class="form-label texto_card">Apellido Materno</label>
-          <input type="text" class="form-control texto_input" id="apellidoMaterno" formControlName="apellidoMaterno" placeholder="Apellido Materno">
+          <input type="text" class="form-control texto_input" id="apellidoMaterno" formControlName="apellidoMaterno"
+            placeholder="Apellido Materno">
+          <div
+            *ngIf="productorForm.get('apellidoMaterno')?.hasError('required') && productorForm.get('apellidoMaterno')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
     </div>
@@ -29,13 +45,23 @@
       <div class="col">
         <div class="mb-3">
           <label for="correo" class="form-label texto_card">Correo</label>
-          <input type="email" class="form-control texto_input" id="correo" formControlName="correo" placeholder="Correo">
+          <input type="email" class="form-control texto_input" id="correo" formControlName="correo"
+            placeholder="Correo">
+          <div *ngIf="productorForm.get('correo')?.hasError('required') && productorForm.get('correo')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
       <div class="col">
         <div class="mb-3">
           <label for="telefono" class="form-label texto_card">Teléfono</label>
-          <input type="tel" class="form-control texto_input" id="telefono" formControlName="telefono" placeholder="Teléfono">
+          <input type="tel" class="form-control texto_input" id="telefono" formControlName="telefono"
+            placeholder="Teléfono">
+          <div *ngIf="productorForm.get('telefono')?.hasError('required') && productorForm.get('telefono')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
     </div>
@@ -43,13 +69,23 @@
       <div class="col">
         <div class="mb-3">
           <label for="usuario" class="form-label texto_card">Usuario</label>
-          <input type="text" class="form-control texto_input" id="usuario" formControlName="usuario" placeholder="Usuario">
+          <input type="text" class="form-control texto_input" id="usuario" formControlName="usuario"
+            placeholder="Usuario">
+          <div *ngIf="productorForm.get('usuario')?.hasError('required') && productorForm.get('usuario')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
       <div class="col">
         <div class="mb-3">
           <label for="contrasenia" class="form-label texto_card">Contraseña</label>
-          <input type="password" class="form-control texto_input" id="contrasenia" formControlName="contrasenia" placeholder="Contraseña">
+          <input type="password" class="form-control texto_input" id="contrasenia" formControlName="contrasenia"
+            placeholder="Contraseña">
+          <div *ngIf="productorForm.get('contrasenia')?.hasError('required') && productorForm.get('contrasenia')?.touched"
+            class="invalid-check">
+            Este campo es requerido.
+          </div>
         </div>
       </div>
     </div>

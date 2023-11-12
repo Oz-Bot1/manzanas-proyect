@@ -41,6 +41,9 @@
           <a href="https://www.ejemplo.com" class="icon"><span class="icon-face-blanco"></span></a>
           <a href="https://www.ejemplo.com" class="icon"><span class="icon-insta"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span></a>
           <a href="https://www.ejemplo.com" class="icon"><span class="icon-twitter-x"></span></a>
+          <ng-container *ngIf="isLoggedIn">
+            <a (click)="logout()" class="icon"><i class="fa fa-sign-out"></i></a>
+          </ng-container>
         </div>
       </div>
     </div>

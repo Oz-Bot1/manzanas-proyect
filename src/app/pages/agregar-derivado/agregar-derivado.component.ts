@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { InventarioService } from 'src/app/service/inventario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-derivado',
@@ -88,11 +89,24 @@ export class AgregarDerivadoComponent {
       const nombre = this.formulario.get('nombre')?.value;
       const foto = this.nombrefoto;
       const descripcion = this.formulario.get('descripcion')?.value;
-
-      if (this.id !== null) {
-        const idAsNumber = parseInt(this.id, 10);
-        if (!isNaN(idAsNumber)) {
-          this.invetarioService.actualizarDerivado(idAsNumber, nombre,descripcion, foto).subscribe({
+      console.log(foto);
+      if(foto !== ''){
+        if (this.id !== null) {
+          const idAsNumber = parseInt(this.id, 10);
+          if (!isNaN(idAsNumber)) {
+            this.invetarioService.actualizarDerivado(idAsNumber, nombre,descripcion, foto).subscribe({
+              next: () => {
+                this.router.navigate(['/admin/inventario']);
+              },
+              error: (error) => {
+                console.log(error);
+              }
+            });
+          } else {
+            this.router.navigate(['/admin/inventario']);
+          }
+        } else {
+          this.agregarService.registrarDerivado(nombre, foto, descripcion).subscribe({
             next: () => {
               this.router.navigate(['/admin/inventario']);
             },
@@ -100,23 +114,21 @@ export class AgregarDerivadoComponent {
               console.log(error);
             }
           });
-        } else {
-          this.router.navigate(['/admin/inventario']);
         }
-      } else {
-        this.agregarService.registrarDerivado(nombre, foto, descripcion).subscribe({
-          next: () => {
-            this.router.navigate(['/admin/inventario']);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+      }else{
+        this.errorSwal();
       }
-  
     } else {
-      console.log('fromulario invalido');
+      this.errorSwal();
     }
   }
   
+  errorSwal() {
+    Swal.fire({
+      title: 'Porfavor',
+      text: 'Complete lo campos',
+      icon: 'error',
+      confirmButtonColor: '#4E9545'
+    });
+  }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-agregar-productor',
   templateUrl: './agregar-productor.component.html',
@@ -11,7 +11,7 @@ import { AgregarService } from 'src/app/service/agregar.service';
 export class AgregarProductorComponent {
   productorForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private agregarService: AgregarService ) {
+  constructor(private fb: FormBuilder, private router: Router, private agregarService: AgregarService) {
     this.productorForm = this.fb.group({
       nombre: ['', Validators.required],
       apellidoPaterno: ['', Validators.required],
@@ -32,11 +32,11 @@ export class AgregarProductorComponent {
       const apellidoMat = this.productorForm.get('apellidoMaterno')?.value;
       const correo = this.productorForm.get('correo')?.value;
       const telefono = this.productorForm.get('telefono')?.value;
-  
+
       this.agregarService.registrarProductor(usuario, nombre, contrasenia, apellidoPat, apellidoMat, correo, telefono).subscribe(
         {
           next: () => {
-            this.router.navigate(['/ventas']); 
+            this.router.navigate(['/admin/ventas']);
           },
           error: (error) => {
             console.log(error);
@@ -44,7 +44,12 @@ export class AgregarProductorComponent {
         }
       )
     } else {
-      console.log("El formulario es inválido");
+      Swal.fire({
+        title: 'Porfavor',
+        text: 'Complete lo campos',
+        icon: 'error',
+        confirmButtonColor: '#4E9545'
+      });
     }
   }
 }

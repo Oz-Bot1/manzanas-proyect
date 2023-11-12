@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { PedidosService } from 'src/app/service/pedidos.service';
-import { ProductosService } from 'src/app/service/productos.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import Swiper, { Pagination, Navigation } from 'swiper';
+import { HomeService } from 'src/app/service/home.service';
+import { CookieService } from 'ngx-cookie-service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos',
@@ -20,14 +22,39 @@ export class PedidosComponent implements OnInit {
   banderaContacto: boolean = false;
   mapa: L.Map | undefined;
   productForm: FormGroup;
+  //Para los mensajes
+  idRol: string = this.cookie.get('idRol');
+  idUser: string = this.cookie.get('idUser');
+  banderaId: boolean = false;
+  formulario: FormGroup;
+  listaIdManzana: any[] = [];
+  listaMensaje: any[] = [];
 
-  constructor(private pedidosService: PedidosService, private productosService: ProductosService, private fb: FormBuilder) {
+  banderaRol() {
+    if (this.idRol == "2") {
+      this.banderaId = true;
+    } else {
+      this.banderaId = false;
+    }
+  }
+
+  constructor(private pedidosService: PedidosService, private fb: FormBuilder, private homeService: HomeService, private cookie: CookieService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0); // Mueve la página al inicio
+      }
+    });
     this.productForm = this.fb.group({
       nombre: ['', [Validators.required]],
       estado: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.pattern('^\\d{10}$')]],
+    });
+    this.formulario = this.fb.group({
+      tipoManzana: ['1', Validators.required],
+      tipoMensaje: ['1', Validators.required],
+      cantidad: [1, [Validators.required, Validators.min(1)]], // Valor predeterminado: 1
     });
   }
 
@@ -49,7 +76,7 @@ export class PedidosComponent implements OnInit {
       }
     });
 
-    this.productosService.lista().subscribe({
+    this.pedidosService.lista().subscribe({
       next: (data) => {
         this.listaProductos = data.data;
         this.listaProductosCompleta = data.data;
@@ -61,6 +88,28 @@ export class PedidosComponent implements OnInit {
         this.listaProductos = this.listaProductos.filter((producto) => producto.estatus === 1);
       }
     });
+
+    this.banderaRol();
+
+    if (this.banderaId == true) {
+      this.homeService.listaManzanas().subscribe({
+        next: (data) => {
+          this.listaIdManzana = data.data;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+
+      this.homeService.listaTipoNotas().subscribe({
+        next: (data) => {
+          this.listaMensaje = data.data;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
 
     const swiper = new Swiper('.mySwiper', {
       modules: [Pagination, Navigation],
@@ -230,6 +279,23 @@ export class PedidosComponent implements OnInit {
       id?.classList.add('ocultar');
       menudeo?.classList.add('ocultar');
       mayoreo?.classList.add('mostrar');
+    }
+  }
+
+  onSubmit() {
+    if (this.formulario.valid) {
+      const formData = this.formulario.value;
+      const cantidad = formData.cantidad;
+      const tipoManzana = formData.tipoManzana;
+      const tipoMensaje = formData.tipoMensaje;
+      const idUser = this.idUser;
+      this.homeService.crear(tipoManzana, tipoMensaje, cantidad, idUser).subscribe({
+        next: () => {
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
     }
   }
 }

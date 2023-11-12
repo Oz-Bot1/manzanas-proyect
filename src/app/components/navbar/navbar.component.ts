@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -12,16 +13,13 @@ export class NavbarComponent implements OnInit {
   home() {
     this.router.navigate(['/home']);
   }
-  login() {
-    this.router.navigate(['/login']);
-  }
   logout() {
     this.loginService.logout();
   }
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService, private cookie: CookieService) { }
   ngOnInit(): void {
-    const isLoggedInString = localStorage.getItem('isLoggedIn');
-    if (isLoggedInString === 'true') {
+    const isLoggedInString = this.cookie.get('idUser');
+    if (isLoggedInString !== '1' && isLoggedInString !== '') {
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;

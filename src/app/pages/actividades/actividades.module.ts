@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ActividadesRoutingModule } from './actividades-routing.module';
 import { ActividadesComponent } from './actividades.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { ActividadesComponent } from './actividades.component';
   ],
   imports: [
     CommonModule,
-    ActividadesRoutingModule
+    ActividadesRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ActividadesModule { }

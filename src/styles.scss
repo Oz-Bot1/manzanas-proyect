@@ -27,21 +27,51 @@ $color_gris: #929292;
 $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
 
-.content{
+.content {
     padding: 2% 5% 2% 5%;
     margin: 6% 5% 0px 5%;
     box-shadow: 0px 10px 20px 10px rgba(39, 41, 40, 0.4);
 }
 
-.contenedor_carrusel {
-    height: auto;
-    width: auto;
+.fondo_swiper img{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
 }
 
-.fondo_swiper {
+.texto_superpuesto {
+    position: absolute;
+    top: 45%;
+    transform: translateX(10%);
+    color: $color_verde;
+}
+
+
+.overlay_box {
+    position: absolute;
+    top: 0;
+    left: 50%;
     width: 100%;
-    height: 500px;
-    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.swiper-button-next {
+    color: white;
+    margin-right: 1%;
+}
+
+.swiper-button-prev {
+    color: white;
+    margin-left: 3%;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: $color_verde_card;
 }
 
 .invalid-check {
@@ -55,16 +85,12 @@ $color_fondo_card: #F6F5F1;
     color: #fff;
 }
 
-.gris {
-    color: #353535;
-}
-
 .cursor_pointer {
     cursor: pointer;
 }
 
 .espacio {
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 .overlay {
@@ -200,6 +226,34 @@ footer {
 .texto_footer {
     color: white;
     font-family: $kamerik-book;
+    font-size: large;
+    padding: 1% 1% 1% 5%;
+}
+
+.bordes_card {
+    position: relative;
+}
+
+.bordes_card::before,
+.bordes_card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    /* Ancho del borde */
+    background-color: $color_verde_dark;
+    /* Color verde del borde */
+}
+
+.bordes_card::before {
+    left: 25%;
+    /* Ajusta la posición del borde izquierdo */
+}
+
+.bordes_card::after {
+    right: 25%;
+    /* Ajusta la posición del borde derecho */
 }
 
 .btn_footer_correo {

@@ -1,36 +1,46 @@
 <div class="content fondo_card">
     <div class="text-center">
-      <span class="texto_subtitle">Manzana Serrana</span>
-      <br>
-      <p class="texto_title bold space_text">{{titulo}}</p>
+        <span class="texto_subtitle">Manzana Serrana</span>
+        <br>
+        <p class="texto_title bold space_text">{{titulo}}</p>
     </div>
     <form [formGroup]="puntoVentaForm" (ngSubmit)="onSubmit()">
         <div class="row mb-3">
             <div class="col">
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+                    <label for="nombre" class="form-label texto_card">Nombre</label>
+                    <input type="text" class="form-control texto_input" id="nombre" formControlName="nombre"
+                        placeholder="Nombre">
+                    <div *ngIf="puntoVentaForm.get('nombre')?.hasError('required') && puntoVentaForm.get('nombre')?.touched"
+                        class="invalid-check">
+                        Este campo es requerido.
+                    </div>
                 </div>
             </div>
             <div class="col">
-                <label for="estatus" class="form-label">Estatus</label>
-                <select class="form-control" id="estatus" formControlName="estatus">
+                <label for="estatus" class="form-label texto_card">Estatus</label>
+                <select class="form-control texto_input" id="estatus" formControlName="estatus">
                     <option value="1">Activo</option>
                     <option value="2">Inactivo</option>
                 </select>
             </div>
             <div class="col">
-                <label for="horario" class="form-label">Horario</label>
-                <input type="text" class="form-control" id="horario" formControlName="horario" placeholder="Horario">
+                <label for="horario" class="form-label texto_card">Horario</label>
+                <input type="text" class="form-control texto_input" id="horario" formControlName="horario"
+                    placeholder="Horario">
+                <div *ngIf="puntoVentaForm.get('horario')?.hasError('required') && puntoVentaForm.get('horario')?.touched"
+                    class="invalid-check">
+                    Este campo es requerido.
+                </div>
             </div>
         </div>
         <div class="mb-3">
-            <label for="foto" class="form-label">Imagen del Evento</label>
+            <label for="foto" class="form-label texto_card">Imagen del Evento</label>
             <div class="text-center">
-              <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
+                <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt="" width="100">
             </div>
-            <input (change)="onFileSelect($event.target)" type="file" class="form-control" id="foto">
-          </div>
+            <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input" id="foto">
+        </div>
         <div class="mb-3">
             <div class="mx-auto" id="map" style="width: 100%; height: 300px;"></div>
         </div>

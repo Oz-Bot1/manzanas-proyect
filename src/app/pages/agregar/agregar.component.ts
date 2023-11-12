@@ -125,10 +125,23 @@ export class AgregarComponent implements OnInit, OnDestroy {
       numCategoria = 3;
     }
     if (this.formulario.valid) {
-      if (this.id !== null) {
-        const idAsNumber = parseInt(this.id, 10);
-        if (!isNaN(idAsNumber)) {
-          this.inventarioService.actualizar(idAsNumber, nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
+      if(fotoControl !== ''){
+        if (this.id !== null) {
+          const idAsNumber = parseInt(this.id, 10);
+          if (!isNaN(idAsNumber)) {
+            this.inventarioService.actualizar(idAsNumber, nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
+              next: () => {
+                this.router.navigate(['/admin/inventario']);
+              },
+              error: (error) => {
+                console.log(error);
+              }
+            });
+          } else {
+            this.router.navigate(['/admin/inventario']);
+          }
+        } else {
+          this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
             next: () => {
               this.router.navigate(['/admin/inventario']);
             },
@@ -136,26 +149,20 @@ export class AgregarComponent implements OnInit, OnDestroy {
               console.log(error);
             }
           });
-        } else {
-          this.router.navigate(['/admin/inventario']);
         }
-      } else {
-        this.agregarService.registrarProducto(nombre, precioKilo, descripcion, fotoControl, stock, nivel, estatus, precioCaja, precioTonelada, numCategoria).subscribe({
-          next: () => {
-            this.router.navigate(['/admin/inventario']);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+      }else{
+        this.errorSwal();
       }
     } else {
-      Swal.fire({
-        title: 'Porfavor',
-        text: 'Complete lo campos',
-        icon: 'error',
-        confirmButtonColor: '#4E9545'
-      });
+      this.errorSwal();
     }
+  }
+  errorSwal() {
+    Swal.fire({
+      title: 'Porfavor',
+      text: 'Complete lo campos',
+      icon: 'error',
+      confirmButtonColor: '#4E9545'
+    });
   }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import * as L from 'leaflet';
 import { EventosService } from 'src/app/service/eventos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-evento',
@@ -151,10 +152,23 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
       const longitud = this.longitud.toString();
       const foto = this.nombrefoto;
 
-      if (this.id !== null) {
-        const idAsNumber = parseInt(this.id, 10);
-        if (!isNaN(idAsNumber)) {
-          this.eventosService.actualizarEvento(idAsNumber, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
+      if (foto !== '') {
+        if (this.id !== null) {
+          const idAsNumber = parseInt(this.id, 10);
+          if (!isNaN(idAsNumber)) {
+            this.eventosService.actualizarEvento(idAsNumber, nombre, foto, latitud, longitud, descripcion, fechaInicio, fechaFin).subscribe({
+              next: () => {
+                this.router.navigate(['/admin/eventos']);
+              },
+              error: (error) => {
+                console.log(error);
+              }
+            });
+          } else {
+            this.router.navigate(['/admin/eventos']);
+          }
+        } else {
+          this.agregarService.registrarEvento(nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
             next: () => {
               this.router.navigate(['/admin/eventos']);
             },
@@ -162,21 +176,21 @@ export class AgregarEventoComponent implements OnInit, OnDestroy {
               console.log(error);
             }
           });
-        } else {
-          this.router.navigate(['/admin/eventos']);
         }
       } else {
-        this.agregarService.registrarEvento(nombre, descripcion, fechaInicio, fechaFin, latitud, longitud, foto).subscribe({
-          next: () => {
-            this.router.navigate(['/admin/eventos']);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+        this.errorSwal();
       }
     } else {
-      console.log('Complete el formulario');
+      this.errorSwal();
     }
+  }
+
+  errorSwal() {
+    Swal.fire({
+      title: 'Porfavor',
+      text: 'Complete lo campos',
+      icon: 'error',
+      confirmButtonColor: '#4E9545'
+    });
   }
 }

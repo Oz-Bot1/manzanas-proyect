@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActividadesService } from 'src/app/service/actividades.service';
 import { AgregarService } from 'src/app/service/agregar.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-actividad',
@@ -94,10 +95,23 @@ export class AgregarActividadComponent implements OnInit, OnDestroy {
       const descripcion = this.actividadForm.get('descripcion')?.value;
       const fotoControl = this.nombrefoto;
 
-      if (this.id !== null) {
-        const idAsNumber = parseInt(this.id, 10);
-        if (!isNaN(idAsNumber)) {
-          this.actividadesService.actualizar(idAsNumber, nombre, descripcion, fotoControl).subscribe({
+      if (fotoControl !== '') {
+        if (this.id !== null) {
+          const idAsNumber = parseInt(this.id, 10);
+          if (!isNaN(idAsNumber)) {
+            this.actividadesService.actualizar(idAsNumber, nombre, descripcion, fotoControl).subscribe({
+              next: () => {
+                this.router.navigate(['/admin/actividadesAdmin']);
+              },
+              error: (error) => {
+                console.log(error);
+              }
+            });
+          } else {
+            this.router.navigate(['/admin/eventos']);
+          }
+        } else {
+          this.agregarService.registrarActividad(nombre, descripcion, fotoControl).subscribe({
             next: () => {
               this.router.navigate(['/admin/actividadesAdmin']);
             },
@@ -105,22 +119,22 @@ export class AgregarActividadComponent implements OnInit, OnDestroy {
               console.log(error);
             }
           });
-        } else {
-          this.router.navigate(['/admin/eventos']);
         }
       } else {
-        this.agregarService.registrarActividad(nombre, descripcion, fotoControl).subscribe({
-          next: () => {
-            this.router.navigate(['/admin/actividadesAdmin']);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+        this.errorSwal();
       }
 
     } else {
-      console.log('Complete el formulario');
+      this.errorSwal();
     }
+  }
+
+  errorSwal() {
+    Swal.fire({
+      title: 'Porfavor',
+      text: 'Complete lo campos',
+      icon: 'error',
+      confirmButtonColor: '#4E9545'
+    });
   }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import * as L from 'leaflet';
 import { EventosService } from 'src/app/service/eventos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-punto',
@@ -113,10 +114,23 @@ export class AgregarPuntoComponent implements OnInit, OnDestroy {
       const estatus = this.puntoVentaForm.get('estatus')?.value;
       const horario = this.puntoVentaForm.get('horario')?.value;
 
-      if (this.id !== null) {
-        const idAsNumber = parseInt(this.id, 10);
-        if (!isNaN(idAsNumber)) {
-          this.eventosService.actualizarPunto(idAsNumber, nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
+      if(fotoControl !== ''){
+        if (this.id !== null) {
+          const idAsNumber = parseInt(this.id, 10);
+          if (!isNaN(idAsNumber)) {
+            this.eventosService.actualizarPunto(idAsNumber, nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
+              next: () => {
+                this.router.navigate(['/admin/eventos']);
+              },
+              error: (error) => {
+                console.log(error);
+              }
+            });
+          } else {
+            this.router.navigate(['/admin/eventos']);
+          }
+        } else {
+          this.agregarService.registrarPunto(nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
             next: () => {
               this.router.navigate(['/admin/eventos']);
             },
@@ -124,22 +138,22 @@ export class AgregarPuntoComponent implements OnInit, OnDestroy {
               console.log(error);
             }
           });
-        } else {
-          this.router.navigate(['/admin/eventos']);
         }
-      } else {
-        this.agregarService.registrarPunto(nombre, fotoControl, latitud, longitud, estatus, horario).subscribe({
-          next: () => {
-            this.router.navigate(['/admin/eventos']);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
+      }else {
+        this.errorSwal();
       }
     } else {
-      console.log('Complete el formulario');
+      this.errorSwal();
     }
+  }
+
+  errorSwal() {
+    Swal.fire({
+      title: 'Porfavor',
+      text: 'Complete lo campos',
+      icon: 'error',
+      confirmButtonColor: '#4E9545'
+    });
   }
 
   generarMapa(latitud: number, longitud: number) {

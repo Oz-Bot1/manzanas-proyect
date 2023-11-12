@@ -30,9 +30,11 @@ export class LoginComponent implements OnInit {
       this.loginService.Login(usuario, contrasenia).subscribe({
         next: (response) => {
           if (response.data.token) {
+            console.log(response)
             this.loginService.flagChange(true);
             this.cookie.set('token', response.data.token);
             this.cookie.set('idRol', response.data.idRol);
+            this.cookie.set('idUser', response.data.id);
             if (response.data.idRol == 1) {
               this.router.navigate(['/admin/ventas']);
             } else {
