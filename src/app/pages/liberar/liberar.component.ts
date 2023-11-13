@@ -32,7 +32,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
       total: [0, Validators.required],
     });
     this.formularioModal = this.fb.group({
-      id: [0],
+      idManzana: [0],
       nombre: ['', Validators.required],
       cantidad: [0, [Validators.required, Validators.min(0)]],
       subtotal: [0, Validators.min(0)],
@@ -66,8 +66,8 @@ export class LiberarComponent implements OnInit, OnDestroy {
       const ciudad = formData.ciudadCliente;
       const correo = formData.correoCliente;
       const telefono = formData.telefonoCliente;
-      const manzanaIndex = this.datosManzanas.findIndex((manzana) => manzana.id === id);
-      console.log(manzanaIndex)
+      const idManzana = formDat.idManzana;
+      const manzanaIndex = this.datosManzanas.findIndex((manzana) => manzana.idManzana === idManzana);
 
       if (manzanaIndex !== -1) {
         this.datosManzanas[manzanaIndex] = { ...formDat };
@@ -76,7 +76,6 @@ export class LiberarComponent implements OnInit, OnDestroy {
         this.datosManzanas.push({ ...formDat });
       }
       const manzanas = [{ ...formDat }];
-      console.log(this.datosManzanas);
 
       this.liberarService.actualizar(id, nombre, estado, ciudad, correo, telefono, manzanas).subscribe({
         next: () => {
@@ -106,7 +105,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
   onProductSelected(product: any,) {
     const datos = product;
     this.formularioModal.patchValue({
-      id: datos.id,
+      idManzana: datos.idManzana,
       nombre: datos.nombre,
       subtotal: datos.subtotal,
       cantidad: datos.cantidad,
@@ -118,7 +117,6 @@ export class LiberarComponent implements OnInit, OnDestroy {
   buscarPedido(id: number) {
     this.ventas.buscarPedido(id).subscribe({
       next: (data) => {
-        console.log(data);
         this.datosPedido = data.data[0];
         this.datosManzanas = data.data[0].manzanas;
         this.formulario.patchValue({

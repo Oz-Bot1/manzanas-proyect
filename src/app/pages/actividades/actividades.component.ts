@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ActividadesService } from 'src/app/service/actividades.service';
 import { NotasService } from 'src/app/service/notas.service';
+import Swiper, { Pagination, Navigation } from 'swiper';
 
 @Component({
   selector: 'app-actividades',
@@ -77,6 +78,26 @@ export class ActividadesComponent implements OnInit {
         }
       });
     }
+
+    const swiper = new Swiper('.mySwiper', {
+      modules: [Pagination, Navigation],
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        
+      },
+      spaceBetween: 16,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+      }
+    });
   }
 
   onSubmit() {
@@ -88,6 +109,7 @@ export class ActividadesComponent implements OnInit {
       const idUser = this.idUser;
       this.homeService.crear(tipoManzana, tipoMensaje, cantidad, idUser).subscribe({
         next: () => {
+          location.reload();
         },
         error: (error) => {
           console.log(error);

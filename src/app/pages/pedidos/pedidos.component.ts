@@ -80,6 +80,7 @@ export class PedidosComponent implements OnInit {
       next: (data) => {
         this.listaProductos = data.data;
         this.listaProductosCompleta = data.data;
+        console.log(this.listaProductos)
       },
       error: (error) => {
         console.log(error);
@@ -268,17 +269,25 @@ export class PedidosComponent implements OnInit {
     const id = document.getElementById('banderaMapa');
     const mayoreo = document.getElementById('mayoreo');
     const menudeo = document.getElementById('menudeo');
+    const btnMayoreo = document.getElementById('btnMayoreo');
+    const btnMenudeo = document.getElementById('btnMenudeo');
+
     id?.classList.remove('ocultar', 'mostrar');
     mayoreo?.classList.remove('ocultar', 'mostrar');
     menudeo?.classList.remove('ocultar', 'mostrar');
+    btnMayoreo?.classList.remove("active_categoria");
+    btnMenudeo?.classList.remove("active_categoria");
+
     if (this.banderaMapa == true) {
       id?.classList.add('mostrar');
       menudeo?.classList.add('mostrar');
       mayoreo?.classList.add('ocultar');
+      btnMenudeo?.classList.add('active_categoria');
     } else {
       id?.classList.add('ocultar');
       menudeo?.classList.add('ocultar');
       mayoreo?.classList.add('mostrar');
+      btnMayoreo?.classList.add('active_categoria');
     }
   }
 
@@ -291,6 +300,7 @@ export class PedidosComponent implements OnInit {
       const idUser = this.idUser;
       this.homeService.crear(tipoManzana, tipoMensaje, cantidad, idUser).subscribe({
         next: () => {
+          location.reload();
         },
         error: (error) => {
           console.log(error);

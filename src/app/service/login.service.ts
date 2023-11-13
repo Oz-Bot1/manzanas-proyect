@@ -27,7 +27,6 @@ export class LoginService {
 
   logout() {
     this.cookie.deleteAll();
-    localStorage.clear();
     this.isLoggedInFlag = false;
     this.router.navigate(['/login']);
   }

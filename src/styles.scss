@@ -43,7 +43,7 @@ $color_fondo_card: #F6F5F1;
 
 .texto_superpuesto {
     position: absolute;
-    top: 45%;
+    top: 43%;
     transform: translateX(10%);
     color: $color_verde;
 }
@@ -56,7 +56,7 @@ $color_fondo_card: #F6F5F1;
     width: 100%;
     height: 100%;
     border: 1px solid transparent;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
 }
 
@@ -111,13 +111,25 @@ $color_fondo_card: #F6F5F1;
     right: 20px;
 }
 
+table {
+    thead {
+        tr {
+            font-family: $kamerik-bold;
+        }
+    }
+    tbody {
+        tr {
+            font-family: $kamerik-book;
+        }
+    }
+}
+
 .btn-rojo {
     width: 100%;
     background-color: $color_verde;
     color: white !important;
     font-family: $kamerik-bold;
     font-size: 15px;
-    margin-top: 20px;
     padding: 10px 10px;
     color: $color_verde_card;
 }
@@ -125,6 +137,45 @@ $color_fondo_card: #F6F5F1;
 .btn-rojo:hover {
     background-color: $color_verde_card;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+}
+
+.btn-rojito {
+    background-color: rgb(202, 37, 37);
+    color: white !important;
+    font-family: $kamerik-book;
+    font-size: 15px;
+    color: $color_verde_card;
+}
+
+.btn-rojito:hover {
+    background-color: rgb(202, 87, 87);
+    color: #fff;
+}
+
+.btn-verdecito {
+    background-color: $color_verde;
+    color: white !important;
+    font-family: $kamerik-book;
+    font-size: 15px;
+    color: $color_verde_card;
+}
+
+.btn-verdecito:hover {
+    background-color: $color_verde_card;
+    color: #fff;
+}
+
+.btn-gris {
+    background-color: $color_gris_oscuro;
+    color: white !important;
+    font-family: $kamerik-book;
+    font-size: 15px;
+    color: $color_verde_card;
+}
+
+.btn-gris:hover {
+    background-color: $color_gris;
     color: #fff;
 }
 
@@ -288,6 +339,22 @@ footer {
     border-radius: 0%;
 }
 
+.texto_big_swiper {
+    font-family: $kamerik-bold;
+    font-size: 65px;
+    color: $color_verde;
+    padding: 0%;
+    margin: 0%;
+    line-height: 1;
+}
+
+.texto_small_swiper {
+    font-family: $kamerik-bold;
+    font-size: 18px;
+    color: $color_verde;
+    padding: 0%;
+    margin: 0%;
+}
 
 .texto_title {
     font-family: $kamerik-bold;

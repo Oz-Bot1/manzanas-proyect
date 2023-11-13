@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActividadesService } from 'src/app/service/actividades.service';
-import { AgregarService } from 'src/app/service/agregar.service';
 
 @Component({
   selector: 'app-actividades-admin',
@@ -11,14 +9,8 @@ import { AgregarService } from 'src/app/service/agregar.service';
 })
 export class ActividadesAdminComponent implements OnInit {
   lista: any[] = [];
-  actividadForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private actividadesService: ActividadesService, private agregarService: AgregarService, private router: Router){
-    this.actividadForm = this.fb.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-    });
-  }
+  constructor(private actividadesService: ActividadesService, private router: Router){}
 
   obtenerNombreImagen(nombre: string): string {
     if (nombre.endsWith('.jpeg')) {
@@ -32,7 +24,6 @@ export class ActividadesAdminComponent implements OnInit {
       {
         next: (data) => {
           this.lista = data.data;
-          console.log(this.lista);
         },
         error: (error) => {
           console.log(error);

@@ -16,6 +16,11 @@ export class ProductosService {
     return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
   }
 
+  listaDerivados(): Observable<any> {
+    const params = {};
+    return this.http.post<any>(`${urlApi}/Dashboard/listaDerivadosManzana`, params);
+  }
+
   buscar(empresa: string, fechaInicial: string, fechaFinal: string): Observable<any> {
     const params = {
       empresa: empresa,

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="">
             <img src="../../../assets/img/Logo Horizontal.svg" alt="" width="70%" height="70%">
-          </div>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,25 +10,29 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/inventario']"><i class="fa fa-archive"></i>
+                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/inventario']"><i
+                            class="fa fa-archive"></i>
                         <span> Inventario</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/actividadesAdmin']"><i class="fa fa-calendar-check-o"></i>
+                    <a class="nav-link color_nav_item" routerLinkActive="active"
+                        [routerLink]="['/admin/actividadesAdmin']"><i class="fa fa-calendar-check-o"></i>
                         <span> Actividades</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/eventos']"><i class="fa fa-bicycle"></i>
+                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/eventos']"><i
+                            class="fa fa-bicycle"></i>
                         <span> Eventos</span></a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link color_nav_item"  routerLinkActive="active" [routerLink]="['/admin/ventas']"><i class="fa fa-line-chart"></i>
+                    <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/ventas']"><i
+                            class="fa fa-line-chart"></i>
                         <span> Ventas y Pedidos</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle color_nav_item" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false"><i class="fa fa-plus-square"></i>
-                         Agregar
+                        Agregar
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item cursor_pointer" (click)="agregarProducto()">Producto</a></li>
@@ -45,11 +49,43 @@
                     </a>
                 </li>
                 <li class="nav-item cursor_pointer">
-                    <a class="nav-link color_nav_item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <a class="nav-link color_nav_item position-relative" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="fa fa-comments-o" aria-hidden="true"></i>
+                        <ng-container *ngIf="banderaMensaje">
+                            <span
+                                class="position-absolute top-49 start-90 translate-middle p-1 bg-danger rounded-circle">
+                            </span>
+                        </ng-container>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel" class="texto_subtitle mt-1">Notas de los productores</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ng-container *ngFor="let aux of listaMensajes">
+            <div class="card text-center mb-2">
+                <div class="card-header">
+                    Mensaje de <b>{{ aux.usuarioNota }}</b>
+                </div>
+                <div class="card-body">
+                    <p class="card-title">Acción: <b>{{ aux.tipoNota }}</b></p>
+                    <p class="card-title">Producto: <b>{{ aux.manzanaNota }}</b></p>
+                    <p class="card-title">cantidad: <b>{{ aux.cantidad }}</b></p>
+                    <button class="btn btn-rojito" (click)="rechazarNota(aux.id)">Rechazar</button>
+                    <button class="ms-2 btn btn-verdecito" (click)="aceptarNota(aux.id)">Aceptar</button>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    {{ aux.fecha }}
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

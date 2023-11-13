@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { NotasService } from 'src/app/service/notas.service';
 import { ProductosService } from 'src/app/service/productos.service';
+import Swiper, { Pagination, Navigation } from 'swiper';
 
 @Component({
   selector: 'app-productos',
@@ -12,6 +13,7 @@ import { ProductosService } from 'src/app/service/productos.service';
 })
 export class ProductosComponent implements OnInit {
   lista: any[] = [];
+  listaDerivados: any[] = [];
   idRol: string = this.cookie.get('idRol');
   idUser: string = this.cookie.get('idUser');
   banderaId: boolean = false;
@@ -83,6 +85,14 @@ export class ProductosComponent implements OnInit {
         this.listaVerdes = productosAgrupados['verde'];
       }
     });
+    this.productos.listaDerivados().subscribe({
+      next: (data) => {
+        this.listaDerivados = data.data;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
     this.banderaRol();
 
     if (this.banderaId == true) {
@@ -104,26 +114,50 @@ export class ProductosComponent implements OnInit {
         }
       });
     }
+    const swiper = new Swiper('.mySwiper', {
+      modules: [Pagination, Navigation],
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        
+      },
+      spaceBetween: 16,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+      }
+    });
   }
 
   cambiarCategoria(categoria: string) {
     const rojas = document.getElementById("rojas");
     const verdes = document.getElementById("verdes");
     const amarillas = document.getElementById("amarillas");
+    const derivados = document.getElementById("derivados");
     const btnRoja = document.getElementById("btnRoja");
     const btnVerde = document.getElementById("btnVerde");
     const btnAmarilla = document.getElementById("btnAmarilla");
+    const btnDerivados = document.getElementById("btnDerivados");
 
     rojas?.classList.remove("ocultar", "mostrar");
     verdes?.classList.remove("ocultar", "mostrar");
     amarillas?.classList.remove("ocultar", "mostrar");
+    derivados?.classList.remove("ocultar", "mostrar");
     btnRoja?.classList.remove("active_categoria");
     btnVerde?.classList.remove("active_categoria");
     btnAmarilla?.classList.remove("active_categoria");
+    btnDerivados?.classList.remove("active_categoria");
     
     if(categoria === 'roja'){
       verdes?.classList.add('ocultar');
       amarillas?.classList.add('ocultar');
+      derivados?.classList.add('ocultar');
       rojas?.classList.add('mostrar');
       btnRoja?.classList.add('active_categoria');
     }
@@ -131,6 +165,7 @@ export class ProductosComponent implements OnInit {
     if(categoria === 'verde'){
       rojas?.classList.add('ocultar');
       amarillas?.classList.add('ocultar');
+      derivados?.classList.add('ocultar');
       verdes?.classList.add('mostrar');
       btnVerde?.classList.add('active_categoria');
     }
@@ -138,8 +173,17 @@ export class ProductosComponent implements OnInit {
     if(categoria === 'amarilla'){
       rojas?.classList.add('ocultar');
       verdes?.classList.add('ocultar');
+      derivados?.classList.add('ocultar');
       amarillas?.classList.add('mostrar');
       btnAmarilla?.classList.add('active_categoria');
+    }
+
+    if(categoria === 'derivados'){
+      rojas?.classList.add('ocultar');
+      verdes?.classList.add('ocultar');
+      derivados?.classList.add('mostrar');
+      amarillas?.classList.add('ocultar');
+      btnDerivados?.classList.add('active_categoria');
     }
       
   }
@@ -153,6 +197,7 @@ export class ProductosComponent implements OnInit {
       const idUser = this.idUser;
       this.homeService.crear(tipoManzana, tipoMensaje, cantidad, idUser).subscribe({
         next: () => {
+          location.reload();
         },
         error: (error) => {
           console.log(error);

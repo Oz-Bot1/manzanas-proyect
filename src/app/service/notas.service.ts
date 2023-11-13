@@ -30,4 +30,23 @@ export class NotasService {
     const params = { };
     return this.http.post<any>(`${urlApi}/Manzana/listaSencilla`, params);
   }
+
+  listaNotas(): Observable<any> {
+    const params = { };
+    return this.http.post<any>(`${urlApi}/Nota/listaNotas`, params);
+  }
+
+  aceptarNota(id : string): Observable<any> {
+    const params = {
+      nota: id
+     };
+    return this.http.post<any>(`${urlApi}/Nota/aceptar`, params);
+  }
+
+  rechazarNota(id: number): Observable<any> {
+    const params = {
+      nota: id
+     };
+    return this.http.post<any>(`${urlApi}/Nota/rechazar`, params);
+  }
 }

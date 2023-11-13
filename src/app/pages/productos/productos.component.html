@@ -1,31 +1,45 @@
-<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-      aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-      aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-      aria-label="Slide 3"></button>
+<div class="">
+  <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide fondo_swiper">
+              <img src="../../../assets/img/Manza-home.jpg" alt="">
+              <div class="overlay_box">
+                  <div class="texto_superpuesto">
+                      <p class="texto_small_swiper">Conoce los beneficios de las</p>
+                      <p class="texto_big_swiper">manzanas</p>
+                      <p class="texto_big_swiper">orgánicas</p>
+                  </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="fondo_swiper">
+                  <img src="../../../assets/img/Manza-home.jpg" alt="">
+              </div>
+          </div>
+          <div class="swiper-slide fondo_swiper">
+              <img src="../../../assets/img/Manza-home.jpg" alt="">
+              <div class="overlay_box">
+                  <div class="texto_superpuesto">
+                      <p class="texto_small_swiper">Conoce nuestras</p>
+                      <p class="texto_big_swiper">actividades</p>
+                  </div>
+              </div>
+          </div>
+          <div class="swiper-slide fondo_swiper">
+              <img src="../../../assets/img/Manza-home.jpg" alt="">
+              <div class="overlay_box">
+                  <div class="texto_superpuesto">
+                      <p class="texto_small_swiper">Conoce los beneficios de las</p>
+                      <p class="texto_big_swiper">manzanas</p>
+                      <p class="texto_big_swiper">orgánicas</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets/img/carrusel2.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../../../assets/img/carrusel3.png" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>
 <div class="container text-center mt-3 mb-4">
   <span class="texto_subtitle">Manzana Serrana</span><br>
@@ -42,6 +56,9 @@
     </div>
     <div class="boton_expand_cat cursor_pointer" id="btnAmarilla" (click)="cambiarCategoria('amarilla')">
       Amarilla
+    </div>
+    <div class="boton_expand_cat cursor_pointer" id="btnDerivados" (click)="cambiarCategoria('derivados')">
+      Derivados
     </div>
   </div>
   <div class="mostrar" id="rojas">
@@ -104,6 +121,24 @@
             </div>
             <div class="text-center cursor_pointer">
               <div class="btn_pedido" routerLink="/pedidos">Hacer Pedido</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="ocultar" id="derivados">
+    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+      <ng-container *ngFor="let aux of listaDerivados">
+        <div class="col">
+          <div class="card p-4 borde" style="min-height: 100%;">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
+              alt="...">
+            <div class="card-body">
+              <div class="text-center">
+                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}</p>
+              </div>
+              <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
             </div>
           </div>
         </div>

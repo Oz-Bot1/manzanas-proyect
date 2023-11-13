@@ -18,14 +18,14 @@
     </thead>
     <tbody class="text-center">
       <tr *ngFor="let aux of pedidosLista">
-        <th>{{ aux.nombreCliente }}</th>
-        <td>{{ aux.correoCliente }}</td>
-        <td>{{ aux.estadoCliente }}</td>
-        <td>{{ aux.ciudadCliente }}</td>
-        <td>{{ aux.telefonoCliente }}</td>
-        <td>${{ aux.total }}</td>
-        <td>{{ aux.fechaOrdenado }}</td>
-        <td>
+        <th class="vertical_align">{{ aux.nombreCliente }}</th>
+        <td class="vertical_align">{{ aux.correoCliente }}</td>
+        <td class="vertical_align">{{ aux.estadoCliente }}</td>
+        <td class="vertical_align">{{ aux.ciudadCliente }}</td>
+        <td class="vertical_align">{{ aux.telefonoCliente }}</td>
+        <td class="vertical_align">${{ aux.total }}</td>
+        <td class="vertical_align">{{ aux.fechaOrdenado }}</td>
+        <td class="vertical_align">
           <button type="button" class="btn btn-rojo" (click)="liberar(aux.id)">Liberar</button>
         </td>
       </tr>
@@ -48,7 +48,7 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr *ngFor="let aux of ventasLista">
+      <tr class="vertical_align" *ngFor="let aux of ventasLista">
         <th>{{ aux.nombreCliente }}</th>
         <td>{{ aux.estadoCliente }}</td>
         <td>{{ aux.ciudadCliente }}</td>
@@ -58,20 +58,4 @@
       </tr>
     </tbody>
   </table>
-</div>
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Mandar Nota a Administrador</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-primary mb-3">Enviar
-      </button>
-    </div>
-  </div>
 </div>

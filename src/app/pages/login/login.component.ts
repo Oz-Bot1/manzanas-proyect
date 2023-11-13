@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
       usuario: ['', Validators.required],
       contrasenia: ['', Validators.required]
     });
+    loginService.logout();
   }
   ngOnInit(): void {
   }

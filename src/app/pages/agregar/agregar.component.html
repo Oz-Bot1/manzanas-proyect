@@ -37,8 +37,12 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="precioKilo" class="form-label texto_card">Precio por kilo</label>
-                <input type="number" class="form-control texto_input" formControlName="precioKilo" id="precioKilo"
-                    placeholder="Precio del producto por kilo">
+                <div class="input-group mb-3 texto_input">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
+                        placeholder="Precio por kilo">
+                    <span class="input-group-text">.00</span>
+                </div>
                 <div *ngIf="formulario?.get('precioKilo')?.hasError('required') && formulario.get('precioKilo')?.touched"
                     class="invalid-check">
                     Este campo es requerido.
@@ -46,8 +50,12 @@
             </div>
             <div class="col">
                 <label for="precioCaja" class="form-label texto_card">Precio por caja</label>
-                <input type="number" class="form-control texto_input" formControlName="precioCaja" id="precioCaja"
-                    placeholder="Precio por caja">
+                <div class="input-group mb-3 texto_input">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
+                        placeholder="Precio por caja">
+                    <span class="input-group-text">.00</span>
+                </div>
                 <div *ngIf="formulario?.get('precioCaja')?.hasError('required') && formulario.get('precioCaja')?.touched"
                     class="invalid-check">
                     Este campo es requerido.
@@ -55,8 +63,12 @@
             </div>
             <div class="col">
                 <label for="precioTonelada" class="form-label texto_card">Precio por tonelada</label>
-                <input type="number" class="form-control texto_input" formControlName="precioTonelada"
-                    id="precioTonelada" placeholder="Precio por tenelada">
+                <div class="input-group mb-3 texto_input">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
+                        placeholder="Precio por tenelada">
+                    <span class="input-group-text">.00</span>
+                </div>
                 <div *ngIf="formulario?.get('precioTonelada')?.hasError('required') && formulario.get('precioTonelada')?.touched"
                     class="invalid-check">
                     Este campo es requerido.
