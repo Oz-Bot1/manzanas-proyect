@@ -1,235 +1,222 @@
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+<div class="">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide fondo_swiper">
+                <img src="../../../assets/img/Manza-home.jpg" alt="">
+                <div class="overlay_box">
+                    <div class="texto_superpuesto">
+                        <p class="texto_small_swiper">Conoce los beneficios de las</p>
+                        <p class="texto_big_swiper">manzanas</p>
+                        <p class="texto_big_swiper">orgánicas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="fondo_swiper">
+                    <img src="../../../assets/img/Manza-home.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide fondo_swiper">
+                <img src="../../../assets/img/Manza-home.jpg" alt="">
+                <div class="overlay_box">
+                    <div class="texto_superpuesto">
+                        <p class="texto_small_swiper">Conoce nuestras</p>
+                        <p class="texto_big_swiper">actividades</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide fondo_swiper">
+                <img src="../../../assets/img/Manza-home.jpg" alt="">
+                <div class="overlay_box">
+                    <div class="texto_superpuesto">
+                        <p class="texto_small_swiper">Conoce los beneficios de las</p>
+                        <p class="texto_big_swiper">manzanas</p>
+                        <p class="texto_big_swiper">orgánicas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="../../../assets/img/carrusel.png" class="d-block w-100" alt="...">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
 <div class="container text-center mt-3 mb-4">
     <span class="texto_subtitle">Manzana Serrana</span><br>
     <p class="texto_title bold espacios_textos">Nuestros</p><br>
     <p class="texto_title bold espacios_textos">Productos</p>
 </div>
-<div class="d-flex justify-content-center">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link">Mayoreo</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Menudeo</a>
-        </li>
-    </ul>
+<div class="d-flex justify-content-center texto_catgeorias">
+    <div class="boton_expand_cat active_categoria cursor_pointer" id="btnMayoreo" (click)="cambiarMapa()">Mayoreo</div>
+    <div class="boton_expand_cat active_categoria cursor_pointer" id="btnMenudeo" (click)="cambiarMapa()">Menudeo</div>
 </div>
 <div class="container mt-5 mb-5">
-    <div class="d-flex align-items-start">
-        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
-                type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"
-                (click)="cambiarMapa()">Mayoreo</button>
-            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-                type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"
-                (click)="cambiarMapa()">Menudeo</button>
-        </div>
-        <div class="tab-content" id="v-pills-tabContent">
-            <!-- Seccion de mayoreo -->
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
-                tabindex="0">
-                <div class="mr-5">
-                    <form (ngSubmit)="submitForm()">
-                        <div class="row row-cols-1 row-cols-md-3 g-5">
-                            <ng-container *ngFor="let aux of listaProductos">
-                                <div class="col mb-2">
-                                    <div class="card borde p-3" style="min-height: 100%;">
-                                        <div class="check-mark">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    [name]="'product_' + aux.id" [ngModel]="aux.selected"
-                                                    (ngModelChange)="onProductSelected(aux)">
-                                            </div>
-                                        </div>
-                                        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
-                                            class="card-img-fixed text-center" alt="...">
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <p class="texto_card text-center espacios_textos">Manzana</p><br>
-                                                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}
-                                                </p>
-                                            </div>
-                                            <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
-                                            <ng-container *ngIf="aux.estatus == 1; else no">
-                                                <p class="card-text" style="color: green;">Disponible</p>
-                                            </ng-container>
-                                            <ng-template #no>
-                                                <p class="card-text">No Disponible</p>
-                                            </ng-template>
-                                            <p class="card-text">${{aux.precioTonelada}} MXN por Tonelada</p>
-                                        </div>
-                                        <div class="mx-2">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="cantidad">Cantidad:</label>
-                                                    <input type="number" class="form-control" [disabled]="!aux.selected"
-                                                        [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
-                                                        (change)="onCantidadBlur(aux)" [min]="1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+    <!-- Seccion de mayoreo -->
+    <div id="mayoreo">
+        <form (ngSubmit)="submitForm()">
+            <div class="row row-cols-1 row-cols-md-3 g-5">
+                <ng-container *ngFor="let aux of listaProductos">
+                    <div class="col mb-2">
+                        <div class="card borde p-3" style="min-height: 100%;">
+                            <div class="check-mark">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" [name]="'product_' + aux.id"
+                                        [ngModel]="aux.selected" (ngModelChange)="onProductSelected(aux)">
                                 </div>
-                            </ng-container>
-                        </div>
-                        <ng-container *ngIf="banderaContacto">
-                            <div>
-                                <p class="text-center texto_title">Cesta de Productos</p>
-                                <div class="row">
-                                    <ng-container *ngFor="let pro of productosSeleccionados; let i = index">
-                                        <div class="col-6">
-                                            <div class="card mb-3" style="max-width: 540px;">
-                                                <div class="row g-0">
-                                                    <div class="col-md-5">
-                                                        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(pro.foto)"
-                                                            class="img-fluid rounded-start" alt="...">
-                                                    </div>
-                                                    <div class="col-md-7">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">{{ pro.nombre }}</h5>
-                                                            <p class="card-text">Cantidad: {{ pro.cantidad }}</p>
-                                                            <p class="card-text">Precio: ${{ pro.precio }}</p>
-                                                            <p class="card-text"><small
-                                                                    class="text-body-secondary">Subtotal:
-                                                                    ${{ pro.subtotal }}</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                </div>
-
-                                <h2 class="text-center">Total : ${{total}}</h2>
                             </div>
-                            <div class="mt-5 mb-4 fondo_card p-5">
+                            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
+                                class="card-img-fixed text-center" alt="...">
+                            <div class="card-body">
                                 <div class="text-center">
-                                    <span class="texto_subtitle">Manzana Serrana</span>
-                                    <br>
-                                    <p class="texto_title bold space_text">Pedidos</p>
+                                    <p class="texto_card text-center espacios_textos">Manzana</p><br>
+                                    <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}
+                                    </p>
                                 </div>
+                                <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
+                                <p class="card-text">Nivel de Madurez: {{ aux.nivelMadurez }}</p>
+                                <p class="card-text">${{aux.precioTonelada}} MXN por Tonelada</p>
+                            </div>
+                            <div class="mx-2">
                                 <div class="row">
-                                    <div class="col ">
-                                        <form [formGroup]="productForm">
-                                            <div class="row">
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="nombre" class="form-label texto_card">Nombre
-                                                        Completo:</label>
-                                                    <input type="text" class="form-control texto_input" id="nombre"
-                                                        placeholder='"Nombre Apellidos"' formControlName="nombre">
-                                                    <div *ngIf="productForm?.get('nombre')?.hasError('required') && productForm.get('nombre')?.touched"
-                                                        class="invalid-check">
-                                                        Este campo es requerido.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="estado" class="form-label texto_card">Estado:</label>
-                                                    <input type="text" class="form-control texto_input" id="estado"
-                                                        placeholder='"Puebla"' formControlName="estado">
-                                                    <div *ngIf="productForm?.get('estado')?.hasError('required') && productForm.get('estado')?.touched"
-                                                        class="invalid-check">
-                                                        Este campo es requerido.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="ciudad" class="form-label texto_card">Ciudad:</label>
-                                                    <input type="text" class="form-control texto_input" id="ciudad"
-                                                        placeholder='"Teziutlán"' formControlName="ciudad">
-                                                    <div *ngIf="productForm?.get('ciudad')?.hasError('required') && productForm.get('ciudad')?.touched"
-                                                        class="invalid-check">
-                                                        Este campo es requerido.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="email" class="form-label texto_card">Correo
-                                                        Electrónico:</label>
-                                                    <input type="email" class="form-control texto_input" id="email"
-                                                        placeholder='"tucorreo@example.com"' formControlName="email">
-                                                    <div *ngIf="productForm?.get('email')?.hasError('required') && productForm.get('email')?.touched"
-                                                        class="invalid-check">
-                                                        Este campo es requerido.
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="telefono"
-                                                        class="form-label texto_card">Teléfono:</label>
-                                                    <input type="phone" class="form-control texto_input" id="telefono"
-                                                        placeholder='"1235550101"' formControlName="telefono">
-                                                    <div *ngIf="productForm?.get('telefono')?.hasError('required') && productForm.get('telefono')?.touched"
-                                                        class="invalid-check">
-                                                        Este campo es requerido.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Cantidad:</span>
+                                            <input type="number" class="form-control" [disabled]="!aux.selected"
+                                                [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
+                                                (change)="onCantidadBlur(aux)" [min]="1">
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn_enviar_pedido bold">Enviar
-                                    Solicitud</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="banderaContacto">
+                <div>
+                    <p class="text-center texto_title">Cesta de Productos</p>
+                    <div class="row">
+                        <ng-container *ngFor="let pro of productosSeleccionados; let i = index">
+                            <div class="col-6">
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-5">
+                                            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(pro.foto)"
+                                                class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ pro.nombre }}</h5>
+                                                <p class="card-text">Cantidad: {{ pro.cantidad }}</p>
+                                                <p class="card-text">Precio: ${{ pro.precio }}</p>
+                                                <p class="card-text"><small class="text-body-secondary">Subtotal:
+                                                        ${{ pro.subtotal }}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </ng-container>
-                    </form>
+                    </div>
+                    <h2 class="text-center">Total : ${{total}}</h2>
                 </div>
-            </div>
-            <!-- Seccion de menudeo -->
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
-                tabindex="0">
-                <div class="row mb-3 row-cols-1 row-cols-md-3 g-4">
-                    <ng-container *ngFor="let aux of listaProductosCompleta">
-                        <div class="col">
-                            <div class="card mb-2">
-                                <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
-                                    class="card-img-fixed text-center" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ aux.nombre }}</h5>
-                                    <p>{{ aux.descripcion }}</p>
-                                    <p class="card-text">Precio: ${{aux.precio}} por kg</p>
-                                    <p class="card-text">En Stock: {{ aux.stock }} kg</p>
+                <div class="mt-5 mb-4 fondo_card p-5">
+                    <div class="text-center">
+                        <span class="texto_subtitle">Manzana Serrana</span>
+                        <br>
+                        <p class="texto_title bold space_text">Pedidos</p>
+                    </div>
+                    <div class="row">
+                        <div class="col ">
+                            <form [formGroup]="productForm">
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="nombre" class="form-label texto_card">Nombre
+                                            Completo:</label>
+                                        <input type="text" class="form-control texto_input" id="nombre"
+                                            placeholder='"Nombre Apellidos"' formControlName="nombre">
+                                        <div *ngIf="productForm?.get('nombre')?.hasError('required') && productForm.get('nombre')?.touched"
+                                            class="invalid-check">
+                                            Este campo es requerido.
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="estado" class="form-label texto_card">Estado:</label>
+                                        <input type="text" class="form-control texto_input" id="estado"
+                                            placeholder='"Puebla"' formControlName="estado">
+                                        <div *ngIf="productForm?.get('estado')?.hasError('required') && productForm.get('estado')?.touched"
+                                            class="invalid-check">
+                                            Este campo es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ciudad" class="form-label texto_card">Ciudad:</label>
+                                        <input type="text" class="form-control texto_input" id="ciudad"
+                                            placeholder='"Teziutlán"' formControlName="ciudad">
+                                        <div *ngIf="productForm?.get('ciudad')?.hasError('required') && productForm.get('ciudad')?.touched"
+                                            class="invalid-check">
+                                            Este campo es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label texto_card">Correo
+                                            Electrónico:</label>
+                                        <input type="email" class="form-control texto_input" id="email"
+                                            placeholder='"tucorreo@example.com"' formControlName="email">
+                                        <div *ngIf="productForm?.get('email')?.hasError('required') && productForm.get('email')?.touched"
+                                            class="invalid-check">
+                                            Este campo es requerido.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="telefono" class="form-label texto_card">Teléfono:</label>
+                                        <input type="phone" class="form-control texto_input" id="telefono"
+                                            placeholder='"1235550101"' formControlName="telefono">
+                                        <div *ngIf="productForm?.get('telefono')?.hasError('required') && productForm.get('telefono')?.touched"
+                                            class="invalid-check">
+                                            Este campo es requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </ng-container>
+                    </div>
+                    <button type="submit" class="btn_enviar_pedido bold">Enviar
+                        Solicitud</button>
                 </div>
-
-            </div>
+            </ng-container>
+        </form>
+    </div>
+    <!-- Seccion de menudeo -->
+    <div class="ocultar" id="menudeo">
+        <div class="row mb-2 row-cols-1 row-cols-md-3 g-4">
+            <ng-container *ngFor="let aux of listaProductosCompleta">
+                <div class="col">
+                    <div class="card borde mb-2" style="min-height: 100%;">
+                        <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
+                            class="card-img-fixed text-center" alt="...">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="texto_card text-center espacios_textos">Manzana</p><br>
+                                <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}
+                                </p>
+                            </div>
+                            <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
+                            <p class="card-text">Nivel de Madurez {{aux.nivelMadurez}}</p>
+                            <p class="card-text">${{aux.precioKilo}} por kg</p>
+                            <p class="card-text">${{aux.precioCaja}} por Caja</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </div>
     <div class="mostrar" id="banderaMapa">
-        <div class="swiper mySwiper">
+        <!-- <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
@@ -260,9 +247,49 @@
                 </div>
             </div>
             <div class="swiper-pagination"></div>
-        </div>
+        </div> -->
 
-        <h1 style="margin-left: 110px;">Puntos de Venta</h1>
-        <div id="map" style="width: 90%; height: 500px; margin-left: 110px;"></div>
+        <p class="text-center texto_title">Puntos de Venta</p>
+        <div id="map" style="width: 100%; height: 500px;"></div>
+    </div>
+</div>
+
+<!-- Message system -->
+<ng-container *ngIf="banderaId">
+    <div class="message-container">
+        <div class="dropdown">
+            <button class="btn btn-rojo" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">
+                <i class="fa fa-envelope"></i>
+            </button>
+        </div>
+    </div>
+</ng-container>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel" class="texto_subtitle mt-1">Mandar Nota a Administrador</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="tipoManzana" class="form-label texto_card">Tipo de Manzana</label>
+                <select class="form-control texto_input" id="tipoManzana" formControlName="tipoManzana">
+                    <option *ngFor="let manzana of listaIdManzana" [value]="manzana.id">{{ manzana.nombre }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="tipoMensaje" class="form-label texto_card">Tipo de Mensaje</label>
+                <select class="form-control texto_input" id="tipoMensaje" formControlName="tipoMensaje">
+                    <option *ngFor="let mensaje of listaMensaje" [value]="mensaje.id">{{ mensaje.nombre }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label texto_card">Cantidad</label>
+                <input type="number" class="form-control texto_input" id="cantidad" formControlName="cantidad">
+            </div>
+            <button type="submit" class="btn btn-rojo">Enviar</button>
+        </form>
     </div>
 </div>

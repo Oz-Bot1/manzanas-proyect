@@ -22,10 +22,9 @@ export class VentasComponent implements OnInit {
         console.log(error);
       }
     });
-    this.ventasService.listaPedidos().subscribe({
+    this.ventasService.listaVentas().subscribe({
       next: (data) => {
         this.ventasLista = data.data;
-        console.log(this.ventasLista);
       },
       error: (error) => {
         console.log(error);
