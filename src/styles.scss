@@ -27,6 +27,7 @@ $color_verde_dark: #1e8950;
 $color_gris: #929292;
 $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
+$color_btn_sombra: rgba(30, 137, 80, 0.4);
 
 .content {
     padding: 2% 5% 2% 5%;
@@ -76,6 +77,7 @@ $color_fondo_card: #F6F5F1;
 }
 
 .invalid-check {
+    margin: 5px 0px 5px 5px;
     font-size: small;
     color: red !important;
     font-family: $kamerik-thin;
@@ -138,7 +140,7 @@ table {
 
 .btn-rojo:hover {
     background-color: $color_verde_card;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0px 15px 20px $color_btn_sombra;
     color: #fff;
 }
 
@@ -194,7 +196,7 @@ table {
 
 .btn_pedido:hover {
     background-color: $color_verde_card;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0px 15px 20px $color_btn_sombra;
     color: #fff;
 }
 
@@ -214,7 +216,7 @@ table {
 .btn_enviar_pedido:hover {
     background-color: $color_verde_card;
     border: 2px solid $color_verde_card;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0px 15px 20px $color_btn_sombra;
     color: #fff;
 }
 
@@ -255,25 +257,15 @@ table {
     display: initial;
 }
 
-.fondo_navbar {
-    height: auto;
+nav {
+    height: 16%; /* Ajusta la altura según tus necesidades */
     width: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('./assets/img/pruebanav.png');
+    background-image: url('./assets/img/header.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-}
-
-footer {
-    height: auto;
-    width: auto;
-    background-color: $color_verde_footer;
-    //background-color: rgba(0, 0, 0, 0);
-    //background-image: url('./assets/img/pruebanav\ -\ copia.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center bottom; /* Ajusta la posición vertical */
+    filter: drop-shadow(0 0 5px $color_gris);
 }
 
 .texto_footer {
@@ -330,10 +322,9 @@ footer {
     height: auto;
     width: auto;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url('./assets/img/fondo_categoria.png');
+    background-image: url('./assets/img/forma.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .borde {
@@ -343,7 +334,7 @@ footer {
 
 .texto_big_swiper {
     font-family: $kamerik-bold;
-    font-size: clamp(1.5rem, -0.875rem + 8.333333vw, 4.063rem);
+    font-size: clamp(1.5rem, -0.875rem + 8.333333vw, 6rem);
     color: $color_verde;
     padding: 0%;
     margin: 0%;
@@ -352,7 +343,7 @@ footer {
 
 .texto_small_swiper {
     font-family: $kamerik-bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: $color_verde;
     padding: 0%;
     margin: 0%;
@@ -384,9 +375,26 @@ footer {
     margin: 0%;
 }
 
+.form-label{
+    margin: 0px 0px 10px 5px;
+}
+
+.texto_input::placeholder {
+    color: rgba(146, 146, 146, 0.7);
+}
+
 .texto_input {
     font-family: $kamerik-book-oblique;
+    height: 60px; 
+    border: none;
+    outline: none;
 }
+
+/* Estilo para el borde cuando el input está seleccionado */
+.texto_input:focus {
+    
+}
+
 
 .texto_subtitle {
     font-family: $kamerik-book;
@@ -461,6 +469,26 @@ footer {
     line-height: 1;
 }
 
+footer{
+    height: auto;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('./assets/img/footer.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 10px $color_gris);
+}
+
+@media (max-width: 1000px) {
+    .texto_small_swiper{
+        font-size: 1rem;
+    }
+    nav {
+        height: 100px;
+    }
+}
+
 @media (max-width: 800px) {
     footer {
         text-align: center;
@@ -474,18 +502,16 @@ footer {
             margin: 4% 2% 0% 2%;
         }
     }
+    nav {
+        height: 90px;
+    }
 }
 
-// @media (max-width: 500px) {
-//     .row-2 {
-//         flex-direction: column;
-//     }
-
-//     footer .cont-logos-footer img {
-//         width: 3.5rem !important;
-//     }
-
-//     footer .cont-logos-footer img.large {
-//         width: 15rem !important;
-//     }
-// }
+@media (max-width: 550px) {
+    .texto_small_swiper{
+        font-size: 0.5rem;
+    }
+    nav {
+        height: auto;
+    }
+}

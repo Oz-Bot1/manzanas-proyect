@@ -79,11 +79,12 @@
                             <div class="mx-2">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">Cantidad:</span>
-                                            <input type="number" class="form-control" [disabled]="!aux.selected"
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="floatingInput"
+                                                placeholder="Cantidad" [disabled]="!aux.selected"
                                                 [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
                                                 (change)="onCantidadBlur(aux)" [min]="1">
+                                            <label for="floatingInput">Cantidad</label>
                                         </div>
                                     </div>
                                 </div>
