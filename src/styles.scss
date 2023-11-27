@@ -313,17 +313,18 @@ nav {
 }
 
 .boton_expand_cat {
-    padding: 0% 3%;
+    //margin: 1%;
+    padding: 1% 6%;
 }
 
 .active_categoria {
+    text-align: center;
     font-weight: bold;
     color: white;
-    height: auto;
-    width: auto;
     background-color: rgba(0, 0, 0, 0);
     background-image: url('./assets/img/forma.svg');
-    background-size: cover;
+    background-position: center;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
