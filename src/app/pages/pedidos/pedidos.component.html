@@ -43,21 +43,20 @@
 </div>
 <div class="container text-center mt-3 mb-4">
     <span class="texto_subtitle">Manzana Serrana</span><br>
-    <p class="texto_title bold espacios_textos">Nuestros</p><br>
-    <p class="texto_title bold espacios_textos">Productos</p>
+    <p class="texto_title bold espacios_textos">Pedidos</p>
 </div>
 <div class="d-flex justify-content-center texto_catgeorias">
     <div class="boton_expand_cat active_categoria cursor_pointer" id="btnMayoreo" (click)="cambiarMapa()">Mayoreo</div>
     <div class="boton_expand_cat active_categoria cursor_pointer" id="btnMenudeo" (click)="cambiarMapa()">Menudeo</div>
 </div>
-<div class="container mt-5 mb-5">
+<div class="container mt-3 mb-5">
     <!-- Seccion de mayoreo -->
     <div id="mayoreo">
         <form (ngSubmit)="submitForm()">
-            <div class="row row-cols-1 row-cols-md-3 g-5">
+            <div class="row g-5">
                 <ng-container *ngFor="let aux of listaProductos">
-                    <div class="col mb-2">
-                        <div class="card borde p-3" style="min-height: 100%;">
+                    <div class="col-md-6 col-xl-4 col-sm-12 mb-2">
+                        <div class="card borde p-3">
                             <div class="check-mark">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" [name]="'product_' + aux.id"
@@ -72,19 +71,33 @@
                                     <p class="texto_card_big text-center espacios_textos">{{ aux.nombre }}
                                     </p>
                                 </div>
-                                <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
-                                <p class="card-text">Nivel de Madurez: {{ aux.nivelMadurez }}</p>
-                                <p class="card-text">${{aux.precioTonelada}} MXN por Tonelada</p>
+                                <p class="descripcion_card">{{ aux.descripcion }}</p>
+                            </div>
+                            <div class="mx-2 mb-1">
+                                <div class="row">
+                                    <div class="col">
+                                        <ul class="p-0">
+                                            <li class="card-text d-flex justify-content-between">
+                                                Nivel de madurez
+                                                <span class="">{{ aux.nivelMadurez }}</span>
+                                            </li>
+                                            <li class="card-text d-flex justify-content-between align-items-center">
+                                                Precio x tonelada
+                                                <span class="">${{ aux.precioTonelada }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="mx-2">
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-floating mb-3">
-                                            <input type="number" class="form-control" id="floatingInput"
+                                            <input type="number" class="form-control texto_input" id="floatingInput"
                                                 placeholder="Cantidad" [disabled]="!aux.selected"
                                                 [name]="'cantidad_' + aux.id" [(ngModel)]="aux.cantidad"
                                                 (change)="onCantidadBlur(aux)" [min]="1">
-                                            <label for="floatingInput">Cantidad</label>
+                                            <label for="floatingInput" class="texto_input">Cantidad</label>
                                         </div>
                                     </div>
                                 </div>
@@ -94,12 +107,14 @@
                 </ng-container>
             </div>
             <ng-container *ngIf="banderaContacto">
-                <div>
+                <div class="mt-3">
                     <p class="text-center texto_title">Cesta de Productos</p>
-                    <div class="row">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="d-flex g-2 flex-column">
                         <ng-container *ngFor="let pro of productosSeleccionados; let i = index">
-                            <div class="col-6">
-                                <div class="card mb-3" style="max-width: 540px;">
+                            <div class="mb-2 p-4">
+                                <div style="max-width: 540px;">
                                     <div class="row g-0">
                                         <div class="col-md-5">
                                             <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(pro.foto)"
@@ -107,11 +122,21 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ pro.nombre }}</h5>
-                                                <p class="card-text">Cantidad: {{ pro.cantidad }}</p>
-                                                <p class="card-text">Precio: ${{ pro.precio }}</p>
-                                                <p class="card-text"><small class="text-body-secondary">Subtotal:
-                                                        ${{ pro.subtotal }}</small></p>
+                                                <h5 class="texto_card">{{ pro.nombre }}</h5>
+                                                <ul class="p-0 card-text">
+                                                    <li class=" d-flex justify-content-between">
+                                                        Cantidad
+                                                        <span class="">{{ pro.cantidad }}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between align-items-center">
+                                                        Precio
+                                                        <span class="">{{pro.precio}}</span>
+                                                    </li>
+                                                    <li class="d-flex justify-content-between align-items-center">
+                                                        Subtotal
+                                                        <span class="badge bg rounded-pill">$ {{ pro.subtotal}}</span>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -119,13 +144,15 @@
                             </div>
                         </ng-container>
                     </div>
+                </div>
+                <div>
                     <h2 class="text-center">Total : ${{total}}</h2>
                 </div>
                 <div class="mt-5 mb-4 fondo_card p-5">
                     <div class="text-center">
                         <span class="texto_subtitle">Manzana Serrana</span>
                         <br>
-                        <p class="texto_title bold space_text">Pedidos</p>
+                        <p class="texto_title bold space_text">Datos del Pedido</p>
                     </div>
                     <div class="row">
                         <div class="col ">
@@ -197,7 +224,7 @@
         <div class="row mb-2 row-cols-1 row-cols-md-3 g-4">
             <ng-container *ngFor="let aux of listaProductosCompleta">
                 <div class="col">
-                    <div class="card borde mb-2" style="min-height: 100%;">
+                    <div class="card borde p-3 mb-2" style="min-height: 100%;">
                         <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
                             class="card-img-fixed text-center" alt="...">
                         <div class="card-body">
@@ -207,9 +234,15 @@
                                 </p>
                             </div>
                             <p class="descripcion_card my-1">{{ aux.descripcion }}</p>
-                            <p class="card-text">Nivel de Madurez {{aux.nivelMadurez}}</p>
-                            <p class="card-text">${{aux.precioKilo}} por kg</p>
-                            <p class="card-text">${{aux.precioCaja}} por Caja</p>
+                        </div>
+                        <div class="mx-2 mb-1">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text">Nivel de Madurez {{aux.nivelMadurez}}</p>
+                                    <p class="card-text">${{aux.precioKilo}} por kg</p>
+                                    <p class="card-text">${{aux.precioCaja}} por Caja</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

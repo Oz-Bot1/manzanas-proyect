@@ -46,8 +46,8 @@
   <p class="texto_title bold espacios_textos">Nuestros</p><br>
   <p class="texto_title bold espacios_textos">Productos</p>
 </div>
-<div class="container mb-4">
-  <div class="d-flex justify-content-center texto_catgeorias">
+<div class="container">
+  <div class="d-flex justify-content-center texto_catgeorias mx-2 mb-2">
     <div class="boton_expand_cat active_categoria cursor_pointer" id="btnRoja" (click)="cambiarCategoria('roja')">
       Roja
     </div>
@@ -62,10 +62,10 @@
     </div>
   </div>
   <div class="mostrar" id="rojas">
-    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+    <div class="row g-5">
       <ng-container *ngFor="let aux of listaRojas">
-        <div class="col">
-          <div class="card p-3 borde" style="min-height: 100%;">
+        <div class="col-md-6 col-xl-4 col-sm-12">
+          <div class="card p-3 borde">
             <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
               alt="...">
             <div class="card-body">
@@ -84,10 +84,10 @@
     </div>
   </div>
   <div class="ocultar" id="verdes">
-    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+    <div class="row g-5">
       <ng-container *ngFor="let aux of listaVerdes">
-        <div class="col">
-          <div class="card p-3 borde" style="min-height: 100%;">
+        <div class="col-md-6 col-xl-4 col-sm-12">
+          <div class="card p-3 borde">
             <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
               alt="...">
             <div class="card-body">
@@ -106,10 +106,10 @@
     </div>
   </div>
   <div class="ocultar" id="amarillas">
-    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+    <div class="row g-5">
       <ng-container *ngFor="let aux of listaAmarillas">
-        <div class="col">
-          <div class="card p-3 borde" style="min-height: 100%;">
+        <div class="col-md-6 col-xl-4 col-sm-12">
+          <div class="card p-3 borde">
             <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
               alt="...">
             <div class="card-body">
@@ -128,10 +128,10 @@
     </div>
   </div>
   <div class="ocultar" id="derivados">
-    <div class="row row-cols-1 row-cols-md-3 g-5 mt-3">
+    <div class="row g-5">
       <ng-container *ngFor="let aux of listaDerivados">
-        <div class="col">
-          <div class="card p-4 borde" style="min-height: 100%;">
+        <div class="col-md-6 col-xl-4 col-sm-12">
+          <div class="card p-4 borde">
             <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-fixed"
               alt="...">
             <div class="card-body">

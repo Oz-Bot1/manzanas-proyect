@@ -6,7 +6,7 @@
     </div>
     <form [formGroup]="formulario" (ngSubmit)="submitForm()" enctype="multipart/form-data" class="mt-2">
         <div class="row mb-3">
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="nombre" class="texto_card form-label">Nombre del Producto</label>
                 <input type="text" formControlName="nombre" class="form-control texto_input" id="nombre"
                     placeholder="Nombre del producto">
@@ -15,7 +15,7 @@
                     Este campo es requerido.
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="nivel" class="form-label texto_card">Nivel de Madurez</label>
                 <input type="text" class="form-control texto_input" formControlName="nivel" id="nivel"
                     placeholder="Nivel de Madurez">
@@ -24,7 +24,7 @@
                     Este campo es requerido.
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="stock" class="form-label texto_card">Cantidad de toneladas</label>
                 <input type="number" class="form-control texto_input" formControlName="stock" id="stock"
                     placeholder="Cantidad en stock">
@@ -35,11 +35,11 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="precioKilo" class="form-label texto_card">Precio por kilo</label>
                 <div class="input-group mb-3 texto_input">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" formControlName="precioKilo" id="precioKilo"
+                    <input type="number" class="form-control texto_input" formControlName="precioKilo" id="precioKilo"
                         placeholder="Precio por kilo">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -48,11 +48,11 @@
                     Este campo es requerido.
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="precioCaja" class="form-label texto_card">Precio por caja</label>
                 <div class="input-group mb-3 texto_input">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" formControlName="precioCaja" id="precioCaja"
+                    <input type="number" class="form-control texto_input" formControlName="precioCaja" id="precioCaja"
                         placeholder="Precio por caja">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -61,11 +61,11 @@
                     Este campo es requerido.
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-12 col-md-4">
                 <label for="precioTonelada" class="form-label texto_card">Precio por tonelada</label>
                 <div class="input-group mb-3 texto_input">
                     <span class="input-group-text">$</span>
-                    <input type="number" class="form-control" formControlName="precioTonelada" id="precioTonelada"
+                    <input type="number" class="form-control texto_input" formControlName="precioTonelada" id="precioTonelada"
                         placeholder="Precio por tenelada">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -89,25 +89,27 @@
             </div>
             <div class="col-md-12">
                 <div class="mb-3 texto_card">
-                    <label for="foto" class="form-label texto_card">Imagen del Evento</label>
+                    <label for="foto" class="form-label texto_card">Imagen del Producto</label>
                     <div class="text-center">
                         <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(nombrefoto)" alt=""
-                            width="100">
+                            width="50%">
                     </div>
-                    <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input   "
+                    <div class="mt-3">
+                        <input (change)="onFileSelect($event.target)" type="file" class="form-control texto_input_foto"
                         id="foto">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col">
+            <div class="col-sm-12 col-md-6">
                 <label for="estatus" class="form-label texto_card">Estatus</label>
                 <select class="form-select texto_input" formControlName="estatus" id="estatus">
                     <option value="1">Activo</option>
                     <option value="2">Desactivado</option>
                 </select>
             </div>
-            <div class="col">
+            <div class="col-sm-12 col-md-6">
                 <label for="categoria" class="form-label texto_card">Categoria</label>
                 <select class="form-select texto_input" formControlName="categoria" id="catgeoria">
                     <option value="roja">Roja</option>

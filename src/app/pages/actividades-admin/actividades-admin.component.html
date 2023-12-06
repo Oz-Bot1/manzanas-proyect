@@ -3,35 +3,37 @@
   <p class="texto_title bold espacios_textos">Actividades</p>
 </div>
 <div class="container mt-3">
-  <table class="table table-hover">
-    <thead>
-      <tr class="text-center">
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Foto</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let list of lista">
-        <th class="text-center vertical_align">{{ list.id }}</th>
-        <th class="text-center vertical_align">{{ list.nombre }}</th>
-        <td class="text-center vertical_align">{{ list.descripcion }}</td>
-        <td class="text-center vertical_align">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="..." class="img-table">
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)">Actualizar</button>
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
-            data-bs-target="#eliminar">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Foto</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of lista">
+          <th class="text-center vertical_align">{{ list.id }}</th>
+          <th class="text-center vertical_align">{{ list.nombre }}</th>
+          <td class="text-center vertical_align">{{ list.descripcion }}</td>
+          <td class="text-center vertical_align">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="..." class="img-table">
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)">Actualizar</button>
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
+              data-bs-target="#eliminar">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <!-- Modal para eliminar -->
 <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="eliminar" aria-hidden="true">
@@ -42,7 +44,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Estas seguro de eliminar {{ nombreProducto }}
+        ¿Estas seguro de eliminar <b>{{ nombreProducto }}</b>?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-gris" data-bs-dismiss="modal">Cancelar</button>

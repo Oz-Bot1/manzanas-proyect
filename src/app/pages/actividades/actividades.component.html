@@ -1,78 +1,73 @@
 <div class="">
   <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-          <div class="swiper-slide fondo_swiper">
-              <img src="../../../assets/img/Manza-home.jpg" alt="">
-              <div class="overlay_box">
-                  <div class="texto_superpuesto">
-                      <p class="texto_small_swiper">Conoce los beneficios de las</p>
-                      <p class="texto_big_swiper">manzanas</p>
-                      <p class="texto_big_swiper">orgánicas</p>
-                  </div>
-              </div>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide fondo_swiper">
+        <img src="../../../assets/img/Manza-home.jpg" alt="">
+        <div class="overlay_box">
+          <div class="texto_superpuesto">
+            <p class="texto_small_swiper">Conoce los beneficios de las</p>
+            <p class="texto_big_swiper">manzanas</p>
+            <p class="texto_big_swiper">orgánicas</p>
           </div>
-          <div class="swiper-slide">
-              <div class="fondo_swiper">
-                  <img src="../../../assets/img/Manza-home.jpg" alt="">
-              </div>
-          </div>
-          <div class="swiper-slide fondo_swiper">
-              <img src="../../../assets/img/Manza-home.jpg" alt="">
-              <div class="overlay_box">
-                  <div class="texto_superpuesto">
-                      <p class="texto_small_swiper">Conoce nuestras</p>
-                      <p class="texto_big_swiper">actividades</p>
-                  </div>
-              </div>
-          </div>
-          <div class="swiper-slide fondo_swiper">
-              <img src="../../../assets/img/Manza-home.jpg" alt="">
-              <div class="overlay_box">
-                  <div class="texto_superpuesto">
-                      <p class="texto_small_swiper">Conoce los beneficios de las</p>
-                      <p class="texto_big_swiper">manzanas</p>
-                      <p class="texto_big_swiper">orgánicas</p>
-                  </div>
-              </div>
-          </div>
+        </div>
       </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <div class="swiper-slide">
+        <div class="fondo_swiper">
+          <img src="../../../assets/img/Manza-home.jpg" alt="">
+        </div>
+      </div>
+      <div class="swiper-slide fondo_swiper">
+        <img src="../../../assets/img/Manza-home.jpg" alt="">
+        <div class="overlay_box">
+          <div class="texto_superpuesto">
+            <p class="texto_small_swiper">Conoce nuestras</p>
+            <p class="texto_big_swiper">actividades</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide fondo_swiper">
+        <img src="../../../assets/img/Manza-home.jpg" alt="">
+        <div class="overlay_box">
+          <div class="texto_superpuesto">
+            <p class="texto_small_swiper">Conoce los beneficios de las</p>
+            <p class="texto_big_swiper">manzanas</p>
+            <p class="texto_big_swiper">orgánicas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 </div>
 <div class="container text-center mt-3 mb-4">
-    <span class="texto_subtitle">Manzana Serrana</span><br>
-    <p class="texto_title bold espacios_textos">Recreación &</p><br>
-    <p class="texto_title bold espacios_textos">Deportes</p>
-  </div>
+  <span class="texto_subtitle">Manzana Serrana</span><br>
+  <p class="texto_title bold espacios_textos">Actividades</p>
+  <!-- <br>
+  <p class="texto_title bold espacios_textos">Deportes</p> -->
+</div>
 <div class="container mt-3 mb-3">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col-md-6">
-            <div class="borde p-4" style="min-height: 100%;">
-                <img src="../../../assets/img/act-1.jpg" class="card-img-top" alt="..." >
-                <div class="card-body">
-                    <h5 class="texto_card_big">Trail Running</h5>
-                    <p class="descripcion_card">Si eres apasionado del Trail no te puedes perder 3K, 5K, 10k, 15K, 25K de rutas por caminos, sederos o veredas, donde podrás poner a prueba tus técnicas como runner.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-          <div class="borde p-4" style="min-height: 100%;">
-              <img src="../../../assets/img/act-1.jpg" class="card-img-top" alt="..." >
-              <div class="card-body">
-                  <h5 class="texto_card_big">Trail Running</h5>
-                  <p class="descripcion_card">Si eres apasionado del Trail no te puedes perder 3K, 5K, 10k, 15K, 25K de rutas por caminos, sederos o veredas, donde podrás poner a prueba tus técnicas como runner.</p>
-              </div>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <ng-container *ngFor="let aux of lista">
+      <div class="col-md-6">
+        <div class="card borde p-4">
+          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="texto_card_big">{{aux.nombre}}</h5>
+            <p class="descripcion_card">{{aux.descripcion}}</p>
           </div>
+        </div>
       </div>
-    </div>
+    </ng-container>
+  </div>
 </div>
 <!-- Message system -->
 <ng-container *ngIf="banderaId">
   <div class="message-container">
     <div class="dropdown">
-      <button class="btn btn-rojo" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+      <button class="btn btn-rojo" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight">
         <i class="fa fa-envelope"></i>
       </button>
     </div>

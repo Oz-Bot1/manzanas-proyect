@@ -29,10 +29,84 @@ $color_gris_oscuro: #7c7c7c;
 $color_fondo_card: #F6F5F1;
 $color_btn_sombra: rgba(30, 137, 80, 0.4);
 
+.bg {
+    background-color: $color_verde;
+}
+
+.modal-title {
+    font-family: $kamerik-book;
+}
+
+.modal-body {
+    font-family: $kamerik-book-oblique;
+}
+
+.login {
+    margin-top: 8%;
+}
+
+.video {
+    width: 100%;
+    height: 500px;
+}
+
+.carta_verde {
+    background-color: $color_verde_card;
+    display: flex;
+    align-items: center;
+}
+
+.titulo_carta {
+    font-family: $kamerik-bold;
+    color: white;
+    font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 2rem);
+}
+
+.texto_carta {
+    font-family: $kamerik-book;
+    color: white;
+    text-align: center;
+    font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 1.2rem);
+}
+
+.carta_blanca {
+    background-color: #e9e5d7;
+    display: flex;
+    align-items: center;
+}
+
+.titulo_carta_blanca {
+    font-family: $kamerik-bold;
+    color: $color_verde_card;
+    font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 2rem);
+}
+
+.texto_carta_blanca {
+    font-family: $kamerik-book;
+    color: $color_verde_card;
+    text-align: center;
+    font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 1.2rem);
+}
+
 .content {
     padding: 2% 5% 2% 5%;
     margin: 6% 5% 0px 5%;
     box-shadow: 0px 10px 20px 10px rgba(39, 41, 40, 0.4);
+}
+
+.card {
+    margin-top: 20px;
+    min-height: 100%;
+}
+
+.card-text {
+    color: dark;
+    font-family: $kamerik-light-oblique;
+    font-weight: bold;
+}
+
+.card-text_precio {
+    color: #1e8950;
 }
 
 .fondo_swiper img {
@@ -64,7 +138,7 @@ $color_btn_sombra: rgba(30, 137, 80, 0.4);
 
 .swiper-button-next {
     color: white;
-    margin-right: 1%;
+    margin-right: 3%;
 }
 
 .swiper-button-prev {
@@ -118,12 +192,15 @@ table {
     thead {
         tr {
             font-family: $kamerik-bold;
+            font-size: clamp(0.7rem, -0.875rem + 8.333333vw, 1.2rem);
+
         }
     }
 
     tbody {
         tr {
             font-family: $kamerik-book;
+            font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 1rem);
         }
     }
 }
@@ -191,6 +268,7 @@ table {
     color: $color_gris;
     font-weight: bolder;
     font-family: $kamerik-light;
+    font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 1rem);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -244,10 +322,25 @@ table {
     border-radius: 50%;
 }
 
+/* Estilo predeterminado del checkbox */
 .form-check-input[type="checkbox"] {
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
+    /* Otros estilos necesarios */
 }
+
+/* Estilo cuando el checkbox está seleccionado */
+.form-check-input[type="checkbox"]:checked {
+    background-color: green;
+    border-color: green;
+}
+
+/* Estilo del marcador de verificación cuando el checkbox está seleccionado */
+.form-check-input[type="checkbox"]:checked+.check-mark::after {
+    content: '\2713';
+    font-size: 16px;
+}
+
 
 .ocultar {
     display: none;
@@ -258,13 +351,15 @@ table {
 }
 
 nav {
-    height: 16%; /* Ajusta la altura según tus necesidades */
+    height: 16%;
+    /* Ajusta la altura según tus necesidades */
     width: auto;
     background-color: rgba(0, 0, 0, 0);
     background-image: url('./assets/img/header.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center bottom; /* Ajusta la posición vertical */
+    background-position: center bottom;
+    /* Ajusta la posición vertical */
     filter: drop-shadow(0 0 5px $color_gris);
 }
 
@@ -360,7 +455,7 @@ nav {
 
 .texto_card {
     font-family: $kamerik-bold;
-    font-size: 15px;
+    font-size: clamp(0.8rem, -0.875rem + 8.333333vw, 1.2rem);
     color: $color_verde_card;
     font-weight: bold;
     padding: 0%;
@@ -369,14 +464,14 @@ nav {
 
 .texto_card_big {
     font-family: $kamerik-bold;
-    font-size: clamp(10px, -0.875rem + 8.333333vw, 30px);
+    font-size: clamp(1rem, -0.875rem + 8.333333vw, 1.875rem);
     color: $color_verde_card;
     font-weight: bold;
     padding: 0%;
     margin: 0%;
 }
 
-.form-label{
+.form-label {
     margin: 0px 0px 10px 5px;
 }
 
@@ -386,16 +481,25 @@ nav {
 
 .texto_input {
     font-family: $kamerik-book-oblique;
-    height: 60px; 
+    height: 60px;
     border: none;
     outline: none;
 }
 
-/* Estilo para el borde cuando el input está seleccionado */
-.texto_input:focus {
-    
+.texto_input_foto {
+    font-family: $kamerik-book-oblique;
+    height: auto;
+    border: none;
+    outline: none;
 }
 
+input:focus,
+select:focus,
+input.form-control:focus {
+    border-color: $color_verde_card;
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px $color_verde_card;
+    outline: 0 none;
+}
 
 .texto_subtitle {
     font-family: $kamerik-book;
@@ -406,13 +510,14 @@ nav {
 
 .texto_catgeorias {
     font-family: $kamerik-book;
-    font-size: clamp(10px, -0.875rem + 8.333333vw, 20px);
+    font-size: clamp(0.1rem, -0.875rem + 8.333333vw, 1.1rem);
 }
 
 .descripcion_card {
     text-align: justify;
     font-family: $kamerik-book;
     color: $color_gris;
+    font-size: clamp(0.1rem, -0.875rem + 8.333333vw, 1.1rem);
 }
 
 .bold {
@@ -470,7 +575,7 @@ nav {
     line-height: 1;
 }
 
-footer{
+footer {
     height: auto;
     width: auto;
     background-color: rgba(0, 0, 0, 0);
@@ -482,9 +587,10 @@ footer{
 }
 
 @media (max-width: 1000px) {
-    .texto_small_swiper{
+    .texto_small_swiper {
         font-size: 1rem;
     }
+
     nav {
         height: 100px;
     }
@@ -493,26 +599,51 @@ footer{
 @media (max-width: 800px) {
     footer {
         text-align: center;
-        .sticky-footer{
+
+        .sticky-footer {
             padding: 0% !important;
         }
-        .d-flex{
+
+        .d-flex {
             justify-content: center !important;
         }
+
         .icon_footer {
             margin: 4% 2% 0% 2%;
         }
     }
+
     nav {
         height: 90px;
+    }
+
+    .borde {
+        margin: 5% 10% 10% 10%;
     }
 }
 
 @media (max-width: 550px) {
-    .texto_small_swiper{
+    .texto_small_swiper {
         font-size: 0.5rem;
     }
+
     nav {
         height: auto;
+    }
+
+    .card-img-fixed {
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 320px) {
+    .btn_pedido {
+        padding: 5px 20px;
+    }
+
+    .card {
+        min-height: auto;
     }
 }

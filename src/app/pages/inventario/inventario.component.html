@@ -3,71 +3,78 @@
   <p class="texto_title bold espacios_textos">Inventario</p>
 </div>
 <div class="container mt-3 p-1">
-  <table class="table table-hover">
-    <thead>
-      <tr class="text-center texto_tabla_encabezado">
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Estatus</th>
-        <th>Categoria</th>
-        <th>Stock</th>
-        <th>Imagen</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let list of lista" >
-        <th class="text-center vertical_align">{{ list.id }}</th>
-        <th class="text-center vertical_align">{{ list.nombre }}</th>
-        <td class="text-center vertical_align">{{ list.estatus }}</td>
-        <td class="text-center vertical_align">{{ list.categoria_nombre }}</td>
-        <td class="text-center vertical_align">{{ list.stock }}</td>
-        <td class="text-center vertical_align">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)">Actualizar</button>
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
-            data-bs-target="#eliminar">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-center texto_tabla_encabezado">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Estatus</th>
+          <th>Categoria</th>
+          <th>Stock</th>
+          <th>Imagen</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of lista" >
+          <th class="text-center vertical_align">{{ list.id }}</th>
+          <th class="text-center vertical_align">{{ list.nombre }}</th>
+          <td class="text-center vertical_align">{{ list.estatus }}</td>
+          <td class="text-center vertical_align">{{ list.categoria_nombre }}</td>
+          <td class="text-center vertical_align">{{ list.stock }}</td>
+          <td class="text-center vertical_align">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo" (click)="buscar(list.id, 1, list.nombre)">Actualizar</button>
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo" (click)="buscar(list.id, 2, list.nombre)" data-bs-toggle="modal"
+              data-bs-target="#eliminar">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <!-- Derivados -->
+<div class="container text-center mt-5 mb-4">
+  <p class="texto_title bold espacios_textos">Derivados</p>
+</div>
 <div class="container mt-3 p-1">
-  <table class="table table-hover">
-    <thead>
-      <tr class="text-center">
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Imagen</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let list of listaDerivados" >
-        <th class="text-center vertical_align">{{ list.id }}</th>
-        <th class="text-center vertical_align">{{ list.nombre }}</th>
-        <th class="text-center vertical_align">{{ list.descripcion }}</th>
-        <td class="text-center vertical_align">
-          <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo" (click)="buscarDerivado(list.id, 1, list.nombre)">Actualizar</button>
-        </td>
-        <td class="text-center vertical_align">
-          <button class="btn btn-rojo mt-0" (click)="buscarDerivado(list.id, 2, list.nombre)" data-bs-toggle="modal"
-            data-bs-target="#eliminarDerivado">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Imagen</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of listaDerivados" >
+          <th class="text-center vertical_align">{{ list.id }}</th>
+          <th class="text-center vertical_align">{{ list.nombre }}</th>
+          <th class="text-center vertical_align">{{ list.descripcion }}</th>
+          <td class="text-center vertical_align">
+            <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(list.foto)" alt="" class="img-table">
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo" (click)="buscarDerivado(list.id, 1, list.nombre)">Actualizar</button>
+          </td>
+          <td class="text-center vertical_align">
+            <button class="btn btn-rojo mt-0" (click)="buscarDerivado(list.id, 2, list.nombre)" data-bs-toggle="modal"
+              data-bs-target="#eliminarDerivado">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <!-- Modal para eliminar -->
 <div class="modal fade" id="eliminar" tabindex="-1"
@@ -79,7 +86,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Estas seguro de eliminar {{ nombreProducto }}
+        ¿Estas seguro de eliminar <b>{{ nombreProducto }}</b>?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-gris" data-bs-dismiss="modal">Cancelar</button>
