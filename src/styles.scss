@@ -33,6 +33,12 @@ $color_btn_sombra: rgba(30, 137, 80, 0.4);
     background-color: $color_verde;
 }
 
+.bg_verde {
+    background-color: $color_verde;
+    padding: 1rem 15rem 1rem 15rem !important;
+    border-radius: 2%;
+}
+
 .modal-title {
     font-family: $kamerik-book;
 }
@@ -350,19 +356,6 @@ table {
     display: initial;
 }
 
-nav {
-    height: 16%;
-    /* Ajusta la altura según tus necesidades */
-    width: auto;
-    background-color: rgba(0, 0, 0, 0);
-    background-image: url('./assets/img/header.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    /* Ajusta la posición vertical */
-    filter: drop-shadow(0 0 5px $color_gris);
-}
-
 .texto_footer {
     color: white;
     font-family: $kamerik-book;
@@ -586,6 +579,26 @@ footer {
     filter: drop-shadow(0 0 10px $color_gris);
 }
 
+nav {
+    height: 16%;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url('./assets/img/header.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    /* Ajusta la posición vertical */
+    filter: drop-shadow(0 0 5px $color_gris);
+}
+
+.nav-link {
+    font-size: clamp(0.5rem, -0.875rem + 8vw, 1rem);
+}
+
+.margin_nav {
+    margin-top: 2rem;
+}
+
 @media (max-width: 1000px) {
     .texto_small_swiper {
         font-size: 1rem;
@@ -593,6 +606,14 @@ footer {
 
     nav {
         height: 100px;
+
+        div {
+            margin-top: 0px !important;
+        }
+    }
+
+    .img_nav {
+        margin-top: 20px !important;
     }
 }
 
@@ -629,6 +650,14 @@ footer {
 
     nav {
         height: auto;
+    }
+
+    .navbar-collapse {
+        background-color: #fff;
+        /* Agrega un fondo blanco al menú desplegable */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        /* Agrega una sombra al menú desplegable */
     }
 
     .card-img-fixed {
