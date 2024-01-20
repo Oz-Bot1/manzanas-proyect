@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { NotasService } from 'src/app/service/notas.service';
+import { PedidosService } from 'src/app/service/pedidos.service';
 import Swiper, { Navigation, Pagination } from 'swiper';
 
 @Component({
@@ -16,6 +17,13 @@ export class HomeComponent implements OnInit {
   banderaId: boolean = false;
   formulario: FormGroup;
 
+  obtenerNombreImagen(nombre: string): string {
+    if (nombre.endsWith('.jpeg')) {
+      return nombre.slice(0, -5); // Elimina los últimos 5 caracteres (".jpeg")
+    }
+    return nombre;
+  }
+
   banderaRol() {
     if (this.idRol == "2") {
       this.banderaId = true;
@@ -24,7 +32,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor(private homeService: NotasService, private cookie: CookieService, private fb: FormBuilder, private router: Router) {
+  constructor(private homeService: NotasService, private cookie: CookieService, private fb: FormBuilder, private router: Router,private pedidosService: PedidosService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         window.scrollTo(0, 0); // Mueve la página al inicio
@@ -39,7 +47,18 @@ export class HomeComponent implements OnInit {
 
   listaIdManzana: any[] = [];
   listaMensaje: any[] = [];
+  lista: any[] = [];
   ngOnInit(): void {
+    this.pedidosService.lista().subscribe({
+      next: (data) => {
+        this.lista = data.data;
+        console.log(this.lista);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+
     this.banderaRol();
 
     if (this.banderaId == true) {
@@ -80,6 +99,19 @@ export class HomeComponent implements OnInit {
           slidesPerView: 1,
         },
       }
+    });
+
+    const cartas = new Swiper('.cartas', {
+      effect: "coverflow",
+      grabCursor: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
     });
   }
 

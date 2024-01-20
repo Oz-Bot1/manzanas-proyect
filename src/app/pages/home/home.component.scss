@@ -1,0 +1,46 @@
+.bod {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+    }
+}
+.descripcion_card li {
+    margin-bottom: 20px !important; /* Ajusta el valor según la cantidad de espacio que desees */
+  }
+  
+.custom-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .custom-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .list-number {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50; /* Cambia a tu color verde deseado */
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    margin-right: 10px; /* Ajusta el espacio entre el número y el texto */
+  }
+  

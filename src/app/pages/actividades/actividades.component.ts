@@ -12,6 +12,7 @@ import Swiper, { Pagination, Navigation } from 'swiper';
 })
 export class ActividadesComponent implements OnInit {
   lista: any[] = [];
+  listaEventos: any[] = [];
   idRol: string = this.cookie.get('idRol');
   idUser: string = this.cookie.get('idUser');
   banderaId: boolean = false;
@@ -47,7 +48,20 @@ export class ActividadesComponent implements OnInit {
       {
         next: (data) => {
           this.lista = data.data;
-          console.log(this.lista);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+        }
+      }
+    );
+
+    this.actividades.listaEventos().subscribe(
+      {
+        next: (data) => {
+          this.listaEventos = data.data;
+          console.log(this.listaEventos);
         },
         error: (error) => {
           console.log(error);

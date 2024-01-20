@@ -15,7 +15,11 @@ export class ActividadesService {
     const params = { };
     return this.http.post<any>(`${urlApi}/Dashboard/listaActividades`, params);
   }
-
+  
+  listaEventos(): Observable<any> {
+    const params = { };
+    return this.http.post<any>(`${urlApi}/Dashboard/listaEventos`, params);
+  }
   buscar(id: number): Observable<any> {
     const params = {
       id: id
