@@ -20,18 +20,19 @@ export class ActividadesAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actividadesService.lista().subscribe(
-      {
-        next: (data) => {
+    this.actividadesService.lista().subscribe({
+      next: (data) => {
+        if (data && data.data && data.data.length > 0) {
           this.lista = data.data;
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
+        } else {
+          this.lista = [];
         }
+      },
+      error: (error) => {
+        this.lista = [];
+        console.error(error);
       }
-    );
+    });
   }
   
   idAct: number = 0;

@@ -16,18 +16,29 @@ export class VentasComponent implements OnInit {
   ngOnInit(): void {
     this.ventasService.listaPedidos().subscribe({
       next: (data) => {
-        this.pedidosLista = data.data;
+        if (data && data.data && data.data.length > 0) {
+          this.pedidosLista = data.data;
+        } else {
+          this.pedidosLista = [];
+        }
       },
       error: (error) => {
-        console.log(error);
+        this.pedidosLista = [];
+        console.error(error);
       }
     });
+
     this.ventasService.listaVentas().subscribe({
       next: (data) => {
-        this.ventasLista = data.data;
+        if (data && data.data && data.data.length > 0) {
+          this.ventasLista = data.data;
+        } else {
+          this.ventasLista = [];
+        }
       },
       error: (error) => {
-        console.log(error);
+        this.ventasLista = [];
+        console.error(error);
       }
     });
   }

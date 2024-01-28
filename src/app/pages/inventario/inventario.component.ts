@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgregarService } from 'src/app/service/agregar.service';
 import { InventarioService } from 'src/app/service/inventario.service';
-import Swiper, { Navigation, Pagination } from 'swiper';
 
 @Component({
   selector: 'app-inventario',
@@ -17,44 +16,33 @@ export class InventarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      autoplay: {
-        delay: 3000,
-      },
-    });
-    this.inventarioService.lista().subscribe(
-      {
-        next: (data) => {
+    this.inventarioService.lista().subscribe({
+      next: (data) => {
+        if (data && data.data && data.data.length > 0) {
           this.lista = data.data;
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
+        } else {
+          this.lista = [];
         }
+      },
+      error: (error) => {
+        this.lista = [];
+        console.error(error);
       }
-    );
-    this.inventarioService.listaDerivados().subscribe(
-      {
-        next: (data) => {
+    });
+
+    this.inventarioService.listaDerivados().subscribe({
+      next: (data) => {
+        if (data && data.data && data.data.length > 0) {
           this.listaDerivados = data.data;
-        },
-        error: (error) => {
-          console.log(error);
-        },
-        complete: () => {
+        } else {
+          this.listaDerivados = [];
         }
+      },
+      error: (error) => {
+        this.listaDerivados = [];
+        console.error(error);
       }
-    );
+    });
   }
 
   idAct: number = 0;
