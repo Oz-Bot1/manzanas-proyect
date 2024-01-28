@@ -28,18 +28,32 @@ export class EventosComponent implements OnInit {
   ngOnInit(): void {
     this.eventosService.listaPuntos().subscribe({
       next: (data) => {
-        this.listaPuntos = data.data;
+        if (data && data.data && data.data.length > 0) {
+          this.listaPuntos = data.data;
+        } else {
+          this.listaPuntos = [];
+        }
       },
       error: (error) => {
-        console.log(error);
+        this.listaEventos = [];
+        console.error(error);
       }
     });
 
     this.eventosService.listaEventos().subscribe({
       next: (data) => {
-        this.listaEventos = data.data;
+        if (data && data.data && data.data.length > 0) {
+          this.listaEventos = data.data;
+        } else {
+          this.listaEventos = [];
+        }
+      },
+      error: (error) => {
+        this.listaEventos = [];
+        console.error(error);
       }
-    })
+    });
+    
   }
 
   obtenerNombreImagen(nombre: string): string {
@@ -76,6 +90,7 @@ export class EventosComponent implements OnInit {
       localStorage.setItem('idAct', id.toString());
       this.router.navigate(['/admin/agregarEvento']);
     } else {
+      this.idAct = id;
       this.nombreProducto = nombre;
     }
   }
