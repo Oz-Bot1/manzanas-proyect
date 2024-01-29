@@ -246,14 +246,20 @@ export class PedidosComponent implements OnInit {
             title: '¡Bien!',
             text: 'Excelente',
             icon: 'warning',
-            confirmButtonColor: '#4E9545'
+            confirmButtonColor: '#4E9545',
+            showConfirmButton: true,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload();
+            }
           });
-          this.ngOnInit();
         },
         error: (error) => {
           console.log(error);
         }
       });
+      
     }else{
       Swal.fire({
         title: 'Porfavor',
