@@ -294,6 +294,21 @@ table {
     color: #fff;
 }
 
+.btn_gris {
+    width: 100%;
+    background-color: $color_gris_oscuro;
+    color: white !important;
+    font-family: $kamerik-bold;
+    font-size: 15px;
+    padding: 10px 10px;
+    color: $color_verde_card;
+}
+
+.btn_gris:hover {
+    background-color: $color_gris;
+    color: #fff;
+}
+
 .btn_pedido {
     padding: 15px 40px;
     text-transform: uppercase;
