@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  urlApi:"http://localhost:8080"
+  urlApi:"https://apimanzana.000webhostapp.com"
 };
 

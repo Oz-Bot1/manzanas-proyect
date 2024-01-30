@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   //https://apimanzana.000webhostapp.com
-  //http://localhost:8080/
-  urlApi:"http://localhost:8080"
+  //http://localhost:8080
+  urlApi:"https://apimanzana.000webhostapp.com"
 };
 /*DIVICION 1 PORCI*/
 /*DIVICION 2 GAN*/
