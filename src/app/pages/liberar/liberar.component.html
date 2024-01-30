@@ -9,15 +9,18 @@
             <div class="row">
                 <div class="col">
                     <label for="nombreCliente" class="form-label texto_card">Nombre Cliente</label>
-                    <input type="text" id="nombreCliente" class="form-control texto_input" formControlName="nombreCliente">
+                    <input type="text" id="nombreCliente" class="form-control texto_input"
+                        formControlName="nombreCliente">
                 </div>
                 <div class="col">
                     <label for="telefonoCliente" class="form-label texto_card">Teléfono Cliente</label>
-                    <input type="tel" id="telefonoCliente" class="form-control texto_input" formControlName="telefonoCliente">
+                    <input type="tel" id="telefonoCliente" class="form-control texto_input"
+                        formControlName="telefonoCliente">
                 </div>
                 <div class="col">
                     <label for="correoCliente" class="form-label texto_card">Correo Cliente</label>
-                    <input type="email" id="correoCliente" class="form-control texto_input" formControlName="correoCliente">
+                    <input type="email" id="correoCliente" class="form-control texto_input"
+                        formControlName="correoCliente">
                 </div>
             </div>
         </div>
@@ -25,15 +28,18 @@
             <div class="row">
                 <div class="col">
                     <label for="estadoCliente" class="form-label texto_card">Estado Cliente</label>
-                    <input type="text" id="estadoCliente" class="form-control texto_input" formControlName="estadoCliente">
+                    <input type="text" id="estadoCliente" class="form-control texto_input"
+                        formControlName="estadoCliente">
                 </div>
                 <div class="col">
                     <label for="ciudadCliente" class="form-label texto_card">Ciudad Cliente</label>
-                    <input type="text" id="ciudadCliente" class="form-control texto_input" formControlName="ciudadCliente">
+                    <input type="text" id="ciudadCliente" class="form-control texto_input"
+                        formControlName="ciudadCliente">
                 </div>
                 <div class="col">
                     <label for="fechaOrdenado" class="form-label texto_card">Fecha Ordenado</label>
-                    <input type="date" id="fechaOrdenado" class="form-control texto_input" formControlName="fechaOrdenado" readonly>
+                    <input type="date" id="fechaOrdenado" class="form-control texto_input"
+                        formControlName="fechaOrdenado" readonly>
                 </div>
             </div>
         </div>
@@ -54,7 +60,8 @@
                         <td>{{aux.subtotal}}</td>
                         <td>
                             <button type="button" class="btn btn-rojo" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" [disabled]="confirmado" (click)="onProductSelected(aux)">Cambiar</button>
+                                data-bs-target="#exampleModal" [disabled]="confirmado"
+                                (click)="onProductSelected(aux)">Cambiar</button>
                         </td>
                     </tr>
                 </tbody>
@@ -62,7 +69,11 @@
         </div>
         <div class="mb-3">
             <label for="total" class="form-label texto_card">Total</label>
-            <input type="number" id="total" class="form-control texto_input" formControlName="total" readonly>
+            <div class="input-group mb-3 texto_input">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control texto_input" formControlName="total" id="total" readonly>
+                <span class="input-group-text">.00</span>
+            </div>
         </div>
         <div class="form-check text-center">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="cambiarBtn()">
@@ -77,32 +88,31 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Pedido</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="formularioModal">
-            <div class="mb-3">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" class="form-control" formControlName="nombre" readonly>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar Pedido</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-              <label for="cantidad">Cantidad</label>
-              <input type="number" id="cantidad" class="form-control" formControlName="cantidad">
+            <div class="modal-body">
+                <form [formGroup]="formularioModal">
+                    <div class="mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" formControlName="nombre" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" id="cantidad" class="form-control" formControlName="cantidad">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subtotal">Subtotal</label>
+                        <input type="number" id="subtotal" class="form-control" formControlName="subtotal" readonly>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-              <label for="subtotal">Subtotal</label>
-              <input type="number" id="subtotal" class="form-control" formControlName="subtotal" readonly>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-gris" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-verdecito" (click)="guardarCambios()">Guardar Cambios</button>
             </div>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-gris" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-verdecito" (click)="guardarCambios()">Guardar Cambios</button>
-        </div>
-      </div>
     </div>
-  </div>
-  
+</div>

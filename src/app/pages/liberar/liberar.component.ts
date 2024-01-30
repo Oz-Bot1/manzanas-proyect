@@ -42,7 +42,7 @@ export class LiberarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     localStorage.clear();
   }
-  
+
   idNumber: number = 0;
   ngOnInit(): void {
     if (this.id !== null) {
@@ -70,12 +70,20 @@ export class LiberarComponent implements OnInit, OnDestroy {
       const manzanaIndex = this.datosManzanas.findIndex((manzana) => manzana.idManzana === idManzana);
 
       if (manzanaIndex !== -1) {
-        this.datosManzanas[manzanaIndex] = { ...formDat };
+        // Copiar el array existente para no modificar el original directamente
+        const newData = [...this.datosManzanas];
+
+        // Actualizar solo la manzana seleccionada
+        newData[manzanaIndex] = { ...formDat };
+
+        // Asignar el nuevo array actualizado
+        this.datosManzanas = newData;
       } else {
         // El objeto no existe en datosManzanas, así que puedes agregarlo
         this.datosManzanas.push({ ...formDat });
       }
-      const manzanas = [{ ...formDat }];
+
+      const manzanas = [...this.datosManzanas];
 
       this.liberarService.actualizar(id, nombre, estado, ciudad, correo, telefono, manzanas).subscribe({
         next: () => {
