@@ -44,9 +44,32 @@ $color_btn_sombra: rgba(30, 137, 80, 0.4);
     border-radius: 2%;
 }
 
+.bg_verde_claro {
+    background-color: $color_verde;
+    padding: 1rem 15rem 1rem 15rem !important;
+    border-radius: 2%;
+    background-color: rgba(78, 149, 69, 0.8) !important;
+}
+
+.border_rad{
+    border-radius: 0% !important;
+}
+
 .bg_blanco {
     background-color: $color_fondo_card;
     padding: 1rem 15rem 1rem 15rem !important;
+    border-radius: 2%;
+}
+
+.bg_blanco_carta {
+    background-color: $color_fondo_card;
+    padding: 1%;
+    border-radius: 12px;
+}
+
+.bg_verde_carta {
+    background-color: $color_verde;
+    padding: 1%;
     border-radius: 2%;
 }
 
@@ -489,6 +512,14 @@ table {
     margin: 0%;
 }
 
+.texto_title_min {
+    font-family: $kamerik-bold;
+    font-size: clamp(20px, -0.875rem + 8.333333vw, 40px);
+    color: $color_verde;
+    padding: 0%;
+    margin: 0%;
+}
+
 .texto_card {
     font-family: $kamerik-bold;
     font-size: clamp(0.8rem, -0.875rem + 8.333333vw, 1.2rem);
@@ -555,6 +586,22 @@ input.form-control:focus {
     font-family: $kamerik-book;
     color: $color_gris;
     font-size: clamp(0.1rem, -0.875rem + 8.333333vw, 1.1rem);
+}
+
+.descripcion_card_2 {
+    text-align: center;
+    font-family: $kamerik-book;
+    color: $color_gris;
+    font-size: clamp(0.1rem, -0.875rem + 8.333333vw, 1.1rem);
+}
+
+.texto_num{
+    font-family: $kamerik-bold;
+    font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.2rem);
+    color: $color_gris_oscuro;
+    font-weight: bold;
+    padding: 0%;
+    margin: 0%;
 }
 
 .bold {
@@ -641,6 +688,10 @@ nav {
 
 .margin_nav {
     margin-top: 2rem;
+}
+
+.pad_col{
+    padding: 0% 3% 0% 3%;
 }
 
 @media (max-width: 1000px) {

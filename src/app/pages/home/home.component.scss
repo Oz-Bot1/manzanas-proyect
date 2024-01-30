@@ -1,17 +1,18 @@
-.bod {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 300px;
-        height: 300px;
-    }
+.fondo_tit {
+  background-image: url('../../../assets/img/home_tit.jpg');
+  background-size: cover; /* Para que la imagen cubra todo el contenedor */
+  background-position: center center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita la repetición de la imagen */
+}
 
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-    }
+.color_img{
+  padding: 5rem 15rem 5rem 15rem;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.blanco{
+  color: white !important;
 }
 .descripcion_card li {
     margin-bottom: 20px !important; /* Ajusta el valor según la cantidad de espacio que desees */
