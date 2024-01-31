@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
     this.pedidosService.lista().subscribe({
       next: (data) => {
         this.lista = data.data;
-        console.log(this.lista);
+        console.log("aqui",this.lista);
       },
       error: (error) => {
         console.log(error);
