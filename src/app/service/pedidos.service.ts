@@ -11,15 +11,14 @@ export class PedidosService {
 
   constructor(private http: HttpClient) { }
 
-  listaPuntos(): Observable<any>{
+  listaPuntos(){
     const params = {
     };
     return this.http.post<any>(`${urlApi}/Dashboard/listaPuntosVenta`, params);
   }
 
-  lista(): Observable<any> {
-    const params = {};
-    return this.http.get<any>(`https://www.sandbox.avicultura.club/ApiRestPecuarios/home/marquesina/1`, params);
+  lista(){
+    return this.http.get<any>(`${urlApi}/Dashboard/listaManzanas`);
   }
 
   pedido(nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{
