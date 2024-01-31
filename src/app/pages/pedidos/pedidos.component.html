@@ -67,7 +67,7 @@
     <!-- Seccion de mayoreo -->
     <div id="mayoreo">
         <form (ngSubmit)="submitForm()">
-            <div class="row g-5">
+            <div class="row g-5 gap_null">
                 <ng-container *ngFor="let aux of listaProductos">
                     <div class="col-md-6 col-xl-4 col-sm-12 mb-2">
                         <div class="card borde p-3">
@@ -164,7 +164,15 @@
                         <h2 class="titulo_carta text-center">Total: ${{total}}</h2>
                     </div>
                 </div>
-                <div class="mt-5 mb-4 fondo_card p-5">
+                <div class="d-flex justify-content-center mt-2">
+                      <div class="alert alert-warning d-flex align-items-center" role="alert">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                        <div>
+                          &nbsp; Atención: El total <b>NO</b> incluye el costo de envío.
+                        </div>
+                      </div>
+                </div>
+                <div class="mt-2 mb-4 fondo_card p-5">
                     <div class="text-center">
                         <span class="texto_subtitle">Manzana Serrana</span>
                         <br>

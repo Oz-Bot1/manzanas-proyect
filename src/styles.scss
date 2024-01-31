@@ -46,7 +46,7 @@ $color_btn_sombra: rgba(30, 137, 80, 0.4);
 
 .bg_verde_claro {
     background-color: $color_verde;
-    padding: 1rem 15rem 1rem 15rem !important;
+    padding: 1rem 15rem 1rem 15rem;
     border-radius: 2%;
     background-color: rgba(78, 149, 69, 0.8) !important;
 }
@@ -694,6 +694,18 @@ nav {
     padding: 0% 3% 0% 3%;
 }
 
+.numero-destacado {
+    text-align: end; /* Centrar el texto */
+    height: 5%;
+    width: auto;
+    margin: 5px;
+    padding: 8px; /* Añadir espacio alrededor del número */
+    border: 2px solid #4E9545; /* Establecer un borde de 2 píxeles de ancho con color verde (#4E9545) */
+    border-radius: 5px; /* Agregar bordes redondeados */
+    background-color: #4E9545; /* Establecer el color de fondo verde */
+    color: #ffffff; /* Establecer el color del texto en blanco */
+  }
+  
 @media (max-width: 1000px) {
     .texto_small_swiper {
         font-size: 1rem;
@@ -709,6 +721,14 @@ nav {
 
     .img_nav {
         margin-top: 20px !important;
+    }
+
+    .bg_verde_claro {
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    .bg_blanco {
+        padding: 1rem 1rem 1rem 1rem !important;
     }
 }
 
@@ -735,6 +755,10 @@ nav {
 
     .borde {
         margin: 5% 10% 10% 10%;
+    }
+
+    .gap_null{
+        gap: 0rem !important;
     }
 }
 
