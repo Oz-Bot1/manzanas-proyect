@@ -19,7 +19,7 @@ export class PedidosService {
 
   lista(): Observable<any> {
     const params = {};
-    return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
+    return this.http.post<any>(`https://pokeapi.co/api/v2/pokemon/ditto`, params);
   }
 
   pedido(nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{
