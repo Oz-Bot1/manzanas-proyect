@@ -28,7 +28,8 @@ export class NotasService {
 
   listaManzanas(): Observable<any> {
     const params = { };
-    return this.http.post<any>(`${urlApi}/Manzana/listaSencilla`, params);
+    return this.http.post<any>(`
+    https://www.sandbox.avicultura.club/ApiRestPecuarios/home/marquesina/1`, params);
   }
 
   listaNotas(): Observable<any> {

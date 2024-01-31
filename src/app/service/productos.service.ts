@@ -13,7 +13,7 @@ export class ProductosService {
 
   lista(): Observable<any> {
     const params = {};
-    return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
+    return this.http.post<any>(`https://pokeapi.co/api/v2/pokemon/ditto`, params);
   }
 
   listaDerivados(): Observable<any> {
