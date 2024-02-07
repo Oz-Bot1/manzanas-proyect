@@ -18,7 +18,9 @@ export class PedidosService {
   }
 
   lista(){
-    return this.http.get<any>(`${urlApi}`);
+    const params = {
+    }
+    return this.http.post<any>(`${urlApi}/Dashboard/listaManzanas`, params);
   }
 
   pedido(nombre: string, estado: string, ciudad: string, correo: string, telefono: string, manzanas: any[]): Observable<any>{

@@ -80,7 +80,6 @@ export class PedidosComponent implements OnInit {
       next: (data) => {
         this.listaProductos = data.data;
         this.listaProductosCompleta = data.data;
-        console.log(this.listaProductos)
       },
       error: (error) => {
         console.log(error);

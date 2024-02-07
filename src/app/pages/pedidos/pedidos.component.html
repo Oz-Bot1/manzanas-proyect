@@ -67,9 +67,9 @@
     <!-- Seccion de mayoreo -->
     <div id="mayoreo">
         <form (ngSubmit)="submitForm()">
-            <div class="row g-5 gap_null">
+            <div class="row g-xl-5 g-sm-5 g-sm-1">
                 <ng-container *ngFor="let aux of listaProductos">
-                    <div class="col-md-6 col-xl-4 col-sm-12 mb-2">
+                    <div class="col-md-6 col-xl-4 col-sm-12">
                         <div class="card borde p-3">
                             <div class="check-mark">
                                 <div class="form-check">
@@ -245,9 +245,9 @@
     </div>
     <!-- Seccion de menudeo -->
     <div class="ocultar" id="menudeo">
-        <div class="row mb-2 row-cols-1 row-cols-md-3 g-4">
+        <div class="row mb-2 g-xl-5 g-sm-5 g-sm-1">
             <ng-container *ngFor="let aux of listaProductosCompleta">
-                <div class="col">
+                <div class="col-md-6 col-xl-4 col-sm-12">
                     <div class="card borde p-3 mb-2" style="min-height: 100%;">
                         <img [src]="'http://localhost:8080/image/' + obtenerNombreImagen(aux.foto)"
                             class="card-img-fixed text-center" alt="...">

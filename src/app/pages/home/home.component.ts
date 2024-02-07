@@ -49,15 +49,6 @@ export class HomeComponent implements OnInit {
   listaMensaje: any[] = [];
   lista: any[] = [];
   ngOnInit(): void {
-    this.pedidosService.lista().subscribe({
-      next: (data) => {
-        this.lista = data.data;
-        console.log("aqui",this.lista);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
 
     this.banderaRol();
 
