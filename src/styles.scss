@@ -718,7 +718,17 @@ nav {
     /* Establecer el color del texto en blanco */
 }
 
+.lay_ad {
+    background-color: #fff;
+    margin-bottom: 20px;
+    margin-top: 150px;
+}
+
 @media (max-width: 1000px) {
+    .lay_ad {
+        margin-top: 100px;
+    }
+
     .texto_small_swiper {
         font-size: 1rem;
     }
@@ -774,6 +784,7 @@ nav {
     .margin-top-nav {
         margin-top: 0.4rem !important;
     }
+
     .texto_small_swiper {
         font-size: 0.5rem;
     }

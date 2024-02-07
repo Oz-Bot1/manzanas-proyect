@@ -1,12 +1,17 @@
 <nav class="navbar fondo_navbar navbar-expand-lg fixed-top">
-    <div class="container">
-        <div class="">
-            <img src="../../../assets/img/Logo Horizontal.svg" alt="" width="70%" height="70%">
+    <div class="container-fluid">
+        <div class="row d-flex">
+            <div class="col">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon icon-menu"></span>
+                </button>
+            </div>
+            <div class="col">
+                <img src="../../../assets/img/Logo Horizontal.svg" alt="" class="img-responsive" width="70%" height="70%">
+            </div>
+            
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item cursor_pointer">
@@ -27,7 +32,7 @@
                 <li class="nav-item cursor_pointer">
                     <a class="nav-link color_nav_item" routerLinkActive="active" [routerLink]="['/admin/ventas']"><i
                             class="fa fa-line-chart"></i>
-                        <span> Ventas y Pedidos</span></a>
+                        <span> Pedidos</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle color_nav_item" href="#" role="button" data-bs-toggle="dropdown"
@@ -45,7 +50,7 @@
                 </li>
                 <li class="nav-item cursor_pointer">
                     <a class="nav-link color_nav_item" (click)="logout()"><i class="fa fa-sign-out"></i>
-                        <span> Cerrar Sesión</span>
+                        <span> Salir</span>
                     </a>
                 </li>
                 <li class="nav-item cursor_pointer">

@@ -3,59 +3,63 @@
   <p class="texto_title bold espacios_textos">Pedidos</p>
 </div>
 <div class="container">
-  <table class="table table-striped">
-    <thead class="text-center">
-      <tr>
-        <th>Nombre Cliente</th>
-        <th>Correo</th>
-        <th>Estado</th>
-        <th>Ciudad</th>
-        <th>Telefeno</th>
-        <th>Total</th>
-        <th>Fecha de Pedido</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody class="text-center">
-      <tr *ngFor="let aux of pedidosLista">
-        <th class="vertical_align">{{ aux.nombreCliente }}</th>
-        <td class="vertical_align">{{ aux.correoCliente }}</td>
-        <td class="vertical_align">{{ aux.estadoCliente }}</td>
-        <td class="vertical_align">{{ aux.ciudadCliente }}</td>
-        <td class="vertical_align">{{ aux.telefonoCliente }}</td>
-        <td class="vertical_align">${{ aux.total }}</td>
-        <td class="vertical_align">{{ aux.fechaOrdenado }}</td>
-        <td class="vertical_align">
-          <button type="button" class="btn btn-rojo" (click)="liberar(aux.id)">Liberar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="text-center">
+        <tr>
+          <th>Nombre Cliente</th>
+          <th>Correo</th>
+          <th>Estado</th>
+          <th>Ciudad</th>
+          <th>Telefeno</th>
+          <th>Total</th>
+          <th>Fecha de Pedido</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let aux of pedidosLista">
+          <th class="vertical_align">{{ aux.nombreCliente }}</th>
+          <td class="vertical_align">{{ aux.correoCliente }}</td>
+          <td class="vertical_align">{{ aux.estadoCliente }}</td>
+          <td class="vertical_align">{{ aux.ciudadCliente }}</td>
+          <td class="vertical_align">{{ aux.telefonoCliente }}</td>
+          <td class="vertical_align">${{ aux.total }}</td>
+          <td class="vertical_align">{{ aux.fechaOrdenado }}</td>
+          <td class="vertical_align">
+            <button type="button" class="btn btn-rojo" (click)="liberar(aux.id)">Liberar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="container text-center mt-5 mb-4">
   <p class="texto_title bold espacios_textos">Ventas</p>
 </div>
 <div class="container">
-  <table class="table table-striped">
-    <thead class="text-center">
-      <tr>
-        <th>Nombre Cliente</th>
-        <th>Estado</th>
-        <th>Ciudad</th>
-        <th>Telefeno</th>
-        <th>Total</th>
-        <th>Fecha de Pedido</th>
-      </tr>
-    </thead>
-    <tbody class="text-center">
-      <tr class="vertical_align" *ngFor="let aux of ventasLista">
-        <th>{{ aux.nombreCliente }}</th>
-        <td>{{ aux.estadoCliente }}</td>
-        <td>{{ aux.ciudadCliente }}</td>
-        <td>{{ aux.telefonoCliente }}</td>
-        <td>${{ aux.total }}</td>
-        <td>{{ aux.fechaLiberado }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="text-center">
+        <tr>
+          <th>Nombre Cliente</th>
+          <th>Estado</th>
+          <th>Ciudad</th>
+          <th>Telefeno</th>
+          <th>Total</th>
+          <th>Fecha de Pedido</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr class="vertical_align" *ngFor="let aux of ventasLista">
+          <th>{{ aux.nombreCliente }}</th>
+          <td>{{ aux.estadoCliente }}</td>
+          <td>{{ aux.ciudadCliente }}</td>
+          <td>{{ aux.telefonoCliente }}</td>
+          <td>${{ aux.total }}</td>
+          <td>{{ aux.fechaLiberado }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
